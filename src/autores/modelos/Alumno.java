@@ -8,10 +8,61 @@ public class Alumno {
     private String clave;
     private String cx;
 
+    //Constructores de la clase
+    public Alumno() {
+    }
+
+    public Alumno(int dni, String apellidos, String nombres, String clave, String cx) {
+        this.dni = dni;
+        this.apellidos = apellidos;
+        this.nombres = nombres;
+        this.clave = clave;
+        this.cx = cx;
+    }
+
     //Métodos de la clase
     public void mostrar() {
         System.out.println("Alumno: \nDNI: " + this.dni + "\nApellidos: " + this.apellidos
         + "\nNombres: " + this.nombres + "\nClave: " + this.clave + "\nCx: " + this.cx);
     }
 
+    public int verDni() {
+        return dni;
+    }
+
+    public void asignarDni(int dni) {
+        this.dni = dni;
+    }
+
+    public String verApellidos() {
+        return apellidos;
+    }
+
+    public void asignarApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    public String verNombres() {
+        return nombres;
+    }
+
+    public void asignarNombres(String nombres) {
+        this.nombres = nombres;
+    }
+
+    public String verClave() {
+        return clave;
+    }
+
+    public void asignarClave(String clave) {
+        this.clave = clave;
+    }
+
+    public String verCx() {
+        return cx;
+    }
+
+    public void asignarCx(String cx) {
+        this.cx = cx;
+    }
 }
