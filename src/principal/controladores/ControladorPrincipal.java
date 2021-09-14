@@ -98,6 +98,42 @@ public class ControladorPrincipal {
         listaGrupos.add(unGrupo4);
         listaGrupos.add(unGrupo5);
 
+        //Recorro las distintas ArrayList
+        listaAlumnos.forEach(x -> x.mostrar());
+        listaProfesores.forEach(x -> x.mostrar());
+        listaGrupos.forEach(x -> x.mostrar());
+        listaIdiomas.forEach(x ->
+                System.out.println(x.toString())
+        );
+        listaPalabras.forEach(x ->
+                System.out.println(x.toString())
+        );
+        listaTipos.forEach(x ->
+                System.out.println(x.toString())
+        );
+        listaLugares.forEach(x ->
+                System.out.println(x.toString())
+        );
+
+        //Modifico atributos
+        unGrupo1.asignarNombre("Grupo 1 modificado");
+
+        //Recorro las distintas ArrayList
+        listaAlumnos.forEach(x -> x.mostrar());
+        listaProfesores.forEach(x -> x.mostrar());
+        listaGrupos.forEach(x -> x.mostrar());
+        listaIdiomas.forEach(x ->
+                System.out.println(x.toString())
+        );
+        listaPalabras.forEach(x ->
+                System.out.println(x.toString())
+        );
+        listaTipos.forEach(x ->
+                System.out.println(x.toString())
+        );
+        listaLugares.forEach(x ->
+                System.out.println(x.toString())
+        );
 
 
 
