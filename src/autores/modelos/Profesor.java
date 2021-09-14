@@ -22,8 +22,13 @@ public class Profesor {
 
     //Métodos de la clase
     public void mostrar() {
-        System.out.println("Profesor: \nDNI: " + this.dni + "\nApellidos: " + this.apellidos
-                + "\nNombres: " + this.nombres + "\nClave: " + this.clave + "\nCargo: " + this.cargo);
+        System.out.println("Profesor{" +
+                "dni=" + dni +
+                ", apellidos='" + apellidos + '\'' +
+                ", nombres='" + nombres + '\'' +
+                ", clave='" + clave + '\'' +
+                ", cargo='" + cargo + '\'' +
+                '}');
     }
     public int verDni() {
         return dni;
