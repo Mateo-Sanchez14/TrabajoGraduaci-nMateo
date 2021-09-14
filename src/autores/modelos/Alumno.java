@@ -22,8 +22,13 @@ public class Alumno {
 
     //Métodos de la clase
     public void mostrar() {
-        System.out.println("Alumno: \nDNI: " + this.dni + "\nApellidos: " + this.apellidos
-        + "\nNombres: " + this.nombres + "\nClave: " + this.clave + "\nCx: " + this.cx);
+        System.out.println("Alumno{" +
+                "dni=" + dni +
+                ", apellidos='" + apellidos + '\'' +
+                ", nombres='" + nombres + '\'' +
+                ", clave='" + clave + '\'' +
+                ", cx='" + cx + '\'' +
+                '}');
     }
 
     public int verDni() {

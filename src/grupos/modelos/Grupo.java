@@ -16,7 +16,10 @@ public class Grupo {
 
     //Métodos de la clase
     public void mostrar() {
-        System.out.println("Grupo: \nNombre: " + this.nombre + "\nDescripción: " + this.descripcion );
+        System.out.println("Grupo{" +
+                "nombre='" + nombre + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                '}');
     }
 
     public String verNombre() {
