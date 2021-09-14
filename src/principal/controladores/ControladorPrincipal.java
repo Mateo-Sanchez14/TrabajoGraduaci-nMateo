@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 public class ControladorPrincipal {
     public static void main(String[] args) {
+        /*
         //Creación de las ArrayList de las clases
         ArrayList<Alumno> listaAlumnos= new ArrayList<>();
         ArrayList<Profesor> listaProfesores= new ArrayList<>();
@@ -134,7 +135,7 @@ public class ControladorPrincipal {
         listaLugares.forEach(x ->
                 System.out.println(x.toString())
         );
-
+        */
 
 
     }
