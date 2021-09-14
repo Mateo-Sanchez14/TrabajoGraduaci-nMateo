@@ -6,12 +6,12 @@ public class Grupo {
     private String descripcion;
 
     //Constructores de la Clase
+    public Grupo() {
+    }
+
     public Grupo(String nombre, String descripcion) {
         this.nombre = nombre;
         this.descripcion = descripcion;
-    }
-
-    public Grupo() {
     }
 
     //Métodos de la clase
