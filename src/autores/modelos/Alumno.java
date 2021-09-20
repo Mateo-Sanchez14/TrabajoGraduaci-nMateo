@@ -32,7 +32,7 @@ public class Alumno {
     }
 
     public int verDni() {
-        return dni;
+        return this.dni;
     }
 
     public void asignarDni(int dni) {
