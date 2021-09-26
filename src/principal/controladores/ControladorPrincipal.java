@@ -2,11 +2,18 @@ package principal.controladores;
 
 import autores.modelos.Alumno;
 import autores.modelos.Profesor;
+import autores.vistas.VentanaAMAlumno;
+import autores.vistas.VentanaAMProfesor;
 import grupos.modelos.Grupo;
+import grupos.vistas.VentanaAMGrupo;
 import idiomas.modelos.Idioma;
+import idiomas.vistas.VentanaAIdioma;
 import lugares.modelos.Lugar;
+import lugares.vistas.VentanaALugar;
 import palabrasclaves.modelos.PalabraClave;
+import palabrasclaves.vistas.VentanaAPalabraClave;
 import tipos.modelos.Tipo;
+import tipos.vistas.VentanaATipo;
 
 import java.sql.SQLOutput;
 import java.util.ArrayList;
@@ -156,6 +163,63 @@ public class ControladorPrincipal {
             System.out.println(i);
         }
 
+        /*
+        Se agrego los paquetes autores.vistas, grupos.vistas, idiomas.vistas, lugares.vistas, palabrasclaves.vistas
+        y tipos.vistas donde se coloco VentanaA de cada uno
 
+        Para poder utilizar esto ultimo debemos hacer algunas modificaciones
+         */
+        asignarLookAndFeel("Nimbus");
+        VentanaAMAlumno ventana = new VentanaAMAlumno(null); //se instancia la ventana
+        ventana.setLocationRelativeTo(null); //se centra la ventana
+        ventana.setVisible(true); //se hace visible la ventana
+
+        asignarLookAndFeel("Nimbus");
+        VentanaAMProfesor ventana = new VentanaAMProfesor(null); //se instancia la ventana
+        ventana.setLocationRelativeTo(null); //se centra la ventana
+        ventana.setVisible(true); //se hace visible la ventana
+
+        asignarLookAndFeel("Nimbus");
+        VentanaAMGrupo ventana = new VentanaAMGrupo(null); //se instancia la ventana
+        ventana.setLocationRelativeTo(null); //se centra la ventana
+        ventana.setVisible(true); //se hace visible la ventana
+
+        asignarLookAndFeel("Nimbus");
+        VentanaAIdioma ventana = new VentanaAIdioma(null); //se instancia la ventana
+        ventana.setLocationRelativeTo(null); //se centra la ventana
+        ventana.setVisible(true); //se hace visible la ventana
+
+        asignarLookAndFeel("Nimbus");
+        VentanaALugar ventana = new VentanaALugar(null); //se instancia la ventana
+        ventana.setLocationRelativeTo(null); //se centra la ventana
+        ventana.setVisible(true); //se hace visible la ventana
+
+        asignarLookAndFeel("Nimbus");
+        VentanaAPalabraClave ventana = new VentanaAPalabraClave(null); //se instancia la ventana
+        ventana.setLocationRelativeTo(null); //se centra la ventana
+        ventana.setVisible(true); //se hace visible la ventana
+
+        asignarLookAndFeel("Nimbus");
+        VentanaATipo ventana = new VentanaATipo(null); //se instancia la ventana
+        ventana.setLocationRelativeTo(null); //se centra la ventana
+        ventana.setVisible(true); //se hace visible la ventana
+    }
+
+    public static void asignarLookAndFeel(String laf) {
+        try {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+                if (laf.equals(info.getName())) {
+                    UIManager.setLookAndFeel(info.getClassName());
+                }
+            }
+        } catch (Exception e) {
+            try {
+                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            }
+            catch (Exception e2) {
+                System.exit(0);
+            }
+        }
+        //asd
     }
 }
