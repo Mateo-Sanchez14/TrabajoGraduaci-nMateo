@@ -15,13 +15,13 @@ import palabrasclaves.vistas.VentanaAPalabraClave;
 import tipos.modelos.Tipo;
 import tipos.vistas.VentanaATipo;
 
+import javax.swing.*;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 public class ControladorPrincipal {
     public static void main(String[] args) {
-        System.out.println("HOlas");
-
+        /*
         //Declaro los arralist de las clases
         ArrayList<Alumno> losAlumnos = new ArrayList<>();
         ArrayList<Profesor> losProfesores = new ArrayList<>();
@@ -129,12 +129,12 @@ public class ControladorPrincipal {
         for(Tipo i: losTipos){
             System.out.println(i);
         }
-        /*
-        losAlumnos(1).nombres="Ernesto";
+
+       ( losAlumnos(1).nombres="Ernesto";
         No se puede ya que nombres es un atributo privado
 
-        Para realizar modificaciones en los atributos tengo que hacerlo con el método set, en nuestro caso llamamos asignar
-        */
+        Para realizar modificaciones en los atributos tengo que hacerlo con el método set, en nuestro caso llamamos asignar)
+
         alumno1.asignarApellidos("Figueroa");
         alumno2.asignarNombres("Juan");
         profesor1.asignarCargo("Titular");
@@ -146,7 +146,7 @@ public class ControladorPrincipal {
         palabraClave2.asignarNombre("Procesadores");
         tipo1.asignarNombre("Libro digital");
 
-        /*Muestro los ArrayList modificados*/
+        //Muestro los ArrayList modificados
         for(Alumno i:losAlumnos){i.mostrar();}
         for(Profesor i:losProfesores){i.mostrar();}
         for(Grupo i:losGrupos){i.mostrar();}
@@ -163,46 +163,51 @@ public class ControladorPrincipal {
             System.out.println(i);
         }
 
-        /*
-        Se agrego los paquetes autores.vistas, grupos.vistas, idiomas.vistas, lugares.vistas, palabrasclaves.vistas
+
+
+
+
+
+        (Se agrego los paquetes autores.vistas, grupos.vistas, idiomas.vistas, lugares.vistas, palabrasclaves.vistas
         y tipos.vistas donde se coloco VentanaA de cada uno
 
-        Para poder utilizar esto ultimo debemos hacer algunas modificaciones
-         */
+        Para poder utilizar esto ultimo debemos hacer algunas modificaciones)
+
+        */
         asignarLookAndFeel("Nimbus");
-        VentanaAMAlumno ventana = new VentanaAMAlumno(null); //se instancia la ventana
-        ventana.setLocationRelativeTo(null); //se centra la ventana
-        ventana.setVisible(true); //se hace visible la ventana
+        VentanaAMAlumno ventanaAlumno = new VentanaAMAlumno(null); //se instancia la ventana
+        ventanaAlumno.setLocationRelativeTo(null); //se centra la ventana
+        ventanaAlumno.setVisible(true); //se hace visible la ventana
 
         asignarLookAndFeel("Nimbus");
-        VentanaAMProfesor ventana = new VentanaAMProfesor(null); //se instancia la ventana
-        ventana.setLocationRelativeTo(null); //se centra la ventana
-        ventana.setVisible(true); //se hace visible la ventana
+        VentanaAMProfesor ventanaProfesor = new VentanaAMProfesor(null); //se instancia la ventana
+        ventanaProfesor.setLocationRelativeTo(null); //se centra la ventana
+        ventanaProfesor.setVisible(true); //se hace visible la ventana
 
         asignarLookAndFeel("Nimbus");
-        VentanaAMGrupo ventana = new VentanaAMGrupo(null); //se instancia la ventana
-        ventana.setLocationRelativeTo(null); //se centra la ventana
-        ventana.setVisible(true); //se hace visible la ventana
+        VentanaAMGrupo ventanaGrupo = new VentanaAMGrupo(null); //se instancia la ventana
+        ventanaGrupo.setLocationRelativeTo(null); //se centra la ventana
+        ventanaGrupo.setVisible(true); //se hace visible la ventana
 
         asignarLookAndFeel("Nimbus");
-        VentanaAIdioma ventana = new VentanaAIdioma(null); //se instancia la ventana
-        ventana.setLocationRelativeTo(null); //se centra la ventana
-        ventana.setVisible(true); //se hace visible la ventana
+        VentanaAIdioma ventanaIdioma = new VentanaAIdioma(null); //se instancia la ventana
+        ventanaIdioma.setLocationRelativeTo(null); //se centra la ventana
+        ventanaIdioma.setVisible(true); //se hace visible la ventana
 
         asignarLookAndFeel("Nimbus");
-        VentanaALugar ventana = new VentanaALugar(null); //se instancia la ventana
-        ventana.setLocationRelativeTo(null); //se centra la ventana
-        ventana.setVisible(true); //se hace visible la ventana
+        VentanaALugar ventanaLugar = new VentanaALugar(null); //se instancia la ventana
+        ventanaLugar.setLocationRelativeTo(null); //se centra la ventana
+        ventanaLugar.setVisible(true); //se hace visible la ventana
 
         asignarLookAndFeel("Nimbus");
-        VentanaAPalabraClave ventana = new VentanaAPalabraClave(null); //se instancia la ventana
-        ventana.setLocationRelativeTo(null); //se centra la ventana
-        ventana.setVisible(true); //se hace visible la ventana
+        VentanaAPalabraClave ventanaPalabraClave = new VentanaAPalabraClave(null); //se instancia la ventana
+        ventanaPalabraClave.setLocationRelativeTo(null); //se centra la ventana
+        ventanaPalabraClave.setVisible(true); //se hace visible la ventana
 
         asignarLookAndFeel("Nimbus");
-        VentanaATipo ventana = new VentanaATipo(null); //se instancia la ventana
-        ventana.setLocationRelativeTo(null); //se centra la ventana
-        ventana.setVisible(true); //se hace visible la ventana
+        VentanaATipo ventanaTipo = new VentanaATipo(null); //se instancia la ventana
+        ventanaTipo.setLocationRelativeTo(null); //se centra la ventana
+        ventanaTipo.setVisible(true); //se hace visible la ventana
     }
 
     public static void asignarLookAndFeel(String laf) {
@@ -220,6 +225,5 @@ public class ControladorPrincipal {
                 System.exit(0);
             }
         }
-        //asd
     }
 }

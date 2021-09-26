@@ -8,6 +8,8 @@ package palabrasclaves.vistas;
 import java.awt.Dialog;
 import java.util.ArrayList;
 import javax.swing.JDialog;
+
+import lugares.modelos.Lugar;
 import palabrasclaves.modelos.PalabraClave;
 
 public class VentanaAPalabraClave extends JDialog {
@@ -85,6 +87,11 @@ public class VentanaAPalabraClave extends JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarClic(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarClic
+        String nombre = this.txtNombre.getText().trim();
+        PalabraClave palabraClave = new PalabraClave(nombre);
+        this.palabrasClaves.add(palabraClave);
+        for(PalabraClave l : this.palabrasClaves)
+            System.out.println(l);
         
     }//GEN-LAST:event_btnGuardarClic
 

@@ -8,6 +8,8 @@ package tipos.vistas;
 import java.awt.Dialog;
 import java.util.ArrayList;
 import javax.swing.JDialog;
+
+import lugares.modelos.Lugar;
 import tipos.modelos.Tipo;
 
 public class VentanaATipo extends JDialog {
@@ -86,6 +88,11 @@ public class VentanaATipo extends JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarClic(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarClic
+        String nombre = this.txtNombre.getText().trim();
+        Tipo tipos = new Tipo(nombre);
+        this.tipos.add(tipos);
+        for(Tipo l : this.tipos)
+            System.out.println(l);
         
     }//GEN-LAST:event_btnGuardarClic
 
