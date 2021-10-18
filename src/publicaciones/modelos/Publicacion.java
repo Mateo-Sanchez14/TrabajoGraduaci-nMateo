@@ -19,7 +19,7 @@ public class Publicacion {
     private Idioma idioma;
     private Lugar lugar;
     private MiembroEnGrupo miembroEnGrupo;
-    private ArrayList<PalabraClave> palabrasClaves;
+    private ArrayList<PalabraClave> palabrasClaves = new ArrayList<>();
 
     public Publicacion(String titulo, MiembroEnGrupo miembroEnGrupo, LocalDate fechaPublicacion, Tipo tipo, Idioma idioma, Lugar lugar, ArrayList<PalabraClave> palabrasClaves, String enlace, String resumen) {
         this.titulo = titulo;
