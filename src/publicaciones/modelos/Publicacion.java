@@ -8,6 +8,7 @@ import tipos.modelos.Tipo;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Publicacion {
     private String titulo;
@@ -18,9 +19,9 @@ public class Publicacion {
     private Idioma idioma;
     private Lugar lugar;
     private MiembroEnGrupo miembroEnGrupo;
-    private ArrayList<PalabraClave> palabrasClaves = new ArrayList<>();
+    private ArrayList<PalabraClave> palabrasClaves;
 
-    public Publicacion(String titulo, LocalDate fechaPublicacion, String enlace, String resumen, Tipo tipo, Idioma idioma, Lugar lugar, MiembroEnGrupo miembroEnGrupo, ArrayList<PalabraClave> palabrasClaves) {
+    public Publicacion(String titulo, MiembroEnGrupo miembroEnGrupo, LocalDate fechaPublicacion, Tipo tipo, Idioma idioma, Lugar lugar, ArrayList<PalabraClave> palabrasClaves, String enlace, String resumen) {
         this.titulo = titulo;
         this.fechaPublicacion = fechaPublicacion;
         this.enlace = enlace;
@@ -42,7 +43,7 @@ public class Publicacion {
         System.out.println("Idioma : " + idioma);
         System.out.println("Lugar : " + lugar);
         System.out.println("Palabras claves \n---------------");
-        verPalabrasClaves().forEach(x -> x.verNombre());
+        verPalabrasClaves().forEach(x -> System.out.println("\t" + x.verNombre()));
         System.out.println("Enlace : " + enlace);
         System.out.println("Resumen = " + resumen);
     }

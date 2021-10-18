@@ -7,7 +7,7 @@ public class MiembroEnGrupo {
     private Rol rol;
     private Profesor profesor;
 
-    public MiembroEnGrupo(Grupo grupo, Rol rol, Profesor profesor) {
+    public MiembroEnGrupo(Profesor profesor, Grupo grupo, Rol rol) {
         this.grupo = grupo;
         this.rol = rol;
         this.profesor = profesor;
