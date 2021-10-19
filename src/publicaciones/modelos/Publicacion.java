@@ -19,9 +19,9 @@ public class Publicacion {
     private Idioma idioma;
     private Lugar lugar;
     private MiembroEnGrupo miembroEnGrupo;
-    private ArrayList<PalabraClave> palabrasClaves = new ArrayList<>();
+    private List<PalabraClave> palabrasClaves;
 
-    public Publicacion(String titulo, MiembroEnGrupo miembroEnGrupo, LocalDate fechaPublicacion, Tipo tipo, Idioma idioma, Lugar lugar, ArrayList<PalabraClave> palabrasClaves, String enlace, String resumen) {
+    public Publicacion(String titulo, MiembroEnGrupo miembroEnGrupo, LocalDate fechaPublicacion, Tipo tipo, Idioma idioma, Lugar lugar, List<PalabraClave> palabrasClaves, String enlace, String resumen) {
         this.titulo = titulo;
         this.fechaPublicacion = fechaPublicacion;
         this.enlace = enlace;
@@ -112,11 +112,11 @@ public class Publicacion {
         this.miembroEnGrupo = miembroEnGrupo;
     }
 
-    public ArrayList<PalabraClave> verPalabrasClaves() {
+    public List<PalabraClave> verPalabrasClaves() {
         return palabrasClaves;
     }
 
-    public void asignarPalabrasClaves(ArrayList<PalabraClave> palabrasClaves) {
+    public void asignarPalabrasClaves(List<PalabraClave> palabrasClaves) {
         this.palabrasClaves = palabrasClaves;
     }
 }
