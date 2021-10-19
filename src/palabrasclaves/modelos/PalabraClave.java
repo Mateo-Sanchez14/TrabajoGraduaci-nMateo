@@ -1,5 +1,7 @@
 package palabrasclaves.modelos;
 
+import java.util.Objects;
+
 public class PalabraClave {
     //Atributos de la Clase
     private String nombre;
@@ -26,5 +28,18 @@ public class PalabraClave {
         return "PalabraClave{" +
                 "nombre='" + nombre + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof PalabraClave)) return false;
+        PalabraClave that = (PalabraClave) o;
+        return Objects.equals(nombre, that.nombre);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nombre);
     }
 }

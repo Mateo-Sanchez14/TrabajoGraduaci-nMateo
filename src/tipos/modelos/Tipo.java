@@ -1,5 +1,7 @@
 package tipos.modelos;
 
+import java.util.Objects;
+
 public class Tipo {
     //Atributos de la clase
     private String nombre;
@@ -23,10 +25,24 @@ public class Tipo {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Tipo)) return false;
+        Tipo tipo = (Tipo) o;
+        return Objects.equals(nombre, tipo.nombre);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nombre);
+    }
+
+    @Override
     public String toString() {
         return "Tipo{" +
                 "nombre='" + nombre + '\'' +
                 '}';
+
     }
 
 }

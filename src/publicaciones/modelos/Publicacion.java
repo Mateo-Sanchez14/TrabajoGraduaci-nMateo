@@ -9,6 +9,7 @@ import tipos.modelos.Tipo;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Publicacion {
     private String titulo;
@@ -118,5 +119,18 @@ public class Publicacion {
 
     public void asignarPalabrasClaves(List<PalabraClave> palabrasClaves) {
         this.palabrasClaves = palabrasClaves;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Publicacion)) return false;
+        Publicacion that = (Publicacion) o;
+        return Objects.equals(titulo, that.titulo);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(titulo);
     }
 }

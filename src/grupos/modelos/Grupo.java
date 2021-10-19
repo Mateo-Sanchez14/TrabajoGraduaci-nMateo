@@ -1,5 +1,7 @@
 package grupos.modelos;
 
+import java.util.Objects;
+
 public class Grupo {
     //Atributos de la clase
     private String nombre;
@@ -36,5 +38,18 @@ public class Grupo {
 
     public void asignarDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Grupo)) return false;
+        Grupo grupo = (Grupo) o;
+        return Objects.equals(nombre, grupo.nombre);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nombre);
     }
 }
