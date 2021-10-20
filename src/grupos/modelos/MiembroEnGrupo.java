@@ -1,16 +1,18 @@
 package grupos.modelos;
 
-import autores.modelos.Profesor;
+import autores.modelos.Autor;
+
+import java.util.Objects;
 
 public class MiembroEnGrupo {
     private Grupo grupo;
     private Rol rol;
-    private Profesor profesor;
+    private Autor autor;
 
-    public MiembroEnGrupo(Profesor profesor, Grupo grupo, Rol rol) {
+    public MiembroEnGrupo(Autor autor, Grupo grupo, Rol rol) {
         this.grupo = grupo;
         this.rol = rol;
-        this.profesor = profesor;
+        this.autor = autor;
     }
 
     public Grupo verGrupo() {
@@ -29,11 +31,24 @@ public class MiembroEnGrupo {
         this.rol = rol;
     }
 
-    public Profesor verProfesor() {
-        return profesor;
+    public Autor verAutor() {
+        return autor;
     }
 
-    public void asignarProfesor(Profesor profesor) {
-        this.profesor = profesor;
+    public void asignarAutor(Autor autor) {
+        this.autor = autor;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass().getSuperclass() != o.getClass().getSuperclass()) return false;
+        MiembroEnGrupo that = (MiembroEnGrupo) o;
+        return Objects.equals(autor, that.autor);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(autor);
     }
 }
