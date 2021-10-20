@@ -43,17 +43,31 @@ public class ControladorPrincipal {
         //GRUPOS
         Grupo grupo1 = new Grupo("Grupo 1", "Descripción 1");
         Grupo grupo2 = new Grupo("Grupo 2", "Descripción 2");
-        Grupo grupo3 = new Grupo("Grupo 3", "Descripción 3");
-        Grupo grupo4 = new Grupo("Grupo 4", "Descripción 4");
+        Grupo grupo3 = new Grupo("Grupo 1", "Descripción 3");
+        Grupo grupo4 = new Grupo("Grupo 4", "Descripción 1");
         Grupo grupo5 = new Grupo("Grupo 5", "Descripción 5");
 
-        
-        grupos.add(grupo1);
-        grupos.add(grupo2);
-        grupos.add(grupo3);
-        grupos.add(grupo4);
-        grupos.add(grupo5);
-      
+        if (!grupos.contains(grupo1) )
+        {
+            grupos.add(grupo1);
+        }
+        if (!grupos.contains(grupo2) )
+        {
+            grupos.add(grupo2);
+        }
+        if (!grupos.contains(grupo3) )
+        {
+            grupos.add(grupo3);
+        }
+        if (!grupos.contains(grupo4) )
+        {
+            grupos.add(grupo4);
+        }
+        if (!grupos.contains(grupo5) )
+        {
+            grupos.add(grupo5);
+        }
+
         System.out.println("----Grupos----");
         for(Grupo g : grupos)
             g.mostrar();
@@ -66,12 +80,26 @@ public class ControladorPrincipal {
         Alumno alumno4 = new Alumno(4, "Apellido4", "Nombre4", "Clave4", "4");
         Alumno alumno5 = new Alumno(5, "Apellido5", "Nombre5", "Clave5", "5");
 
-        alumnos.add(alumno1);
-        alumnos.add(alumno2);
-        alumnos.add(alumno3);
-        alumnos.add(alumno4);
-        alumnos.add(alumno5);
-        
+        if (!alumnos.contains(alumno1) )
+        {
+            alumnos.add(alumno1);
+        }
+        if (!alumnos.contains(alumno2) )
+        {
+            alumnos.add(alumno2);
+        }
+        if (!alumnos.contains(alumno3) )
+        {
+            alumnos.add(alumno3);
+        }
+        if (!alumnos.contains(alumno4) )
+        {
+            alumnos.add(alumno4);
+        }if (!alumnos.contains(alumno5) )
+        {
+            alumnos.add(alumno5);
+        }
+
         System.out.println("\n----Alumnos----\n");
         for(Alumno a : alumnos)
             a.mostrar();
@@ -84,11 +112,16 @@ public class ControladorPrincipal {
         Profesor profesor4 = new Profesor(40, "Apellido40", "Nombre40", "Clave40", Cargo.JTP);
         Profesor profesor5 = new Profesor(50, "Apellido50", "Nombre50", "Clave50", Cargo.ADG);
 
-        profesores.add(profesor1);
-        profesores.add(profesor2);
-        profesores.add(profesor3);
-        profesores.add(profesor4);
-        profesores.add(profesor5);
+        if (!profesores.contains(profesor1))
+            profesores.add(profesor1);
+        if (!profesores.contains(profesor2))
+            profesores.add(profesor2);
+        if (!profesores.contains(profesor3))
+            profesores.add(profesor3);
+        if (!profesores.contains(profesor4))
+            profesores.add(profesor4);
+        if (!profesores.contains(profesor5))
+            profesores.add(profesor5);
         
         System.out.println("\n----Profesores----\n");
         for(Profesor p : profesores)
@@ -103,11 +136,16 @@ public class ControladorPrincipal {
         Tipo tipo4 = new Tipo("Tipo 4");
         Tipo tipo5 = new Tipo("Tipo 5");
 
-        tipos.add(tipo1);
-        tipos.add(tipo2);
-        tipos.add(tipo3);
-        tipos.add(tipo4);
-        tipos.add(tipo5);
+        if (!tipos.contains(tipo1))
+            tipos.add(tipo1);
+        if (!tipos.contains(tipo2))
+            tipos.add(tipo2);
+        if (!tipos.contains(tipo3))
+            tipos.add(tipo3);
+        if (!tipos.contains(tipo4))
+            tipos.add(tipo4);
+        if (!tipos.contains(tipo5))
+            tipos.add(tipo5);
 
         for(Tipo t : tipos)
             System.out.println(t);
@@ -122,11 +160,16 @@ public class ControladorPrincipal {
         Lugar lugar4 = new Lugar("Lugar 4");
         Lugar lugar5 = new Lugar("Lugar 5");
 
-        lugares.add(lugar1);
-        lugares.add(lugar2);
-        lugares.add(lugar3);
-        lugares.add(lugar4);
-        lugares.add(lugar5);
+        if(!lugares.contains(lugar1))
+            lugares.add(lugar1);
+        if(!lugares.contains(lugar2))
+            lugares.add(lugar2);
+        if(!lugares.contains(lugar3))
+            lugares.add(lugar3);
+        if(!lugares.contains(lugar4))
+            lugares.add(lugar4);
+        if(!lugares.contains(lugar5))
+            lugares.add(lugar5);
 
         for(Lugar l : lugares)
             System.out.println(l);
@@ -140,11 +183,17 @@ public class ControladorPrincipal {
         Idioma idioma4 = new Idioma("Idioma 4");
         Idioma idioma5 = new Idioma("Idioma 5");
 
-        idiomas.add(idioma1);
-        idiomas.add(idioma2);
-        idiomas.add(idioma3);
-        idiomas.add(idioma4);
-        idiomas.add(idioma5);
+        if (!idiomas.contains(idioma1))
+            idiomas.add(idioma1);
+        if (!idiomas.contains(idioma2))
+            idiomas.add(idioma2);
+        if (!idiomas.contains(idioma3))
+            idiomas.add(idioma3);
+        if (!idiomas.contains(idioma4))
+            idiomas.add(idioma4);
+        if (!idiomas.contains(idioma5))
+            idiomas.add(idioma5);
+
 
         for(Idioma i : idiomas)
             System.out.println(i);        
@@ -158,11 +207,16 @@ public class ControladorPrincipal {
         PalabraClave palabraClave4 = new PalabraClave("PalabraClave4");
         PalabraClave palabraClave5 = new PalabraClave("PalabraClave5");
 
-        palabrasClaves.add(palabraClave1);
-        palabrasClaves.add(palabraClave2);
-        palabrasClaves.add(palabraClave3);
-        palabrasClaves.add(palabraClave4);
-        palabrasClaves.add(palabraClave5);
+        if (!palabrasClaves.contains(palabraClave1))
+            palabrasClaves.add(palabraClave1);
+        if (!palabrasClaves.contains(palabraClave2))
+            palabrasClaves.add(palabraClave2);
+        if (!palabrasClaves.contains(palabraClave3))
+            palabrasClaves.add(palabraClave3);
+        if (!palabrasClaves.contains(palabraClave4))
+            palabrasClaves.add(palabraClave4);
+        if (!palabrasClaves.contains(palabraClave5))
+            palabrasClaves.add(palabraClave5);
 
         for(PalabraClave pc : palabrasClaves)
             System.out.println(pc); 
