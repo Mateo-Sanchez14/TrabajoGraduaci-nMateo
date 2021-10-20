@@ -242,11 +242,16 @@ public class ControladorPrincipal {
         Publicacion publicacion4 = new Publicacion("Título 4", new MiembroEnGrupo(profesor4, grupo3, Rol.ADMINISTRADOR), LocalDate.of(2020, 06, 24), tipo4, idioma2, lugar5, Arrays.asList(new PalabraClave[] {palabraClave1}), "Enlace 4", "Resumen 4");
         Publicacion publicacion5 = new Publicacion("Título 5", new MiembroEnGrupo(profesor4, grupo5, Rol.COLABORADOR), LocalDate.of(2020, 06, 24), tipo5, idioma3, lugar5, Arrays.asList(new PalabraClave[] {palabraClave2, palabraClave3, palabraClave4}), "Enlace 5", "Resumen 5");
         
-        publicaciones.add(publicacion1);
-        publicaciones.add(publicacion2);
-        publicaciones.add(publicacion3);
-        publicaciones.add(publicacion4);
-        publicaciones.add(publicacion5);
+        if(!publicaciones.contains(publicacion1))
+            publicaciones.add(publicacion1);
+        if(!publicaciones.contains(publicacion2))
+            publicaciones.add(publicacion2);
+        if(!publicaciones.contains(publicacion3))
+            publicaciones.add(publicacion3);
+        if(!publicaciones.contains(publicacion4))
+            publicaciones.add(publicacion4);
+        if(!publicaciones.contains(publicacion5))
+            publicaciones.add(publicacion5);
       
         for(Publicacion p : publicaciones) {
             p.mostrar();
