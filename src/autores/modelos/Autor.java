@@ -1,5 +1,10 @@
 package autores.modelos;
 
+import grupos.modelos.Grupo;
+import grupos.modelos.MiembroEnGrupo;
+import grupos.modelos.Rol;
+
+import java.util.ArrayList;
 import java.util.Objects;
 
 public abstract class Autor {
@@ -7,6 +12,7 @@ public abstract class Autor {
     private String apellidos;
     private String nombres;
     private String clave;
+    private ArrayList<MiembroEnGrupo> miembroEnGrupo = new ArrayList<>();
 
     public Autor(int dni, String apellidos, String nombres, String clave) {
         this.dni = dni;
@@ -45,6 +51,18 @@ public abstract class Autor {
 
     public void asignarClave(String clave) {
         this.clave = clave;
+    }
+
+    public ArrayList<MiembroEnGrupo> verGrupo() {
+        return miembroEnGrupo;
+    }
+
+    public void asignarMiembroEnGrupo(ArrayList<MiembroEnGrupo> miembroEnGrupo) {
+        this.miembroEnGrupo = miembroEnGrupo;
+    }
+
+    public void agregarGrupo(Grupo grupo, Rol rol) {
+
     }
 
     public void mostrar(){
