@@ -35,8 +35,8 @@ public class Publicacion {
     }
 
     public void mostrar() {
-        System.out.println("Titulo : " + titulo);
-        System.out.println("Autor : " + miembroEnGrupo.verProfesor().verApellidos() + ", " + miembroEnGrupo.verProfesor().verNombres());
+        System.out.println("Título : " + titulo);
+        System.out.println("Autor : " + miembroEnGrupo.verAutor().verApellidos() + ", " + miembroEnGrupo.verAutor().verNombres());
         System.out.println("Grupo : " + miembroEnGrupo.verGrupo().verNombre());
         System.out.println("Rol : " + miembroEnGrupo.verRol());
         System.out.println("Fecha de publicación : " + fechaPublicacion);

@@ -48,7 +48,7 @@ public abstract class Autor {
     }
 
     public void mostrar(){
-        System.out.println("["+dni+"]"+apellidos+","+nombres);
+        System.out.print("["+dni+"]"+apellidos+","+nombres);
     }
 
     @Override

@@ -17,7 +17,7 @@ public class Alumno extends Autor {
     //Métodos de la clase
     public void mostrar() {
         super.mostrar();
-        System.out.println("," + cx);
+        System.out.println(", " + cx);
     }
 
     public String verCx() {
