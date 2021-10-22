@@ -37,7 +37,7 @@ public class Grupo {
         return miembros;
     }
     public void agregarMiembro(Autor autor, Rol rol){
-        if(this.esSuperAdministrador()){
+        if(this.esSuperAdministradores()){
             rol=Rol.ADMINISTRADOR;
         }
         MiembroEnGrupo nuevoMiembro= new MiembroEnGrupo(autor,this,rol);
@@ -52,7 +52,7 @@ public class Grupo {
             }
         }
     }
-    public boolean esSuperAdministrador(){
+    public boolean esSuperAdministradores(){
         if(this.nombre.equals("Super Administradores")){
             return true;
         }else{

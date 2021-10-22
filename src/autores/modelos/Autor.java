@@ -62,12 +62,47 @@ public abstract class Autor {
     }
 
     public void agregarGrupo(Grupo grupo, Rol rol) {
+        MiembroEnGrupo miembro = new MiembroEnGrupo(this,grupo,rol);
+        if (!miembroEnGrupo.contains(miembro)) {
+            miembroEnGrupo.add(miembro);
+        }
+    }
 
+    public void quitarGrupo(Grupo grupo) {
+        for(MiembroEnGrupo a : miembroEnGrupo){
+            if(a.verGrupo().equals(grupo)){
+                miembroEnGrupo.remove(a);
+            }
+        }
+    }
+
+    public boolean esSuperAdministador() {
+        for(MiembroEnGrupo a: miembroEnGrupo) {
+            if (a.verGrupo().verNombre().equals("Super Administradores")){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean tieneGrupos () {
+        if(this.miembroEnGrupo.isEmpty()){
+            return false;
+        }else{
+            return true;
+        }
     }
 
     public void mostrar(){
-        System.out.print("["+dni+"]"+apellidos+","+nombres);
+        if (tieneGrupos()) {
+            System.out.print("\nGrupos a los que pertenece: \n");
+            for (MiembroEnGrupo a : miembroEnGrupo) {
+                System.out.println("\t" + a.verGrupo().verNombre() + ", " + a.verRol());
+            }
+        }
+        System.out.print("["+dni+"] "+apellidos+","+nombres);
     }
+
 
     @Override
     public boolean equals(Object o) {
