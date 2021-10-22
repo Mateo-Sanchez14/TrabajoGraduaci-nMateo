@@ -40,6 +40,7 @@ public class Grupo {
         if(this.esSuperAdministradores()){
             rol=Rol.ADMINISTRADOR;
         }
+        autor.agregarGrupo(this,rol);
         MiembroEnGrupo nuevoMiembro= new MiembroEnGrupo(autor,this,rol);
         if(!miembros.contains(nuevoMiembro)){
             miembros.add(nuevoMiembro);
