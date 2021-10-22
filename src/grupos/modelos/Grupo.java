@@ -37,7 +37,9 @@ public class Grupo {
         return miembros;
     }
     public void agregarMiembro(Autor autor, Rol rol){
-        //Verificar que es super administrador
+        if(this.esSuperAdministrador()){
+            rol=Rol.ADMINISTRADOR;
+        }
         MiembroEnGrupo nuevoMiembro= new MiembroEnGrupo(autor,this,rol);
         if(!miembros.contains(nuevoMiembro)){
             miembros.add(nuevoMiembro);
