@@ -25,12 +25,36 @@ public class Grupo {
                 '}');
     }
 
-   public ArrayList<MiembroEnGrupo> verMienbros(){
+   public ArrayList<MiembroEnGrupo> verMiembros(){
         return miembros;
     }
-
+    public void agregarMiembro(Autor autor, Rol rol){
+        //Verificar que es super administrador
+        MiembroEnGrupo nuevoMiembro= new MiembroEnGrupo(autor,this,rol);
+        if(!miembros.contains(nuevoMiembro)){
+            miembros.add(nuevoMiembro);
+        }
+    }
     public void quitarMiembro(Autor miembro){
-
+        for(MiembroEnGrupo a : miembros){
+            if(a.verAutor().equals(miembro)){
+                miembros.remove(a);
+            }
+        }
+    }
+    public boolean esSuperAdministrador(){
+        if(this.nombre.equals("Super Administradores")){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public boolean tieneMiembros(){
+        if(this.miembros.isEmpty()){
+            return false;
+        }else{
+            return true;
+        }
     }
 
     public String verNombre() {
