@@ -28,16 +28,23 @@ public class Alumno extends Autor {
         this.cx = cx;
     }
 
-    /*@Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Alumno)) return false;
-        Alumno alumno = (Alumno) o;
-        return dni == alumno.dni;
+    public boolean equals(Object obj) {
+        if (!super.equals(obj)) {
+            if (obj instanceof Alumno) {
+                Alumno other = (Alumno) obj;
+                if (!this.cx.equals(other.cx)) {
+                    return false;
+                } else {
+                    return true;
+                }
+            } else {
+                return false;
+            }
+        }
+        return true;
     }
 
-    @Override
     public int hashCode() {
-        return Objects.hash(dni);
-    }*/
+        return super.hashCode() + Objects.hashCode(this.cx);
+    }
 }

@@ -1,16 +1,17 @@
 package grupos.modelos;
 
+import autores.modelos.Autor;
+
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Grupo {
     //Atributos de la clase
     private String nombre;
     private String descripcion;
+    private ArrayList<MiembroEnGrupo> miembros = new ArrayList<>();
 
     //Constructores de la Clase
-    public Grupo() {
-    }
-
     public Grupo(String nombre, String descripcion) {
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -22,6 +23,14 @@ public class Grupo {
                 "nombre='" + nombre + '\'' +
                 ", descripcion='" + descripcion + '\'' +
                 '}');
+    }
+
+   public ArrayList<MiembroEnGrupo> verMienbros(){
+        return miembros;
+    }
+
+    public void quitarMiembro(Autor miembro){
+
     }
 
     public String verNombre() {
