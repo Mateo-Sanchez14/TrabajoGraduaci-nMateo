@@ -62,21 +62,33 @@ public abstract class Autor {
     }
 
     public void agregarGrupo(Grupo grupo, Rol rol) {
+        //int bandera = 0;
         MiembroEnGrupo miembro = new MiembroEnGrupo(this,grupo,rol);
-        if (!miembroEnGrupo.contains(miembro)) {
+        if (!this.contieneGrupo(grupo)) {
             miembroEnGrupo.add(miembro);
+            grupo.agregarMiembro(this,rol);
+            //bandera = 1;
         }
     }
 
+    public boolean contieneGrupo(Grupo grupo){
+        for(MiembroEnGrupo a : miembroEnGrupo) {
+            if (a.verGrupo().equals(grupo)) {
+                return true;
+            }
+        }
+        return false;
+    }
     public void quitarGrupo(Grupo grupo) {
         for(MiembroEnGrupo a : miembroEnGrupo){
             if(a.verGrupo().equals(grupo)){
                 miembroEnGrupo.remove(a);
+                grupo.quitarMiembro(this);
             }
         }
     }
 
-    public boolean esSuperAdministador() {
+    public boolean esSuperAdministrador() {
         for(MiembroEnGrupo a: miembroEnGrupo) {
             if (a.verGrupo().verNombre().equals("Super Administradores")){
                 return true;

@@ -163,7 +163,7 @@ public class ControladorPrincipal {
             grupos.add(grupo7);
         grupo7.agregarMiembro(profesor1, Rol.COLABORADOR);
         grupo7.mostrar();
-
+        profesor1.mostrar();
         /*
         Verificar que el último grupo creado es de super administradores
         y cualquiera de los otros grupos no 
@@ -176,8 +176,8 @@ public class ControladorPrincipal {
         verificar que el mismo es super administrador 
         y los otros autores no (usar el método esSuperAdministrador() 
         definido en la clase Autor).*/
-//        System.out.println(profesor1.esSuperAdministrador());
-//        System.out.println(alumno1.esSuperAdministrador());
+        System.out.println(profesor1.esSuperAdministrador());
+        System.out.println(alumno1.esSuperAdministrador());
 
         /*Main parte 3*/
         

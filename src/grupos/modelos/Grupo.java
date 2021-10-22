@@ -40,16 +40,18 @@ public class Grupo {
         if(this.esSuperAdministradores()){
             rol=Rol.ADMINISTRADOR;
         }
-        autor.agregarGrupo(this,rol);
+
         MiembroEnGrupo nuevoMiembro= new MiembroEnGrupo(autor,this,rol);
         if(!miembros.contains(nuevoMiembro)){
             miembros.add(nuevoMiembro);
+            autor.agregarGrupo(this,rol);
         }
     }
     public void quitarMiembro(Autor miembro){
         for(MiembroEnGrupo a : miembros){
             if(a.verAutor().equals(miembro)){
                 miembros.remove(a);
+                miembro.quitarGrupo(this);
             }
         }
     }
