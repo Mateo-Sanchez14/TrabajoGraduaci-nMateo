@@ -126,10 +126,10 @@ public class ControladorPrincipal {
         como miembros. Mostrar el grupo verificando que tenga los miembros 
         asignados. Verificar también que no se pueda agregar 
         un mismo autor más de una vez, por más que sean en roles distintos.*/
-//        grupo1.agregarMiembro(profesor1, Rol.ADMINISTRADOR);
-//        grupo1.agregarMiembro(profesor1, Rol.COLABORADOR); //autor repetido
-//        grupo1.agregarMiembro(alumno1, Rol.COLABORADOR);
-//        grupo1.mostrar();
+        grupo1.agregarMiembro(profesor1, Rol.ADMINISTRADOR);
+        grupo1.agregarMiembro(profesor1, Rol.COLABORADOR); //autor repetido
+        grupo1.agregarMiembro(alumno1, Rol.COLABORADOR);
+        grupo1.mostrar();
         
         /*Tomar 1 de los 2 autores que se asignó al grupo anterior y 
         agregarlo a otro grupo distinto. 

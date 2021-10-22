@@ -19,10 +19,18 @@ public class Grupo {
 
     //Métodos de la clase
     public void mostrar() {
-        System.out.println("Grupo{" +
+        System.out.print("Grupo{" +
                 "nombre='" + nombre + '\'' +
-                ", descripcion='" + descripcion + '\'' +
-                '}');
+                ", descripcion='" + descripcion + '\''
+                );
+        if(tieneMiembros()) {
+            System.out.print(", miembros y sus roles= ");
+            for (MiembroEnGrupo a : miembros) {
+                System.out.print(a.verAutor().verNombres() + " es " + a.verRol() + ", ");
+            }
+        }
+        else System.out.print(", No tiene miembros");
+        System.out.println("}");
     }
 
    public ArrayList<MiembroEnGrupo> verMiembros(){
