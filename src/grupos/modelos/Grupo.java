@@ -22,50 +22,53 @@ public class Grupo {
         System.out.print("Grupo{" +
                 "nombre='" + nombre + '\'' +
                 ", descripcion='" + descripcion + '\''
-                );
-        if(tieneMiembros()) {
+        );
+        if (tieneMiembros()) {
             System.out.print(", miembros y sus roles= ");
             for (MiembroEnGrupo a : miembros) {
                 System.out.print(a.verAutor().verNombres() + " es " + a.verRol() + ", ");
             }
-        }
-        else System.out.print(", No tiene miembros");
+        } else System.out.print(", No tiene miembros");
         System.out.println("}");
     }
 
-   public ArrayList<MiembroEnGrupo> verMiembros(){
+    public ArrayList<MiembroEnGrupo> verMiembros() {
         return miembros;
     }
-    public void agregarMiembro(Autor autor, Rol rol){
-        if(this.esSuperAdministradores()){
-            rol=Rol.ADMINISTRADOR;
+
+    public void agregarMiembro(Autor autor, Rol rol) {
+        if (this.esSuperAdministradores()) {
+            rol = Rol.ADMINISTRADOR;
         }
 
-        MiembroEnGrupo nuevoMiembro= new MiembroEnGrupo(autor,this,rol);
-        if(!miembros.contains(nuevoMiembro)){
+        MiembroEnGrupo nuevoMiembro = new MiembroEnGrupo(autor, this, rol);
+        if (!miembros.contains(nuevoMiembro)) {
             miembros.add(nuevoMiembro);
-            autor.agregarGrupo(this,rol);
+            autor.agregarGrupo(this, rol);
         }
     }
-    public void quitarMiembro(Autor miembro){
-        for(MiembroEnGrupo a : miembros){
-            if(a.verAutor().equals(miembro)){
+
+    public void quitarMiembro(Autor miembro) {
+        for (MiembroEnGrupo a : miembros) {
+            if (a.verAutor().equals(miembro)) {
                 miembros.remove(a);
                 miembro.quitarGrupo(this);
             }
         }
     }
-    public boolean esSuperAdministradores(){
-        if(this.nombre.equals("Super Administradores")){
+
+    public boolean esSuperAdministradores() {
+        if (this.nombre.equals("Super Administradores")) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
-    public boolean tieneMiembros(){
-        if(this.miembros.isEmpty()){
+
+    public boolean tieneMiembros() {
+        if (this.miembros.isEmpty()) {
             return false;
-        }else{
+        } else {
             return true;
         }
     }

@@ -62,26 +62,25 @@ public abstract class Autor {
     }
 
     public void agregarGrupo(Grupo grupo, Rol rol) {
-        //int bandera = 0;
-        MiembroEnGrupo miembro = new MiembroEnGrupo(this,grupo,rol);
+        MiembroEnGrupo miembro = new MiembroEnGrupo(this, grupo, rol);
         if (!this.contieneGrupo(grupo)) {
             miembroEnGrupo.add(miembro);
-            grupo.agregarMiembro(this,rol);
-            //bandera = 1;
+            grupo.agregarMiembro(this, rol);
         }
     }
 
-    public boolean contieneGrupo(Grupo grupo){
-        for(MiembroEnGrupo a : miembroEnGrupo) {
+    public boolean contieneGrupo(Grupo grupo) {
+        for (MiembroEnGrupo a : miembroEnGrupo) {
             if (a.verGrupo().equals(grupo)) {
                 return true;
             }
         }
         return false;
     }
+
     public void quitarGrupo(Grupo grupo) {
-        for(MiembroEnGrupo a : miembroEnGrupo){
-            if(a.verGrupo().equals(grupo)){
+        for (MiembroEnGrupo a : miembroEnGrupo) {
+            if (a.verGrupo().equals(grupo)) {
                 miembroEnGrupo.remove(a);
                 grupo.quitarMiembro(this);
             }
@@ -89,30 +88,30 @@ public abstract class Autor {
     }
 
     public boolean esSuperAdministrador() {
-        for(MiembroEnGrupo a: miembroEnGrupo) {
-            if (a.verGrupo().verNombre().equals("Super Administradores")){
+        for (MiembroEnGrupo a : miembroEnGrupo) {
+            if (a.verGrupo().verNombre().equals("Super Administradores")) {
                 return true;
             }
         }
         return false;
     }
 
-    public boolean tieneGrupos () {
-        if(this.miembroEnGrupo.isEmpty()){
+    public boolean tieneGrupos() {
+        if (this.miembroEnGrupo.isEmpty()) {
             return false;
-        }else{
+        } else {
             return true;
         }
     }
 
-    public void mostrar(){
+    public void mostrar() {
         if (tieneGrupos()) {
             System.out.print("\nGrupos a los que pertenece: \n");
             for (MiembroEnGrupo a : miembroEnGrupo) {
                 System.out.println("\t" + a.verGrupo().verNombre() + ", " + a.verRol());
             }
         }
-        System.out.print("["+dni+"] "+apellidos+","+nombres);
+        System.out.print("[" + dni + "] " + apellidos + "," + nombres);
     }
 
 

@@ -9,7 +9,7 @@ public class Profesor extends Autor {
     //Constructores de la clase
 
     public Profesor(int dni, String apellidos, String nombres, String clave, Cargo cargo) {
-        super(dni,apellidos,nombres,clave);
+        super(dni, apellidos, nombres, clave);
         this.cargo = cargo;
     }
 
@@ -26,17 +26,4 @@ public class Profesor extends Autor {
     public void asignarCargo(Cargo cargo) {
         this.cargo = cargo;
     }
-
-    /*@Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Profesor)) return false;
-        Profesor profesor = (Profesor) o;
-        return dni == profesor.dni;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(dni);
-    }*/
 }

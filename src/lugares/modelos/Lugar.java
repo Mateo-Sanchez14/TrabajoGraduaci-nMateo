@@ -9,6 +9,7 @@ public class Lugar {
     //Constructores de la clase
     public Lugar() {
     }
+
     public Lugar(String nombre) {
         this.nombre = nombre;
     }
