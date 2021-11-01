@@ -32,6 +32,8 @@ public class Grupo {
         System.out.println("}");
     }
 
+    //<editor-fold defaultstate="collapsed" desc="Getter/Setter">
+
     public ArrayList<MiembroEnGrupo> verMiembros() {
         return miembros;
     }
@@ -88,6 +90,8 @@ public class Grupo {
     public void asignarDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    //</editor-fold>
 
     @Override
     public boolean equals(Object o) {

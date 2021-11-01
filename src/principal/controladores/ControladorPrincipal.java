@@ -215,6 +215,7 @@ public class ControladorPrincipal {
 //
         for(Tipo t : tipos)
             System.out.println(t);
+
 //
 //        Lugar lugar1 = new Lugar("Lugar 1");
 //        Lugar lugar2 = new Lugar("Lugar 2");

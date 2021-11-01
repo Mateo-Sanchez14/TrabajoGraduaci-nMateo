@@ -15,6 +15,8 @@ public class MiembroEnGrupo {
         this.autor = autor;
     }
 
+    //<editor-fold defaultstate="collapsed" desc="Getter/Setter">
+
     public Grupo verGrupo() {
         return grupo;
     }
@@ -38,6 +40,8 @@ public class MiembroEnGrupo {
     public void asignarAutor(Autor autor) {
         this.autor = autor;
     }
+
+    //</editor-fold>
 
     @Override
     public boolean equals(Object o) {

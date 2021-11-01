@@ -15,6 +15,8 @@ public class Idioma {
     }
 
     //Métodos de la clase
+    //<editor-fold defaultstate="collapsed" desc="Getter/Setter">
+
     public String verNombre() {
         return nombre;
     }
@@ -22,7 +24,7 @@ public class Idioma {
     public void asignarNombre(String nombre) {
         this.nombre = nombre;
     }
-
+    //</editor-fold>
     @Override
     public String toString() {
         return "Idioma{" +

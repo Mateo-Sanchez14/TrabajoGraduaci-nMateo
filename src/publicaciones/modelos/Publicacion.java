@@ -49,6 +49,8 @@ public class Publicacion {
         System.out.println("Resumen = " + resumen);
     }
 
+    //<editor-fold defaultstate="collapsed" desc="Getter/Setter">
+
     public String verTitulo() {
         return titulo;
     }
@@ -120,6 +122,8 @@ public class Publicacion {
     public void asignarPalabrasClaves(List<PalabraClave> palabrasClaves) {
         this.palabrasClaves = palabrasClaves;
     }
+
+    //</editor-fold>
 
     @Override
     public boolean equals(Object o) {

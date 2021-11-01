@@ -21,6 +21,8 @@ public abstract class Autor {
         this.clave = clave;
     }
 
+    //<editor-fold defaultstate="collapsed" desc="Getter/Setter">
+
     public int verDni() {
         return this.dni;
     }
@@ -60,6 +62,8 @@ public abstract class Autor {
     public void asignarMiembroEnGrupo(ArrayList<MiembroEnGrupo> miembroEnGrupo) {
         this.miembroEnGrupo = miembroEnGrupo;
     }
+
+    //</editor-fold>
 
     public void agregarGrupo(Grupo grupo, Rol rol) {
         MiembroEnGrupo miembro = new MiembroEnGrupo(this, grupo, rol);

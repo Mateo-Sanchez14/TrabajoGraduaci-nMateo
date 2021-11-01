@@ -7,14 +7,14 @@ public class PalabraClave {
     private String nombre;
 
     //Constructores de la clase
-    public PalabraClave() {
-    }
 
     public PalabraClave(String nombre) {
         this.nombre = nombre;
     }
 
     //Métodos de la clase
+    //<editor-fold defaultstate="collapsed" desc="Getter/Setter">
+
     public String verNombre() {
         return nombre;
     }
@@ -22,7 +22,7 @@ public class PalabraClave {
     public void asignarNombre(String nombre) {
         this.nombre = nombre;
     }
-
+    //</editor-fold>
     @Override
     public String toString() {
         return "PalabraClave{" +
