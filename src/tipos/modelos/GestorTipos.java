@@ -30,6 +30,7 @@ public class GestorTipos implements IGestorTipos {
     public ArrayList<Tipo> verTipos() {
         return tipos;
     }
+
     public Tipo verTipo(String nombre){
         for (Tipo x : tipos) {
             if (x.verNombre().equals(nombre)) {
