@@ -25,9 +25,9 @@ public class PalabraClave {
     //</editor-fold>
     @Override
     public String toString() {
-        return "PalabraClave{" +
-                "nombre='" + nombre + '\'' +
-                '}';
+        if (this.nombre != null || !this.nombre.trim().isEmpty())
+            return this.nombre;
+        return "Palabra clave nula o no ingresada";
     }
 
     @Override

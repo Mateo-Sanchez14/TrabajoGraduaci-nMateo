@@ -39,10 +39,9 @@ public class Tipo {
 
     @Override
     public String toString() {
-        return "Tipo{" +
-                "nombre='" + nombre + '\'' +
-                '}';
-
+        if (this.nombre != null || !this.nombre.trim().isEmpty())
+            return this.nombre;
+        return "Tipo nulo o no ingresado";
     }
 
 }
