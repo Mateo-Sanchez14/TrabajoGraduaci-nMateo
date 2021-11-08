@@ -19,17 +19,17 @@ public class Grupo {
 
     //Métodos de la clase
     public void mostrar() {
-        System.out.print("Grupo{" +
-                "nombre='" + nombre + '\'' +
-                ", descripcion='" + descripcion + '\''
+        System.out.print("Grupo: " +
+                nombre +
+                ", " + descripcion
         );
         if (tieneMiembros()) {
-            System.out.print(", miembros y sus roles= ");
+            System.out.print(", miembros : ");
             for (MiembroEnGrupo a : miembros) {
                 System.out.print(a.verAutor().verNombres() + " es " + a.verRol() + ", ");
             }
         } else System.out.print(", No tiene miembros");
-        System.out.println("}");
+        System.out.println("");
     }
 
     //<editor-fold defaultstate="collapsed" desc="Getter/Setter">

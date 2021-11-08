@@ -26,9 +26,9 @@ public class Lugar {
     //</editor-fold>
     @Override
     public String toString() {
-        return "Lugar{" +
-                "nombre='" + nombre + '\'' +
-                '}';
+        if (this.nombre != null || !this.nombre.trim().isEmpty())
+            return this.nombre;
+        return "Lugar nulo o no ingresado";
     }
 
     @Override

@@ -27,9 +27,9 @@ public class Idioma {
     //</editor-fold>
     @Override
     public String toString() {
-        return "Idioma{" +
-                "nombre='" + nombre + '\'' +
-                '}';
+        if (this.nombre != null || !this.nombre.trim().isEmpty())
+            return this.nombre;
+        return "Idioma nulo o no ingresado";
     }
 
     @Override
