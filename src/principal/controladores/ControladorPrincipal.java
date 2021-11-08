@@ -115,6 +115,9 @@ public class ControladorPrincipal {
 //        profesor1.agregarGrupo(grupo2, Rol.ADMINISTRADOR); //grupo repetido
 //        profesor1.mostrar();
 //        alumno1.mostrar();
+        gestorAutores.verAutor(10).agregarGrupo(gestorGrupos.verGrupo("Grupo 2"), Rol.COLABORADOR);
+        gestorAutores.verAutor(10).agregarGrupo(gestorGrupos.verGrupo("Grupo 2"), Rol.ADMINISTRADOR);
+        gestorAutores.verAutor(10).mostrar();
 //
 //        /*
 //        Tomar el grupo al que se le agregaron los 2 autores como miembros,

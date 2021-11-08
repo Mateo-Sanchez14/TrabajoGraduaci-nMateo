@@ -109,11 +109,14 @@ public abstract class Autor {
     }
 
     public void mostrar() {
-        System.out.println("[" + dni + "] " + apellidos + "," + nombres);
-        System.out.println("Grupos a los que pertenece: ");
-        for (MiembroEnGrupo a : miembroEnGrupo) {
-            System.out.println("\t" + a.verGrupo().verNombre() + ", " + a.verRol());
-        }
+        System.out.println("[" + dni + "] " + apellidos + ", " + nombres);
+        if(!miembroEnGrupo.isEmpty()) {
+            System.out.println("Grupos a los que pertenece: ");
+            for (MiembroEnGrupo a : miembroEnGrupo) {
+                System.out.println("\t" + a.verGrupo().verNombre() + ", " + a.verRol());
+            }
+        }else
+            System.out.println("No pertenece a ningún grupo");
     }
 
 
