@@ -7,6 +7,7 @@ import palabrasclaves.modelos.PalabraClave;
 import tipos.modelos.Tipo;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -39,14 +40,14 @@ public class Publicacion {
         System.out.println("Autor : " + miembroEnGrupo.verAutor().verApellidos() + ", " + miembroEnGrupo.verAutor().verNombres());
         System.out.println("Grupo : " + miembroEnGrupo.verGrupo().verNombre());
         System.out.println("Rol : " + miembroEnGrupo.verRol());
-        System.out.println("Fecha de publicación : " + fechaPublicacion);
+        System.out.println("Fecha: " + this.fechaPublicacion.format(DateTimeFormatter.ofPattern("dd/MM/YYYY")).toString());
         System.out.println("Tipo : " + tipo);
         System.out.println("Idioma : " + idioma);
         System.out.println("Lugar : " + lugar);
         System.out.println("Palabras claves \n---------------");
         verPalabrasClaves().forEach(x -> System.out.println("\t" + x.verNombre()));
         System.out.println("Enlace : " + enlace);
-        System.out.println("Resumen = " + resumen);
+        System.out.println("Resumen : " + resumen);
     }
 
     //<editor-fold defaultstate="collapsed" desc="Getter/Setter">

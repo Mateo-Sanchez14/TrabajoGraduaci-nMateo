@@ -16,7 +16,7 @@ public class Profesor extends Autor {
     //Métodos de la clase
     public void mostrar() {
         super.mostrar();
-        System.out.println("," + cargo);
+        System.out.println("Cargo: " + cargo);
     }
 
     public Cargo verCargo() {

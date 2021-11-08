@@ -109,13 +109,11 @@ public abstract class Autor {
     }
 
     public void mostrar() {
-        if (tieneGrupos()) {
-            System.out.print("\nGrupos a los que pertenece: \n");
-            for (MiembroEnGrupo a : miembroEnGrupo) {
-                System.out.println("\t" + a.verGrupo().verNombre() + ", " + a.verRol());
-            }
+        System.out.println("[" + dni + "] " + apellidos + "," + nombres);
+        System.out.println("Grupos a los que pertenece: ");
+        for (MiembroEnGrupo a : miembroEnGrupo) {
+            System.out.println("\t" + a.verGrupo().verNombre() + ", " + a.verRol());
         }
-        System.out.print("[" + dni + "] " + apellidos + "," + nombres);
     }
 
 
