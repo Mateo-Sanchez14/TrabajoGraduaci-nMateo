@@ -21,7 +21,7 @@ public class GestorAutores implements IGestorAutores {
     }
 
     public String nuevoAutor(int dni, String apellidos, String nombres, Cargo cargo, String clave, String claveRepetida){
-        if ((dni == 0))
+        if ((dni <= 0))
             return ERROR_DNI;
         if ((apellidos == null) || apellidos.trim().isEmpty())
             return ERROR_APELLIDO;
@@ -29,17 +29,19 @@ public class GestorAutores implements IGestorAutores {
             return ERROR_NOMBRE;
         if ((cargo == null))
             return ERROR_CARGO;
-        if (!clave.equals(claveRepetida))
+        if (!clave.equals(claveRepetida) || clave == null || clave.trim().isEmpty())
             return ERROR_CLAVE;
+
         Autor unProfesor = new Profesor(dni, apellidos, nombres, clave, cargo);
         if (autores.contains(unProfesor)){
             return AUTOR_DUPLICADO;
         }
+
         this.autores.add(unProfesor);
         return EXITO;
     }
     public String nuevoAutor(int dni, String apellidos, String nombres, String cx, String clave, String claveRepetida){
-        if ((dni == 0))
+        if ((dni <= 0))
             return ERROR_DNI;
         if ((apellidos == null) || apellidos.trim().isEmpty())
             return ERROR_APELLIDO;
@@ -47,8 +49,9 @@ public class GestorAutores implements IGestorAutores {
             return ERROR_NOMBRE;
         if ((cx == null))
             return ERROR_CX;
-        if (!clave.equals(claveRepetida))
+        if (!clave.equals(claveRepetida) || clave == null || clave.trim().isEmpty())
             return ERROR_CLAVE;
+
         Autor unAlumno = new Alumno(dni, apellidos, nombres, clave, cx);
         if (autores.contains(unAlumno)){
             return AUTOR_DUPLICADO;
@@ -63,11 +66,15 @@ public class GestorAutores implements IGestorAutores {
             return ERROR_NOMBRE;
         if ((cargo == null))
             return ERROR_CARGO;
-        if (!clave.equals(claveRepetida))
+        if (!clave.equals(claveRepetida) || clave == null || clave.trim().isEmpty())
             return ERROR_CLAVE;
         if (autor == null)
             return AUTOR_INEXISTENTE;
         Profesor profesor = (Profesor) autor;
+
+        if (!autores.contains(profesor))
+            return AUTOR_INEXISTENTE;
+
         profesor.asignarApellidos(apellidos);
         profesor.asignarNombres(nombres);
         profesor.asignarCargo(cargo);
@@ -81,7 +88,7 @@ public class GestorAutores implements IGestorAutores {
             return ERROR_NOMBRE;
         if ((cx == null))
             return ERROR_CX;
-        if (!clave.equals(claveRepetida))
+        if (!clave.equals(claveRepetida) || clave == null || clave.trim().isEmpty())
             return ERROR_CLAVE;
         if (autor == null)
             return AUTOR_INEXISTENTE;
@@ -117,6 +124,7 @@ public class GestorAutores implements IGestorAutores {
         }
         return alumnos;
     }
+
     public Autor verAutor(int dni){
         for (Autor k : autores) {
             if (k.verDni() == dni)
@@ -125,4 +133,29 @@ public class GestorAutores implements IGestorAutores {
         return null;
     }
 
+    public String borrarAutor(Autor autor) {
+        if(existeEsteAutor(autor)) {
+            autores.remove(autor);
+            return EXITO;
+        }
+        return AUTOR_INEXISTENTE;
+    }
+    public ArrayList<Profesor> buscarProfesor (String busqueda) {
+        ArrayList<Profesor> ocurrencias = new ArrayList<>();
+        for (Profesor p : this.verProfesores()) {
+            if (p.verApellidos().toLowerCase().contains(busqueda.toLowerCase())) {
+                ocurrencias.add(p);
+            }
+        }
+        return ocurrencias;
+    }
+    public ArrayList<Alumno> buscarAlumnos (String busqueda) {
+        ArrayList<Alumno> ocurrencias = new ArrayList<>();
+        for (Alumno a : this.verAlumnos()) {
+            if (a.verApellidos().toLowerCase().contains(busqueda.toLowerCase())) {
+                ocurrencias.add(a);
+            }
+        }
+        return ocurrencias;
+    }
 }
