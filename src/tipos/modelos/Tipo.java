@@ -2,7 +2,7 @@ package tipos.modelos;
 
 import java.util.Objects;
 
-public class Tipo {
+public class Tipo implements Comparable<Tipo> {
     //Atributos de la clase
     private String nombre;
 
@@ -42,6 +42,11 @@ public class Tipo {
         if (this.nombre != null || !this.nombre.trim().isEmpty())
             return this.nombre;
         return "Tipo nulo o no ingresado";
+    }
+
+    @Override
+    public int compareTo(Tipo tipo){
+        return this.nombre.compareTo(tipo.nombre);
     }
 
 }

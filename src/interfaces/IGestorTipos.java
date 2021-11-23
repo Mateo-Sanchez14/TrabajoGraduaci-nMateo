@@ -3,6 +3,7 @@ package interfaces;
 import tipos.modelos.Tipo;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface IGestorTipos {
     //Constantes de mensajes
@@ -13,6 +14,9 @@ public interface IGestorTipos {
     public final String TIPO_INEXISTENTE = "No existe el tipo de publicación en específico";
 
     public String nuevoTipo(String nombre);
-    public ArrayList<Tipo> verTipos();
     public Tipo verTipo(String nombre);
+    public String borrarTipo(Tipo tipo);
+    public List<Tipo> buscarTipos(String nombre);
+    public List<Tipo> verTipos();
+    public boolean existeEsteTipo(Tipo tipo);
 }

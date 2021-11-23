@@ -16,6 +16,7 @@ import idiomas.modelos.Idioma;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import lugares.modelos.GestorLugares;
 import lugares.modelos.Lugar;
@@ -34,22 +35,22 @@ public class ControladorPrincipal {
     public static void main(String[] args) {
         //<editor-fold defaultstate="collapsed" desc="Sin intefaz gráfica">
 
-        GestorGrupos gestorGrupos = GestorGrupos.instanciar();
-        gestorGrupos.nuevoGrupo("Grupo 1","Descripcion 1");
-        gestorGrupos.nuevoGrupo("Grupo 2","Descripcion 2");
-        gestorGrupos.nuevoGrupo("Grupo 3","Descripcion 3");
-        gestorGrupos.nuevoGrupo("Grupo 4","Descripcion 4");
-        gestorGrupos.nuevoGrupo("Grupo 5","Descripcion 5");
-        gestorGrupos.nuevoGrupo("Grupo 5","Descripcion 5");
-        System.out.println(gestorGrupos.nuevoGrupo(" "," "));
-
-        ArrayList<Grupo> grupos = gestorGrupos.verGrupos();
-        gestorGrupos.verGrupo("Grupo 1").mostrar();
-        gestorGrupos.modificarGrupo(gestorGrupos.verGrupo("Grupo 1"),"Descripcion 5");
-        System.out.println("grupos = " + gestorGrupos.existeEsteGrupo(gestorGrupos.verGrupo("Grupo 5")));
-
-        for(Grupo g : grupos)
-            g.mostrar();
+//        GestorGrupos gestorGrupos = GestorGrupos.instanciar();
+//        gestorGrupos.nuevoGrupo("Grupo 1","Descripcion 1");
+//        gestorGrupos.nuevoGrupo("Grupo 2","Descripcion 2");
+//        gestorGrupos.nuevoGrupo("Grupo 3","Descripcion 3");
+//        gestorGrupos.nuevoGrupo("Grupo 4","Descripcion 4");
+//        gestorGrupos.nuevoGrupo("Grupo 5","Descripcion 5");
+//        gestorGrupos.nuevoGrupo("Grupo 5","Descripcion 5");
+//        System.out.println(gestorGrupos.nuevoGrupo(" "," "));
+//
+//        ArrayList<Grupo> grupos = gestorGrupos.verGrupos();
+//        gestorGrupos.verGrupo("Grupo 1").mostrar();
+//        gestorGrupos.modificarGrupo(gestorGrupos.verGrupo("Grupo 1"),"Descripcion 5");
+//        System.out.println("grupos = " + gestorGrupos.existeEsteGrupo(gestorGrupos.verGrupo("Grupo 5")));
+//
+//        for(Grupo g : grupos)
+//            g.mostrar();
 //
 //--------------------------------------------------------------------------------------------------------------------------------------------
 //              Autores
@@ -57,53 +58,53 @@ public class ControladorPrincipal {
 //
 //
         //Alumnos
-        GestorAutores gestorAutores = GestorAutores.instanciar();
-        gestorAutores.nuevoAutor(1, "Apellido1", "Nombre1", "Clave1", "1","1");
-        gestorAutores.nuevoAutor(2, "Apellido2", "Nombre2", "Clave2", "2","2");
-        gestorAutores.nuevoAutor(3, "Apellido3", "Nombre3", "Clave3", "3","3");
-        gestorAutores.nuevoAutor(4, "Apellido4", "Nombre4", "Clave4", "4","4");
-        gestorAutores.nuevoAutor(5, "Apellido5", "Nombre5", "Clave5", "5","5");
-        System.out.println(gestorAutores.nuevoAutor(5, "Apellido5", "Nombre5", "Clave5", "4","5"));
-        //Profesores
-        gestorAutores.nuevoAutor(10, "Apellido10", "Nombre10", Cargo.TITULAR,"Clave10","Clave10");
-        gestorAutores.nuevoAutor(20, "Apellido20", "Nombre20", Cargo.ASOCIADO,"Clave20","Clave20");
-        gestorAutores.nuevoAutor(30, "Apellido30", "Nombre30", Cargo.ADJUNTO,"Clave30","Clave30");
-        gestorAutores.nuevoAutor(40, "Apellido40", "Nombre40", Cargo.JTP,"Clave40","Clave40");
-        gestorAutores.nuevoAutor(50, "Apellido50", "Nombre50", Cargo.ADG,"Clave50","Clave50");
-        gestorAutores.nuevoAutor(0," "," "," "," "," ");
-        ArrayList<Autor> autores = gestorAutores.verAutores();
-        gestorAutores.modificarAutor(gestorAutores.verAutor(5), "Apellido 69", "Nombre 69", "69","Clave 69", "Clave 69");
-        gestorAutores.verAutor(30).mostrar();
-        //gestorAutores.existeEsteAutor()
-        System.out.println("--------------------------------------------------------------------------------------------------------");
-        System.out.println("Autores ");
-        System.out.println("--------------------------------------------------------------------------------------------------------");
-        for(Autor a : autores)
-            a.mostrar();
-        System.out.println("--------------------------------------------------------------------------------------------------------");
-        System.out.println("Alumnos ");
-        System.out.println("--------------------------------------------------------------------------------------------------------");
-        for (Alumno x : gestorAutores.verAlumnos())
-            x.mostrar();
-        System.out.println("--------------------------------------------------------------------------------------------------------");
-        System.out.println("Profesores ");
-        System.out.println("--------------------------------------------------------------------------------------------------------");
-        for (Profesor p : gestorAutores.verProfesores())
-            p.mostrar();
+//        GestorAutores gestorAutores = GestorAutores.instanciar();
+//        gestorAutores.nuevoAutor(1, "Apellido1", "Nombre1", "Clave1", "1","1");
+//        gestorAutores.nuevoAutor(2, "Apellido2", "Nombre2", "Clave2", "2","2");
+//        gestorAutores.nuevoAutor(3, "Apellido3", "Nombre3", "Clave3", "3","3");
+//        gestorAutores.nuevoAutor(4, "Apellido4", "Nombre4", "Clave4", "4","4");
+//        gestorAutores.nuevoAutor(5, "Apellido5", "Nombre5", "Clave5", "5","5");
+//        System.out.println(gestorAutores.nuevoAutor(5, "Apellido5", "Nombre5", "Clave5", "4","5"));
+//        //Profesores
+//        gestorAutores.nuevoAutor(10, "Apellido10", "Nombre10", Cargo.TITULAR,"Clave10","Clave10");
+//        gestorAutores.nuevoAutor(20, "Apellido20", "Nombre20", Cargo.ASOCIADO,"Clave20","Clave20");
+//        gestorAutores.nuevoAutor(30, "Apellido30", "Nombre30", Cargo.ADJUNTO,"Clave30","Clave30");
+//        gestorAutores.nuevoAutor(40, "Apellido40", "Nombre40", Cargo.JTP,"Clave40","Clave40");
+//        gestorAutores.nuevoAutor(50, "Apellido50", "Nombre50", Cargo.ADG,"Clave50","Clave50");
+//        gestorAutores.nuevoAutor(0," "," "," "," "," ");
+//        ArrayList<Autor> autores = gestorAutores.verAutores();
+//        gestorAutores.modificarAutor(gestorAutores.verAutor(5), "Apellido 69", "Nombre 69", "69","Clave 69", "Clave 69");
+//        gestorAutores.verAutor(30).mostrar();
+//        //gestorAutores.existeEsteAutor()
+//        System.out.println("--------------------------------------------------------------------------------------------------------");
+//        System.out.println("Autores ");
+//        System.out.println("--------------------------------------------------------------------------------------------------------");
+//        for(Autor a : autores)
+//            a.mostrar();
+//        System.out.println("--------------------------------------------------------------------------------------------------------");
+//        System.out.println("Alumnos ");
+//        System.out.println("--------------------------------------------------------------------------------------------------------");
+//        for (Alumno x : gestorAutores.verAlumnos())
+//            x.mostrar();
+//        System.out.println("--------------------------------------------------------------------------------------------------------");
+//        System.out.println("Profesores ");
+//        System.out.println("--------------------------------------------------------------------------------------------------------");
+//        for (Profesor p : gestorAutores.verProfesores())
+//            p.mostrar();
 
 //
 //
 //
-        gestorGrupos.verGrupo("Grupo 1").agregarMiembro(gestorAutores.verAutor(10), Rol.ADMINISTRADOR);
-        gestorGrupos.verGrupo("Grupo 1").agregarMiembro(gestorAutores.verAutor(10), Rol.COLABORADOR);
-        gestorGrupos.verGrupo("Grupo 1").agregarMiembro(gestorAutores.verAutor(1), Rol.COLABORADOR);
-
-        System.out.println("--------------------------------------------------------------------------------------------------------");
-        System.out.println("Grupos ");
-        System.out.println("--------------------------------------------------------------------------------------------------------");
-
-        for (Grupo g : gestorGrupos.verGrupos())
-            g.mostrar();
+//        gestorGrupos.verGrupo("Grupo 1").agregarMiembro(gestorAutores.verAutor(10), Rol.ADMINISTRADOR);
+//        gestorGrupos.verGrupo("Grupo 1").agregarMiembro(gestorAutores.verAutor(10), Rol.COLABORADOR);
+//        gestorGrupos.verGrupo("Grupo 1").agregarMiembro(gestorAutores.verAutor(1), Rol.COLABORADOR);
+//
+//        System.out.println("--------------------------------------------------------------------------------------------------------");
+//        System.out.println("Grupos ");
+//        System.out.println("--------------------------------------------------------------------------------------------------------");
+//
+//        for (Grupo g : gestorGrupos.verGrupos())
+//            g.mostrar();
 //        /*Tomar 1 de los 2 autores que se asignó al grupo anterior y
 //        agregarlo a otro grupo distinto.
 //        Mostrar los 2 autores verificando que pertenezcan a los grupos
@@ -115,9 +116,9 @@ public class ControladorPrincipal {
 //        profesor1.agregarGrupo(grupo2, Rol.ADMINISTRADOR); //grupo repetido
 //        profesor1.mostrar();
 //        alumno1.mostrar();
-        gestorAutores.verAutor(10).agregarGrupo(gestorGrupos.verGrupo("Grupo 2"), Rol.COLABORADOR);
-        gestorAutores.verAutor(10).agregarGrupo(gestorGrupos.verGrupo("Grupo 2"), Rol.ADMINISTRADOR);
-        gestorAutores.verAutor(10).mostrar();
+//        gestorAutores.verAutor(10).agregarGrupo(gestorGrupos.verGrupo("Grupo 2"), Rol.COLABORADOR);
+//        gestorAutores.verAutor(10).agregarGrupo(gestorGrupos.verGrupo("Grupo 2"), Rol.ADMINISTRADOR);
+//        gestorAutores.verAutor(10).mostrar();
 //
 //        /*
 //        Tomar el grupo al que se le agregaron los 2 autores como miembros,
@@ -155,41 +156,18 @@ public class ControladorPrincipal {
 //        System.out.println(profesor1.esSuperAdministrador());
 //        System.out.println(alumno1.esSuperAdministrador());
 
-        /*Main parte 3*/
-
-//        Tipo tipo1 = new Tipo("Tipo 1");
-//        Tipo tipo2 = new Tipo("Tipo 2");
-//        Tipo tipo3 = new Tipo("Tipo 3");
-//        Tipo tipo4 = new Tipo("Tipo 4");
-//        Tipo tipo5 = new Tipo("Tipo 5");
-//        Tipo tipo6 = new Tipo("Tipo 1"); //nombre repetido
 
         GestorTipos gestorTipos = GestorTipos.instanciar();
-        gestorTipos.nuevoTipo("Tipo 1");
-        gestorTipos.nuevoTipo("Tipo 2");
-        gestorTipos.nuevoTipo("Tipo 3");
         gestorTipos.nuevoTipo("Tipo 4");
-        gestorTipos.nuevoTipo("Tipo 5");
+        gestorTipos.nuevoTipo("Tipo 3");
+        gestorTipos.nuevoTipo("Tipo 3"); //Tipo repetido
         gestorTipos.nuevoTipo("Tipo 1");
+        gestorTipos.nuevoTipo("Tipo 5");
+        gestorTipos.nuevoTipo("Tipo 2");
 
-        ArrayList<Tipo> tipos = gestorTipos.verTipos();
+        System.out.println("Ver tipo por nombre: " + gestorTipos.verTipo("Tipo 1"));
 
-        System.out.println(gestorTipos.verTipo("Tipo 1"));
-//
-//        if (!tipos.contains(tipo1))
-//            tipos.add(tipo1);
-//        if (!tipos.contains(tipo2))
-//            tipos.add(tipo2);
-//        if (!tipos.contains(tipo3))
-//            tipos.add(tipo3);
-//        if (!tipos.contains(tipo4))
-//            tipos.add(tipo4);
-//        if (!tipos.contains(tipo5))
-//            tipos.add(tipo5);
-//        if (!tipos.contains(tipo6))
-//            tipos.add(tipo6);
-//
-        for(Tipo t : tipos)
+        for(Tipo t : gestorTipos.verTipos())
             System.out.println(t);
 
 //
@@ -199,18 +177,18 @@ public class ControladorPrincipal {
 //        Lugar lugar4 = new Lugar("Lugar 4");
 //        Lugar lugar5 = new Lugar("Lugar 5");
 //        Lugar lugar6 = new Lugar("Lugar 1"); //nombre repetido
-        GestorLugares gestorLugares = GestorLugares.instanciar();
-        gestorLugares.nuevoLugar("Lugar 1");
-        gestorLugares.nuevoLugar("Lugar 2");
-        gestorLugares.nuevoLugar("Lugar 3");
-        gestorLugares.nuevoLugar("Lugar 4");
-        gestorLugares.nuevoLugar("Lugar 5");
-
-        ArrayList<Lugar> lugares= gestorLugares.verLugares();
-        System.out.println(gestorLugares.verLugar("Lugar 1"));
-
-        for(Lugar l : lugares)
-            System.out.println(l);
+//        GestorLugares gestorLugares = GestorLugares.instanciar();
+//        gestorLugares.nuevoLugar("Lugar 1");
+//        gestorLugares.nuevoLugar("Lugar 2");
+//        gestorLugares.nuevoLugar("Lugar 3");
+//        gestorLugares.nuevoLugar("Lugar 4");
+//        gestorLugares.nuevoLugar("Lugar 5");
+//
+//        ArrayList<Lugar> lugares= gestorLugares.verLugares();
+//        System.out.println(gestorLugares.verLugar("Lugar 1"));
+//
+//        for(Lugar l : lugares)
+//            System.out.println(l);
 
 //        if (!lugares.contains(lugar1))
 //            lugares.add(lugar1);
@@ -236,18 +214,18 @@ public class ControladorPrincipal {
 //        Idioma idioma6 = new Idioma("Idioma 1"); //nombre repetido
 
 
-        GestorIdiomas gestorIdiomas = GestorIdiomas.instanciar();
-        gestorIdiomas.nuevoIdioma("Idioma 1");
-        gestorIdiomas.nuevoIdioma("Idioma 2");
-        gestorIdiomas.nuevoIdioma("Idioma 3");
-        gestorIdiomas.nuevoIdioma("Idioma 4");
-        gestorIdiomas.nuevoIdioma("Idioma 5");
-
-        ArrayList<Idioma> idiomas = gestorIdiomas.verIdiomas();
-        System.out.println(gestorIdiomas.verIdioma("Idioma 1"));
-
-        for(Idioma i : idiomas)
-            System.out.println(i);
+//        GestorIdiomas gestorIdiomas = GestorIdiomas.instanciar();
+//        gestorIdiomas.nuevoIdioma("Idioma 1");
+//        gestorIdiomas.nuevoIdioma("Idioma 2");
+//        gestorIdiomas.nuevoIdioma("Idioma 3");
+//        gestorIdiomas.nuevoIdioma("Idioma 4");
+//        gestorIdiomas.nuevoIdioma("Idioma 5");
+//
+//        ArrayList<Idioma> idiomas = gestorIdiomas.verIdiomas();
+//        System.out.println(gestorIdiomas.verIdioma("Idioma 1"));
+//
+//        for(Idioma i : idiomas)
+//            System.out.println(i);
 
 
 //        if (!idiomas.contains(idioma1))
@@ -273,18 +251,18 @@ public class ControladorPrincipal {
 //        PalabraClave palabraClave5 = new PalabraClave("PalabraClave5");
 //        PalabraClave palabraClave6 = new PalabraClave("PalabraClave1"); //nombre repetido
 
-        GestorPalabrasClaves gestorPalabrasClaves= GestorPalabrasClaves.instanciar();
-        gestorPalabrasClaves.nuevaPalabraClave("PalabraClave1");
-        gestorPalabrasClaves.nuevaPalabraClave("PalabraClave2");
-        gestorPalabrasClaves.nuevaPalabraClave("PalabraClave3");
-        gestorPalabrasClaves.nuevaPalabraClave("PalabraClave4");
-        gestorPalabrasClaves.nuevaPalabraClave("PalabraClave5");
-
-        ArrayList<PalabraClave> palabraClaves= gestorPalabrasClaves.verPalabrasClaves();
-        System.out.println(gestorPalabrasClaves.verPalabraClave("PalabraClave1"));
-
-        for(PalabraClave p : palabraClaves)
-            System.out.println(p);
+//        GestorPalabrasClaves gestorPalabrasClaves= GestorPalabrasClaves.instanciar();
+//        gestorPalabrasClaves.nuevaPalabraClave("PalabraClave1");
+//        gestorPalabrasClaves.nuevaPalabraClave("PalabraClave2");
+//        gestorPalabrasClaves.nuevaPalabraClave("PalabraClave3");
+//        gestorPalabrasClaves.nuevaPalabraClave("PalabraClave4");
+//        gestorPalabrasClaves.nuevaPalabraClave("PalabraClave5");
+//
+//        ArrayList<PalabraClave> palabraClaves= gestorPalabrasClaves.verPalabrasClaves();
+//        System.out.println(gestorPalabrasClaves.verPalabraClave("PalabraClave1"));
+//
+//        for(PalabraClave p : palabraClaves)
+//            System.out.println(p);
 
 //        if (!palabrasClaves.contains(palabraClave1))
 //            palabrasClaves.add(palabraClave1);
@@ -308,13 +286,14 @@ public class ControladorPrincipal {
 //        Publicacion publicacion4 = new Publicacion("Título 4", new MiembroEnGrupo(profesor4, grupo3, Rol.ADMINISTRADOR), LocalDate.of(2020, 06, 24), tipo4, idioma2, lugar5, Arrays.asList(new PalabraClave[] {palabraClave1}), "Enlace 4", "Resumen 4");
 //        Publicacion publicacion5 = new Publicacion("Título 5", new MiembroEnGrupo(profesor4, grupo5, Rol.COLABORADOR), LocalDate.of(2020, 06, 24), tipo5, idioma3, lugar5, Arrays.asList(new PalabraClave[] {palabraClave2, palabraClave3, palabraClave4}), "Enlace 5", "Resumen 5");
 //        Publicacion publicacion6 = new Publicacion("Título 1", new MiembroEnGrupo(profesor4, grupo5, Rol.COLABORADOR), LocalDate.of(2020, 06, 24), tipo5, idioma3, lugar5, Arrays.asList(new PalabraClave[] {palabraClave2, palabraClave3, palabraClave4}), "Enlace 5", "Resumen 5"); //título repetido
-        GestorPublicaciones gestorPublicaciones= GestorPublicaciones.instanciar();
-        System.out.println(gestorPublicaciones.nuevaPublicacion("Titulo 1",new MiembroEnGrupo(gestorAutores.verAutor(10), gestorGrupos.verGrupo("Grupo 1"), Rol.ADMINISTRADOR),LocalDate.of(2020, 06, 24), gestorTipos.verTipo("Tipo 1"),gestorIdiomas.verIdioma("Idioma 1"), gestorLugares.verLugar("Lugar 1"), palabraClaves, "Enlace 1", "Resumen 1"));
 
-        ArrayList<Publicacion> publicaciones = gestorPublicaciones.verPublicaciones();
-
-        for(Publicacion p : publicaciones)
-            p.mostrar();
+//        GestorPublicaciones gestorPublicaciones= GestorPublicaciones.instanciar();
+//        System.out.println(gestorPublicaciones.nuevaPublicacion("Titulo 1",new MiembroEnGrupo(gestorAutores.verAutor(10), gestorGrupos.verGrupo("Grupo 1"), Rol.ADMINISTRADOR),LocalDate.of(2020, 06, 24), gestorTipos.verTipo("Tipo 1"),gestorIdiomas.verIdioma("Idioma 1"), gestorLugares.verLugar("Lugar 1"), palabraClaves, "Enlace 1", "Resumen 1"));
+//
+//        ArrayList<Publicacion> publicaciones = gestorPublicaciones.verPublicaciones();
+//
+//        for(Publicacion p : publicaciones)
+//            p.mostrar();
 
 //        if (!publicaciones.contains(publicacion1))
 //            publicaciones.add(publicacion1);
