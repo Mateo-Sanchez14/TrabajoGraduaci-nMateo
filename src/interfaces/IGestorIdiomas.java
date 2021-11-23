@@ -2,6 +2,7 @@ package interfaces;
 
 import idiomas.modelos.Idioma;
 import java.util.ArrayList;
+import java.util.List;
 
 public interface IGestorIdiomas {
 
@@ -12,7 +13,11 @@ public interface IGestorIdiomas {
     public final String IDIOMA_CON_PUBLICACION = "No se puede borrar el idioma porque hay publicaciones con ese idioma";
     public final String IDIOMA_INEXISTENTE = "No existe el idioma específicado";
 
+    public String borrarIdioma(Idioma idioma);
     public String nuevoIdioma(String nombre);
-    public ArrayList<Idioma> verIdiomas();
+    public List<Idioma> buscarIdiomas(String nombre);
+    public List<Idioma> verIdiomas();
     public Idioma verIdioma(String nombre);
+    public boolean existeEsteIdioma(Idioma idioma);
+
 }

@@ -5,7 +5,7 @@ import autores.modelos.Autor;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class Grupo {
+public class Grupo implements Comparable<Grupo>{
     //Atributos de la clase
     private String nombre;
     private String descripcion;
@@ -104,5 +104,10 @@ public class Grupo {
     @Override
     public int hashCode() {
         return Objects.hash(nombre);
+    }
+
+    @Override
+    public int compareTo(Grupo o) {
+        return this.nombre.compareToIgnoreCase(o.verNombre());
     }
 }

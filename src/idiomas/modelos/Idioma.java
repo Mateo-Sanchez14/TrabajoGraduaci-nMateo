@@ -2,7 +2,7 @@ package idiomas.modelos;
 
 import java.util.Objects;
 
-public class Idioma {
+public class Idioma implements Comparable<Idioma>{
     //Atributos de la clase
     private String nombre;
 
@@ -43,5 +43,10 @@ public class Idioma {
     @Override
     public int hashCode() {
         return Objects.hash(nombre);
+    }
+
+    @Override
+    public int compareTo(Idioma o) {
+        return this.nombre.compareToIgnoreCase(o.nombre);
     }
 }

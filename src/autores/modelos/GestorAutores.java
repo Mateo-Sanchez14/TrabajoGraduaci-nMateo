@@ -1,9 +1,12 @@
 package autores.modelos;
 
+import grupos.modelos.Grupo;
 import interfaces.IGestorAutores;
 
 import javax.xml.crypto.AlgorithmMethod;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class GestorAutores implements IGestorAutores {
     ArrayList<Autor> autores = new ArrayList<>();
@@ -140,22 +143,36 @@ public class GestorAutores implements IGestorAutores {
         }
         return AUTOR_INEXISTENTE;
     }
-    public ArrayList<Profesor> buscarProfesor (String busqueda) {
-        ArrayList<Profesor> ocurrencias = new ArrayList<>();
-        for (Profesor p : this.verProfesores()) {
-            if (p.verApellidos().toLowerCase().contains(busqueda.toLowerCase())) {
-                ocurrencias.add(p);
-            }
-        }
-        return ocurrencias;
-    }
-    public ArrayList<Alumno> buscarAlumnos (String busqueda) {
-        ArrayList<Alumno> ocurrencias = new ArrayList<>();
+
+    public List<Alumno> buscarAlumnos (String apellidos) {
+        List<Alumno> ocurrencias = new ArrayList<>();
         for (Alumno a : this.verAlumnos()) {
-            if (a.verApellidos().toLowerCase().contains(busqueda.toLowerCase())) {
+            if (a.verApellidos().toLowerCase().contains(apellidos.toLowerCase())) {
                 ocurrencias.add(a);
             }
         }
+        Collections.sort(ocurrencias);
         return ocurrencias;
+    }
+
+    @Override
+    public List<Profesor> buscarProfesores(String apellidos) {
+        List<Profesor> ocurrencias = new ArrayList<>();
+        for (Profesor a : this.verProfesores()) {
+            if (a.verApellidos().toLowerCase().contains(apellidos.toLowerCase())) {
+                ocurrencias.add(a);
+            }
+        }
+        Collections.sort(ocurrencias);
+        return ocurrencias;
+    }
+
+    @Override
+    public boolean hayAutoresConEsteGrupo(Grupo grupo) {
+        for (Autor x : autores){
+            if (x.contieneGrupo(grupo))
+                return true;
+        }
+        return false;
     }
 }

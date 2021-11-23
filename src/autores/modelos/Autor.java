@@ -7,7 +7,7 @@ import grupos.modelos.Rol;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public abstract class Autor {
+public abstract class Autor implements Comparable<Autor> {
     private int dni;
     private String apellidos;
     private String nombres;
@@ -131,5 +131,15 @@ public abstract class Autor {
     @Override
     public int hashCode() {
         return Objects.hash(dni);
+    }
+
+    @Override
+    public int compareTo(Autor o) {
+        if (!o.nombres.equals(nombres)) {
+            return this.nombres.compareToIgnoreCase(o.nombres);
+        }
+        else {
+            return this.apellidos.compareToIgnoreCase(o.apellidos);
+        }
     }
 }

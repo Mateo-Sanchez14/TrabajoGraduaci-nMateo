@@ -1,13 +1,17 @@
 package palabrasclaves.modelos;
 
 import interfaces.IGestorPalabrasClaves;
+import interfaces.IGestorPublicaciones;
+import publicaciones.modelos.GestorPublicaciones;
 import tipos.modelos.GestorTipos;
 import tipos.modelos.Tipo;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class GestorPalabrasClaves implements IGestorPalabrasClaves {
-    ArrayList<PalabraClave> palabrasClaves = new ArrayList<>();
+    List<PalabraClave> palabrasClaves = new ArrayList<>();
 
     private static GestorPalabrasClaves gestor;
 
@@ -30,7 +34,8 @@ public class GestorPalabrasClaves implements IGestorPalabrasClaves {
         return EXITO;
     }
 
-    public ArrayList<PalabraClave> verPalabrasClaves() {
+    public List<PalabraClave> verPalabrasClaves() {
+        Collections.sort(this.palabrasClaves);
         return this.palabrasClaves;
     }
 
@@ -41,5 +46,37 @@ public class GestorPalabrasClaves implements IGestorPalabrasClaves {
             }
         }
         return null;
+    }
+
+    @Override
+    public String borrarPalabraClave(PalabraClave palabraClave) {
+        if (!existeEstaPalabraClave(palabraClave))
+            return PALABRA_INEXISTENTE;
+        IGestorPublicaciones gestorPublicaciones = GestorPublicaciones.instanciar();
+        if (gestorPublicaciones.hayPublicacionesConEstaPalabraClave(palabraClave))
+            return PALABRA_CON_PUBLICACION;
+        this.palabrasClaves.remove(palabraClave);
+        return EXITO;
+    }
+
+    @Override
+    public List<PalabraClave> buscarPalabrasClaves(String nombre) {
+        List<PalabraClave> palabrasEncontradas = new ArrayList<>();
+        for (PalabraClave x : this.palabrasClaves){
+            if (x.verNombre().toLowerCase().contains(nombre.toLowerCase()))
+                palabrasEncontradas.add(x);
+        }
+        Collections.sort(palabrasEncontradas);
+        return palabrasEncontradas;
+    }
+
+    @Override
+    public boolean existeEstaPalabraClave(PalabraClave palabraClave) {
+        for (PalabraClave x : this.palabrasClaves) {
+            if (x.verNombre().equals(palabraClave.verNombre())) {
+                return true;
+            }
+        }
+        return false;
     }
 }

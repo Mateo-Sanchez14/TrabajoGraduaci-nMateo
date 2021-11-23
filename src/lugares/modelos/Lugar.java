@@ -2,7 +2,7 @@ package lugares.modelos;
 
 import java.util.Objects;
 
-public class Lugar {
+public class Lugar implements Comparable<Lugar> {
     //Atributos de la clase
     private String nombre;
 
@@ -43,4 +43,10 @@ public class Lugar {
     public int hashCode() {
         return Objects.hash(nombre);
     }
+
+    @Override
+    public int compareTo(Lugar lugar) {
+        return this.nombre.compareToIgnoreCase(lugar.nombre);
+    }
+
 }

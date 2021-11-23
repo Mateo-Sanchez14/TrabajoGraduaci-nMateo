@@ -3,6 +3,7 @@ package interfaces;
 import palabrasclaves.modelos.PalabraClave;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface IGestorPalabrasClaves {
     //Constantes de mensajes
@@ -12,7 +13,12 @@ public interface IGestorPalabrasClaves {
     public final String PALABRA_CON_PUBLICACION = "No se puede borrar la palabra clave porque hay publicaciones con esa palabra clave";
     public final String PALABRA_INEXISTENTE = "No existe la palabra clave en específico";
 
+    //Métodos
+    public String borrarPalabraClave(PalabraClave palabraClave);
+    public List<PalabraClave> buscarPalabrasClaves(String nombre);
     public String nuevaPalabraClave(String nombre);
-    public ArrayList<PalabraClave> verPalabrasClaves();
+    public List<PalabraClave> verPalabrasClaves();
     public PalabraClave verPalabraClave(String nombre);
+    public boolean existeEstaPalabraClave(PalabraClave palabraClave);
+
 }

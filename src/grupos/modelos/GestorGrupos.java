@@ -2,16 +2,23 @@ package grupos.modelos;
 
 import autores.modelos.Autor;
 import autores.modelos.Cargo;
+import autores.modelos.GestorAutores;
 import autores.modelos.Profesor;
+import idiomas.modelos.Idioma;
+import interfaces.IGestorAutores;
 import interfaces.IGestorGrupos;
 import grupos.modelos.Grupo;
+import interfaces.IGestorPublicaciones;
 import lugares.modelos.GestorLugares;
 import lugares.modelos.Lugar;
+import publicaciones.modelos.GestorPublicaciones;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class GestorGrupos implements IGestorGrupos {
-    ArrayList<Grupo> grupos = new ArrayList<>();
+    List<Grupo> grupos = new ArrayList<>();
 
     private static GestorGrupos gestor;
     public static GestorGrupos instanciar() {
@@ -31,7 +38,8 @@ public class GestorGrupos implements IGestorGrupos {
         return EXITO;
     }
 
-    public ArrayList<Grupo> verGrupos(){
+    public List<Grupo> verGrupos(){
+        Collections.sort(this.grupos);
         return this.grupos;
     }
 
@@ -60,5 +68,28 @@ public class GestorGrupos implements IGestorGrupos {
         if (grupos.contains(grupo))
             return true;
         return false;
+    }
+
+    @Override
+    public String borrarGrupo(Grupo grupo) {
+        if (!existeEsteGrupo(grupo))
+            return GRUPO_INEXISTENTE;
+
+        if (!grupo.verMiembros().isEmpty())
+            return GRUPO_CON_AUTORES;
+
+        this.grupos.remove(grupo);
+        return EXITO;
+    }
+
+    @Override
+    public List<Grupo> buscarGrupos(String nombre) {
+        List<Grupo> gruposEncontrados = new ArrayList<>();
+        for (Grupo x : this.grupos){
+            if (x.verNombre().toLowerCase().contains(nombre.toLowerCase()))
+                gruposEncontrados.add(x);
+        }
+        Collections.sort(gruposEncontrados);
+        return gruposEncontrados;
     }
 }

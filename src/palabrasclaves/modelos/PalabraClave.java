@@ -2,7 +2,7 @@ package palabrasclaves.modelos;
 
 import java.util.Objects;
 
-public class PalabraClave {
+public class PalabraClave implements Comparable<PalabraClave>{
     //Atributos de la Clase
     private String nombre;
 
@@ -23,6 +23,7 @@ public class PalabraClave {
         this.nombre = nombre;
     }
     //</editor-fold>
+
     @Override
     public String toString() {
         if (this.nombre != null || !this.nombre.trim().isEmpty())
@@ -41,5 +42,10 @@ public class PalabraClave {
     @Override
     public int hashCode() {
         return Objects.hash(nombre);
+    }
+
+    @Override
+    public int compareTo(PalabraClave palabraClave) {
+        return this.nombre.compareToIgnoreCase(palabraClave.nombre);
     }
 }
