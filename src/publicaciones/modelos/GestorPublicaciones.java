@@ -10,17 +10,19 @@ import tipos.modelos.Tipo;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class GestorPublicaciones implements IGestorPublicaciones {
     ArrayList<Publicacion> publicaciones = new ArrayList<>();
 
     private static GestorPublicaciones gestor;
 
-    private GestorPublicaciones(){
+    private GestorPublicaciones() {
     }
 
     public static GestorPublicaciones instanciar() {
-        if(gestor == null) {
+        if (gestor == null) {
             gestor = new GestorPublicaciones();
         }
         return gestor;
@@ -28,9 +30,9 @@ public class GestorPublicaciones implements IGestorPublicaciones {
 
     public String nuevaPublicacion(String titulo, MiembroEnGrupo miembroEnGrupo,
                                    LocalDate fechaPublicacion, Tipo tipo, Idioma idioma, Lugar lugar,
-                                   ArrayList<PalabraClave> palabrasClaves, String enlace, String resumen) {
+                                   List<PalabraClave> palabrasClaves, String enlace, String resumen) {
 
-        if( (titulo == null) || titulo.trim().isEmpty())
+        if ((titulo == null) || titulo.trim().isEmpty())
             return ERROR_TITULO;
         if (miembroEnGrupo == null)
             return ERROR_MIEMBRO;
@@ -49,15 +51,16 @@ public class GestorPublicaciones implements IGestorPublicaciones {
         if ((resumen == null) || resumen.trim().isEmpty())
             return ERROR_RESUMEN;
         Publicacion unaPublicacion = new Publicacion(titulo, miembroEnGrupo, fechaPublicacion, tipo,
-                                                     idioma, lugar, palabrasClaves, enlace, resumen);
+                idioma, lugar, palabrasClaves, enlace, resumen);
         if (publicaciones.contains(unaPublicacion))
             return PUBLICACION_DUPLICADA;
         publicaciones.add(unaPublicacion);
         return EXITO;
     }
+
     public String modificarPublicacion(Publicacion publicacion, MiembroEnGrupo miembroEnGrupo,
                                        LocalDate fechaPublicacion, Tipo tipo, Idioma idioma, Lugar lugar,
-                                       ArrayList<PalabraClave> palabrasClaves, String enlace, String resumen) {
+                                       List<PalabraClave> palabrasClaves, String enlace, String resumen) {
         if (miembroEnGrupo == null)
             return ERROR_MIEMBRO;
         if (fechaPublicacion == null)
@@ -75,7 +78,7 @@ public class GestorPublicaciones implements IGestorPublicaciones {
         if ((resumen == null) || resumen.trim().isEmpty())
             return ERROR_RESUMEN;
         if (publicacion == null)
-            return  PUBLICACION_INEXISTENTE;
+            return PUBLICACION_INEXISTENTE;
 
         publicacion.asignarMiembroEnGrupo(miembroEnGrupo);
         publicacion.asignarFechaPublicacion(fechaPublicacion);
@@ -88,6 +91,7 @@ public class GestorPublicaciones implements IGestorPublicaciones {
 
         return EXITO;
     }
+
     public boolean hayPublicacionesConEstaPalabraClave(PalabraClave palabraClave) {
         for (Publicacion k : publicaciones) {
             if (k.verPalabrasClaves().contains(palabraClave))
@@ -95,6 +99,7 @@ public class GestorPublicaciones implements IGestorPublicaciones {
         }
         return false;
     }
+
     public boolean hayPublicacionesConEsteLugar(Lugar lugar) {
         for (Publicacion k : publicaciones) {
             if (k.verLugar().equals(lugar))
@@ -102,6 +107,7 @@ public class GestorPublicaciones implements IGestorPublicaciones {
         }
         return false;
     }
+
     public boolean hayPublicacionesConEsteIdioma(Idioma idioma) {
         for (Publicacion k : publicaciones) {
             if (k.verIdioma().equals(idioma))
@@ -109,6 +115,7 @@ public class GestorPublicaciones implements IGestorPublicaciones {
         }
         return false;
     }
+
     public boolean hayPublicacionesConEsteTipo(Tipo tipo) {
         for (Publicacion k : publicaciones) {
             if (k.verTipo().equals(tipo))
@@ -116,6 +123,7 @@ public class GestorPublicaciones implements IGestorPublicaciones {
         }
         return false;
     }
+
     public boolean hayPublicacionesConEsteAutor(Autor autor) {
         for (Publicacion k : publicaciones) {
             if (k.verMiembroEnGrupo().verAutor().equals(autor))
@@ -123,20 +131,45 @@ public class GestorPublicaciones implements IGestorPublicaciones {
         }
         return false;
     }
+
     public boolean existeEstaPublicacion(Publicacion publicacion) {
         if (publicaciones.contains(publicacion))
             return true;
         return false;
     }
-    public ArrayList<Publicacion> verPublicaciones() {
+
+    public List<Publicacion> verPublicaciones() {
+        Collections.sort(publicaciones);
         return publicaciones;
     }
+
     public Publicacion verPublicacion(String titulo) {
         for (Publicacion k : publicaciones) {
-            if (k.verTitulo().equals(titulo)){
+            if (k.verTitulo().equals(titulo)) {
                 return k;
             }
         }
         return null;
+    }
+
+    @Override
+    public String borrarPublicacion(Publicacion publicacion) {
+        if (!this.existeEstaPublicacion(publicacion) || publicacion == null)
+            return PUBLICACION_INEXISTENTE;
+
+        publicaciones.remove(publicacion);
+        return EXITO;
+    }
+
+    @Override
+    public List<Publicacion> buscarPublicaciones(String titulo) {
+        List<Publicacion> publicacionesEncontradas = new ArrayList<>();
+        for (Publicacion x : this.publicaciones){
+            if(x.verTitulo().equalsIgnoreCase(titulo)) {
+                publicacionesEncontradas.add(x);
+            }
+        }
+        Collections.sort(publicacionesEncontradas);
+        return publicacionesEncontradas;
     }
 }

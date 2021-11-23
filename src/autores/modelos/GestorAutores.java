@@ -2,6 +2,8 @@ package autores.modelos;
 
 import grupos.modelos.Grupo;
 import interfaces.IGestorAutores;
+import interfaces.IGestorPublicaciones;
+import publicaciones.modelos.GestorPublicaciones;
 
 import javax.xml.crypto.AlgorithmMethod;
 import java.util.ArrayList;
@@ -108,23 +110,26 @@ public class GestorAutores implements IGestorAutores {
             return true;
         return false;
     }
-    public ArrayList<Autor> verAutores() {
+    public List<Autor> verAutores() {
+        Collections.sort(autores);
         return autores;
     }
-    public ArrayList<Profesor> verProfesores() {
-        ArrayList<Profesor> profesores = new ArrayList<>();
+    public List<Profesor> verProfesores() {
+        List<Profesor> profesores = new ArrayList<>();
         for (Autor k : autores) {
             if (k instanceof Profesor)
                 profesores.add((Profesor) k);
         }
+        Collections.sort(profesores);
         return profesores;
     }
-    public ArrayList<Alumno> verAlumnos() {
-        ArrayList<Alumno> alumnos = new ArrayList<>();
+    public List<Alumno> verAlumnos() {
+        List<Alumno> alumnos = new ArrayList<>();
         for (Autor k : autores) {
             if (k instanceof Alumno)
                 alumnos.add((Alumno) k);
         }
+        Collections.sort(alumnos);
         return alumnos;
     }
 
@@ -137,11 +142,15 @@ public class GestorAutores implements IGestorAutores {
     }
 
     public String borrarAutor(Autor autor) {
-        if(existeEsteAutor(autor)) {
-            autores.remove(autor);
-            return EXITO;
+        if(!existeEsteAutor(autor)) {
+            return AUTOR_INEXISTENTE;
         }
-        return AUTOR_INEXISTENTE;
+        IGestorPublicaciones gestorPublicaciones = GestorPublicaciones.instanciar();
+        if (gestorPublicaciones.hayPublicacionesConEsteAutor(autor))
+            return AUTOR_CON_PUBLICACION;
+
+        autores.remove(autor);
+        return EXITO;
     }
 
     public List<Alumno> buscarAlumnos (String apellidos) {

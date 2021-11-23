@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Publicacion {
+public class Publicacion implements Comparable<Publicacion>{
     private String titulo;
     private LocalDate fechaPublicacion;
     private String enlace;
@@ -137,5 +137,10 @@ public class Publicacion {
     @Override
     public int hashCode() {
         return Objects.hash(titulo);
+    }
+
+    @Override
+    public int compareTo(Publicacion o) {
+        return this.titulo.compareToIgnoreCase(o.titulo);
     }
 }
