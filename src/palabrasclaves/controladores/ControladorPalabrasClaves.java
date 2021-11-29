@@ -115,10 +115,8 @@ public class ControladorPalabrasClaves implements IControladorPalabrasClaves {
     public void refrescarBotones() {
         IGestorPalabrasClaves gestor = GestorPalabrasClaves.instanciar();
         if (gestor.verPalabrasClaves().isEmpty()) {
-            this.ventana.verBtnModificar().setEnabled(false);
             this.ventana.verBtnBorrar().setEnabled(false);
         } else {
-            this.ventana.verBtnModificar().setEnabled(true);
             this.ventana.verBtnBorrar().setEnabled(true);
         }
     }
