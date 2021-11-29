@@ -37,7 +37,7 @@ public class ControladorPalabrasClaves implements IControladorPalabrasClaves {
 
     @Override
     public void btnNuevaClic(ActionEvent evt) {
-        //IControladorAPalabraClave controladorAPalabraClave = new ControladorAPalabraClave(this.ventana);
+        IControladorAPalabraClave controladorAPalabraClave = new ControladorAPalabraClave(this.ventana);
 
         //Refresco los botones
         refrescarBotones();

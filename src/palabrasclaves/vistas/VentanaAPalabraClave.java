@@ -7,21 +7,22 @@ package palabrasclaves.vistas;
 
 import java.awt.Dialog;
 import java.util.ArrayList;
-import javax.swing.JDialog;
+import javax.swing.*;
 
+import interfaces.IControladorAPalabraClave;
+import interfaces.IControladorPalabrasClaves;
 import lugares.modelos.Lugar;
 import palabrasclaves.modelos.PalabraClave;
 
 public class VentanaAPalabraClave extends JDialog {
-   ArrayList<PalabraClave> palabrasClaves = new ArrayList<>();
-   
+    private static IControladorAPalabraClave controlador;
     /**
-     * Constructor 
-     * @param ventanaPadre ventana padre (VentanaPalabrasClaves en este caso)
-     */        
-    public VentanaAPalabraClave(Dialog ventanaPadre) {
-        super(ventanaPadre, true);
+     * Creates new form VentanaAutores
+     */
+    public VentanaAPalabraClave(IControladorAPalabraClave controlador, javax.swing.JDialog parent, boolean modal) {
+        super(parent, modal);
         initComponents();
+        this.controlador = controlador;
     }
  
     
@@ -99,18 +100,52 @@ public class VentanaAPalabraClave extends JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarClic(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarClic
-        String nombre = this.txtNombre.getText().trim();
-        PalabraClave palabraClave = new PalabraClave(nombre);
-        this.palabrasClaves.add(palabraClave);
-        for(PalabraClave l : this.palabrasClaves)
-            System.out.println(l);
-        
+        controlador.btnGuardarClic(evt);
     }//GEN-LAST:event_btnGuardarClic
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
+        controlador.btnCancelarClic(evt);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+    public static IControladorAPalabraClave verControlador() {
+        return controlador;
+    }
+
+    public static void asignarControlador(IControladorAPalabraClave controlador) {
+        VentanaAPalabraClave.controlador = controlador;
+    }
+
+    public JButton verBtnCancelar() {
+        return btnCancelar;
+    }
+
+    public void asignarBtnCancelar(JButton btnCancelar) {
+        this.btnCancelar = btnCancelar;
+    }
+
+    public JButton verBtnGuardar() {
+        return btnGuardar;
+    }
+
+    public void asignarBtnGuardar(JButton btnGuardar) {
+        this.btnGuardar = btnGuardar;
+    }
+
+    public JLabel verjLabel1() {
+        return jLabel1;
+    }
+
+    public void asignarjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public JTextField verTxtNombre() {
+        return txtNombre;
+    }
+
+    public void asignarTxtNombre(JTextField txtNombre) {
+        this.txtNombre = txtNombre;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
