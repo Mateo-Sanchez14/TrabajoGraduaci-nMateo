@@ -3,13 +3,14 @@ package grupos.modelos;
 import autores.modelos.Autor;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Grupo implements Comparable<Grupo>{
     //Atributos de la clase
     private String nombre;
     private String descripcion;
-    private ArrayList<MiembroEnGrupo> miembros = new ArrayList<>();
+    private List<MiembroEnGrupo> miembros = new ArrayList<>();
 
     //Constructores de la Clase
     public Grupo(String nombre, String descripcion) {
@@ -34,7 +35,7 @@ public class Grupo implements Comparable<Grupo>{
 
     //<editor-fold defaultstate="collapsed" desc="Getter/Setter">
 
-    public ArrayList<MiembroEnGrupo> verMiembros() {
+    public List<MiembroEnGrupo> verMiembros() {
         return miembros;
     }
 
@@ -110,4 +111,5 @@ public class Grupo implements Comparable<Grupo>{
     public int compareTo(Grupo o) {
         return this.nombre.compareToIgnoreCase(o.verNombre());
     }
+
 }

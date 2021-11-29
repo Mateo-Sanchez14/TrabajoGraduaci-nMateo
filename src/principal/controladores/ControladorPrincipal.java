@@ -35,22 +35,22 @@ public class ControladorPrincipal {
     public static void main(String[] args) {
         //<editor-fold defaultstate="collapsed" desc="Sin intefaz gráfica">
 
-//        GestorGrupos gestorGrupos = GestorGrupos.instanciar();
-//        gestorGrupos.nuevoGrupo("Grupo 1","Descripcion 1");
-//        gestorGrupos.nuevoGrupo("Grupo 2","Descripcion 2");
-//        gestorGrupos.nuevoGrupo("Grupo 3","Descripcion 3");
-//        gestorGrupos.nuevoGrupo("Grupo 4","Descripcion 4");
-//        gestorGrupos.nuevoGrupo("Grupo 5","Descripcion 5");
-//        gestorGrupos.nuevoGrupo("Grupo 5","Descripcion 5");
-//        System.out.println(gestorGrupos.nuevoGrupo(" "," "));
+        GestorGrupos gestorGrupos = GestorGrupos.instanciar();
+        gestorGrupos.nuevoGrupo("Grupo 1","Descripcion 1");
+        gestorGrupos.nuevoGrupo("Grupo 2","Descripcion 2");
+        gestorGrupos.nuevoGrupo("Grupo 3","Descripcion 3");
+        gestorGrupos.nuevoGrupo("Grupo 4","Descripcion 4");
+        gestorGrupos.nuevoGrupo("Grupo 5","Descripcion 5");
+        gestorGrupos.nuevoGrupo("Grupo 5","Descripcion 5");
+        System.out.println(gestorGrupos.nuevoGrupo(" "," "));
 //
-//        ArrayList<Grupo> grupos = gestorGrupos.verGrupos();
-//        gestorGrupos.verGrupo("Grupo 1").mostrar();
-//        gestorGrupos.modificarGrupo(gestorGrupos.verGrupo("Grupo 1"),"Descripcion 5");
-//        System.out.println("grupos = " + gestorGrupos.existeEsteGrupo(gestorGrupos.verGrupo("Grupo 5")));
-//
-//        for(Grupo g : grupos)
-//            g.mostrar();
+        List<Grupo> grupos = gestorGrupos.verGrupos();
+        gestorGrupos.verGrupo("Grupo 1").mostrar();
+        gestorGrupos.modificarGrupo(gestorGrupos.verGrupo("Grupo 1"),"Descripcion 5");
+        System.out.println("grupos = " + gestorGrupos.existeEsteGrupo(gestorGrupos.verGrupo("Grupo 5")));
+
+        for(Grupo g : grupos)
+            g.mostrar();
 //
 //--------------------------------------------------------------------------------------------------------------------------------------------
 //              Autores
@@ -58,53 +58,53 @@ public class ControladorPrincipal {
 //
 //
         //Alumnos
-//        GestorAutores gestorAutores = GestorAutores.instanciar();
-//        gestorAutores.nuevoAutor(1, "Apellido1", "Nombre1", "Clave1", "1","1");
-//        gestorAutores.nuevoAutor(2, "Apellido2", "Nombre2", "Clave2", "2","2");
-//        gestorAutores.nuevoAutor(3, "Apellido3", "Nombre3", "Clave3", "3","3");
-//        gestorAutores.nuevoAutor(4, "Apellido4", "Nombre4", "Clave4", "4","4");
-//        gestorAutores.nuevoAutor(5, "Apellido5", "Nombre5", "Clave5", "5","5");
-//        System.out.println(gestorAutores.nuevoAutor(5, "Apellido5", "Nombre5", "Clave5", "4","5"));
-//        //Profesores
-//        gestorAutores.nuevoAutor(10, "Apellido10", "Nombre10", Cargo.TITULAR,"Clave10","Clave10");
-//        gestorAutores.nuevoAutor(20, "Apellido20", "Nombre20", Cargo.ASOCIADO,"Clave20","Clave20");
-//        gestorAutores.nuevoAutor(30, "Apellido30", "Nombre30", Cargo.ADJUNTO,"Clave30","Clave30");
-//        gestorAutores.nuevoAutor(40, "Apellido40", "Nombre40", Cargo.JTP,"Clave40","Clave40");
-//        gestorAutores.nuevoAutor(50, "Apellido50", "Nombre50", Cargo.ADG,"Clave50","Clave50");
-//        gestorAutores.nuevoAutor(0," "," "," "," "," ");
-//        ArrayList<Autor> autores = gestorAutores.verAutores();
-//        gestorAutores.modificarAutor(gestorAutores.verAutor(5), "Apellido 69", "Nombre 69", "69","Clave 69", "Clave 69");
-//        gestorAutores.verAutor(30).mostrar();
-//        //gestorAutores.existeEsteAutor()
-//        System.out.println("--------------------------------------------------------------------------------------------------------");
-//        System.out.println("Autores ");
-//        System.out.println("--------------------------------------------------------------------------------------------------------");
-//        for(Autor a : autores)
-//            a.mostrar();
-//        System.out.println("--------------------------------------------------------------------------------------------------------");
-//        System.out.println("Alumnos ");
-//        System.out.println("--------------------------------------------------------------------------------------------------------");
-//        for (Alumno x : gestorAutores.verAlumnos())
-//            x.mostrar();
-//        System.out.println("--------------------------------------------------------------------------------------------------------");
-//        System.out.println("Profesores ");
-//        System.out.println("--------------------------------------------------------------------------------------------------------");
-//        for (Profesor p : gestorAutores.verProfesores())
-//            p.mostrar();
+        GestorAutores gestorAutores = GestorAutores.instanciar();
+        gestorAutores.nuevoAutor(1, "Sanchez", "Mariana", "Clave1", "1","1");
+        gestorAutores.nuevoAutor(2, "Apellido2", "Nombre2", "Clave2", "2","2");
+        gestorAutores.nuevoAutor(3, "Sanchez", "Mateo", "Clave3", "3","3");
+        gestorAutores.nuevoAutor(4, "Sanchez", "Aron", "Clave4", "4","4");
+        gestorAutores.nuevoAutor(5, "Apellido5", "Nombre5", "Clave5", "5","5");
+        System.out.println(gestorAutores.nuevoAutor(5, "Apellido5", "Nombre5", "Clave5", "4","5"));
+        //Profesores
+        gestorAutores.nuevoAutor(10, "A", "Nombre10", Cargo.TITULAR,"Clave10","Clave10");
+        gestorAutores.nuevoAutor(20, "C", "Nombre20", Cargo.ASOCIADO,"Clave20","Clave20");
+        gestorAutores.nuevoAutor(30, "B", "Nombre30", Cargo.ADJUNTO,"Clave30","Clave30");
+        gestorAutores.nuevoAutor(40, "D", "Nombre40", Cargo.JTP,"Clave40","Clave40");
+        gestorAutores.nuevoAutor(50, "AA", "Nombre50", Cargo.ADG,"Clave50","Clave50");
+        gestorAutores.nuevoAutor(0," "," "," "," "," ");
+        List<Autor> autores = gestorAutores.verAutores();
+        gestorAutores.modificarAutor(gestorAutores.verAutor(5), "Apellido 69", "Nombre 69", "69","Clave 69", "Clave 69");
+        gestorAutores.verAutor(30).mostrar();
+        //gestorAutores.existeEsteAutor()
+        System.out.println("--------------------------------------------------------------------------------------------------------");
+        System.out.println("Autores ");
+        System.out.println("--------------------------------------------------------------------------------------------------------");
+        for(Autor a : autores)
+            a.mostrar();
+        System.out.println("--------------------------------------------------------------------------------------------------------");
+        System.out.println("Alumnos ");
+        System.out.println("--------------------------------------------------------------------------------------------------------");
+        for (Alumno x : gestorAutores.verAlumnos())
+            x.mostrar();
+        System.out.println("--------------------------------------------------------------------------------------------------------");
+        System.out.println("Profesores ");
+        System.out.println("--------------------------------------------------------------------------------------------------------");
+        for (Profesor p : gestorAutores.verProfesores())
+            p.mostrar();
 
 //
 //
 //
-//        gestorGrupos.verGrupo("Grupo 1").agregarMiembro(gestorAutores.verAutor(10), Rol.ADMINISTRADOR);
-//        gestorGrupos.verGrupo("Grupo 1").agregarMiembro(gestorAutores.verAutor(10), Rol.COLABORADOR);
-//        gestorGrupos.verGrupo("Grupo 1").agregarMiembro(gestorAutores.verAutor(1), Rol.COLABORADOR);
+        gestorGrupos.verGrupo("Grupo 1").agregarMiembro(gestorAutores.verAutor(10), Rol.ADMINISTRADOR);
+        gestorGrupos.verGrupo("Grupo 1").agregarMiembro(gestorAutores.verAutor(10), Rol.COLABORADOR);
+        gestorGrupos.verGrupo("Grupo 1").agregarMiembro(gestorAutores.verAutor(1), Rol.COLABORADOR);
 //
-//        System.out.println("--------------------------------------------------------------------------------------------------------");
-//        System.out.println("Grupos ");
-//        System.out.println("--------------------------------------------------------------------------------------------------------");
+        System.out.println("--------------------------------------------------------------------------------------------------------");
+        System.out.println("Grupos ");
+        System.out.println("--------------------------------------------------------------------------------------------------------");
 //
-//        for (Grupo g : gestorGrupos.verGrupos())
-//            g.mostrar();
+        for (Grupo g : gestorGrupos.verGrupos())
+            g.mostrar();
 //        /*Tomar 1 de los 2 autores que se asignó al grupo anterior y
 //        agregarlo a otro grupo distinto.
 //        Mostrar los 2 autores verificando que pertenezcan a los grupos
@@ -112,13 +112,15 @@ public class ControladorPrincipal {
 //        Verificar también que no se pueda agregarle a un autor
 //        un mismo grupo más de una vez, por más que sean roles distintos.*/
 //
-//        profesor1.agregarGrupo(grupo2, Rol.COLABORADOR);
-//        profesor1.agregarGrupo(grupo2, Rol.ADMINISTRADOR); //grupo repetido
-//        profesor1.mostrar();
-//        alumno1.mostrar();
-//        gestorAutores.verAutor(10).agregarGrupo(gestorGrupos.verGrupo("Grupo 2"), Rol.COLABORADOR);
-//        gestorAutores.verAutor(10).agregarGrupo(gestorGrupos.verGrupo("Grupo 2"), Rol.ADMINISTRADOR);
-//        gestorAutores.verAutor(10).mostrar();
+        gestorAutores.verAutor(10).agregarGrupo(gestorGrupos.verGrupo("Grupo 2"), Rol.COLABORADOR);
+        gestorAutores.verAutor(10).agregarGrupo(gestorGrupos.verGrupo("Grupo 2"), Rol.ADMINISTRADOR);
+        gestorAutores.verAutor(10).mostrar();
+
+        System.out.println(gestorGrupos.borrarGrupo(gestorGrupos.verGrupo("Grupo 2"))); //No se debería borrar porque tiene autores
+        gestorGrupos.verGrupo("Grupo 2").mostrar();
+        gestorAutores.borrarAutor(gestorAutores.verAutor(10));
+        System.out.println(gestorGrupos.borrarGrupo(gestorGrupos.verGrupo("Grupo 2"))); //No se debería borrar porque tiene autores
+        gestorGrupos.verGrupo("Grupo 2").mostrar();
 //
 //        /*
 //        Tomar el grupo al que se le agregaron los 2 autores como miembros,

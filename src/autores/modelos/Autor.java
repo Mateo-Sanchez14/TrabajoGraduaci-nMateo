@@ -12,7 +12,7 @@ public abstract class Autor implements Comparable<Autor> {
     private String apellidos;
     private String nombres;
     private String clave;
-    private ArrayList<MiembroEnGrupo> miembroEnGrupo = new ArrayList<>();
+    private ArrayList<MiembroEnGrupo> gruposAutor = new ArrayList<>();
 
     public Autor(int dni, String apellidos, String nombres, String clave) {
         this.dni = dni;
@@ -56,11 +56,11 @@ public abstract class Autor implements Comparable<Autor> {
     }
 
     public ArrayList<MiembroEnGrupo> verGrupo() {
-        return miembroEnGrupo;
+        return gruposAutor;
     }
 
     public void asignarMiembroEnGrupo(ArrayList<MiembroEnGrupo> miembroEnGrupo) {
-        this.miembroEnGrupo = miembroEnGrupo;
+        this.gruposAutor = miembroEnGrupo;
     }
 
     //</editor-fold>
@@ -68,13 +68,13 @@ public abstract class Autor implements Comparable<Autor> {
     public void agregarGrupo(Grupo grupo, Rol rol) {
         MiembroEnGrupo miembro = new MiembroEnGrupo(this, grupo, rol);
         if (!this.contieneGrupo(grupo)) {
-            miembroEnGrupo.add(miembro);
+            gruposAutor.add(miembro);
             grupo.agregarMiembro(this, rol);
         }
     }
 
     public boolean contieneGrupo(Grupo grupo) {
-        for (MiembroEnGrupo a : miembroEnGrupo) {
+        for (MiembroEnGrupo a : gruposAutor) {
             if (a.verGrupo().equals(grupo)) {
                 return true;
             }
@@ -83,16 +83,16 @@ public abstract class Autor implements Comparable<Autor> {
     }
 
     public void quitarGrupo(Grupo grupo) {
-        for (MiembroEnGrupo a : miembroEnGrupo) {
+        for (MiembroEnGrupo a : gruposAutor) {
             if (a.verGrupo().equals(grupo)) {
-                miembroEnGrupo.remove(a);
+                gruposAutor.remove(a);
                 grupo.quitarMiembro(this);
             }
         }
     }
 
     public boolean esSuperAdministrador() {
-        for (MiembroEnGrupo a : miembroEnGrupo) {
+        for (MiembroEnGrupo a : gruposAutor) {
             if (a.verGrupo().verNombre().equals("Super Administradores")) {
                 return true;
             }
@@ -101,7 +101,7 @@ public abstract class Autor implements Comparable<Autor> {
     }
 
     public boolean tieneGrupos() {
-        if (this.miembroEnGrupo.isEmpty()) {
+        if (this.gruposAutor.isEmpty()) {
             return false;
         } else {
             return true;
@@ -110,9 +110,9 @@ public abstract class Autor implements Comparable<Autor> {
 
     public void mostrar() {
         System.out.println("[" + dni + "] " + apellidos + ", " + nombres);
-        if(!miembroEnGrupo.isEmpty()) {
+        if(!gruposAutor.isEmpty()) {
             System.out.println("Grupos a los que pertenece: ");
-            for (MiembroEnGrupo a : miembroEnGrupo) {
+            for (MiembroEnGrupo a : gruposAutor) {
                 System.out.println("\t" + a.verGrupo().verNombre() + ", " + a.verRol());
             }
         }else
@@ -135,7 +135,7 @@ public abstract class Autor implements Comparable<Autor> {
 
     @Override
     public int compareTo(Autor o) {
-        if (!o.nombres.equals(nombres)) {
+        if (o.apellidos.equals(apellidos)) {
             return this.nombres.compareToIgnoreCase(o.nombres);
         }
         else {

@@ -1,5 +1,6 @@
 package autores.modelos;
 
+import grupos.modelos.GestorGrupos;
 import grupos.modelos.Grupo;
 import interfaces.IGestorAutores;
 import interfaces.IGestorPublicaciones;
@@ -150,6 +151,7 @@ public class GestorAutores implements IGestorAutores {
             return AUTOR_CON_PUBLICACION;
 
         autores.remove(autor);
+
         return EXITO;
     }
 
