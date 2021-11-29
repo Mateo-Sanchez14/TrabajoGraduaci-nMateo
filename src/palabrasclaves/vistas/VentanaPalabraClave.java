@@ -62,6 +62,7 @@ public class VentanaPalabraClave extends javax.swing.JDialog {
 
         jLabel1.setText("Nombre: ");
 
+        txtNombre.setToolTipText("Nombre de la palabra clave a buscar");
         txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNombreKeyTyped(evt);

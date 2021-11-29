@@ -101,11 +101,12 @@ public class ControladorPalabrasClaves implements IControladorPalabrasClaves {
                 case KeyEvent.VK_ENTER:
                     this.btnBuscarClic(null);
                     break;
-                case KeyEvent.VK_BACK_SPACE:
-                    break;
                 case KeyEvent.VK_DELETE:
+                case KeyEvent.VK_BACK_SPACE:
+                case KeyEvent.VK_SPACE:
                     break;
                 default:
+                    JOptionPane.showConfirmDialog(ventana, "Solamente está permitido el ingreso de caracteres alfabéticos", "Advertencia", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE);
                     evt.consume();
                     break;
             }
