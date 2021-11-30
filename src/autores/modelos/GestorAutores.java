@@ -92,7 +92,7 @@ public class GestorAutores implements IGestorAutores {
             return ERROR_APELLIDO;
         if ((nombres == null) || nombres.trim().isEmpty())
             return ERROR_NOMBRE;
-        if ((cx == null))
+        if ((cx == null) || tieneMismoCx(cx, autor.verDni()))
             return ERROR_CX;
         if (!clave.equals(claveRepetida) || clave == null || clave.trim().isEmpty())
             return ERROR_CLAVE;
@@ -182,6 +182,13 @@ public class GestorAutores implements IGestorAutores {
     public boolean hayAutoresConEsteGrupo(Grupo grupo) {
         for (Autor x : autores){
             if (x.contieneGrupo(grupo))
+                return true;
+        }
+        return false;
+    }
+    private boolean tieneMismoCx(String Cx, int dni) {
+        for (Alumno x : this.verAlumnos()) {
+            if (x.verCx().equalsIgnoreCase(Cx) && dni != x.verDni())
                 return true;
         }
         return false;
