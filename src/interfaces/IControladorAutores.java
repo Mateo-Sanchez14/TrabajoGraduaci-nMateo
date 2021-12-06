@@ -17,8 +17,9 @@ public interface IControladorAutores {
     public static final String TITULO = "Autores";
     public static final String CONFIRMACION_PROFESOR = "¿Desea borrar el profesor especificado?";    
     public static final String CONFIRMACION_ALUMNO = "¿Desea borrar el alumno especificado?";
+    public static final String PROFESOR_NO_SELECCIONADO = "Por favor, seleccione un profesor antes";
+    public static final String ALUMNO_NO_SELECCIONADO = "Por favor, seleccione un profesor antes";
 
-        
     /**
      * Acción a ejecutar cuando se selecciona el botón Nuevo Profesor
      * @param evt evento
