@@ -43,13 +43,38 @@ public class ControladorPrincipal implements IControladorPrincipal {
     }
 
     @Override
-    public void btnPalabrasClaveClic(ActionEvent evt) {
+    public void btnPalabrasClavesClic(ActionEvent evt){
         IControladorPalabrasClaves controladorPalabrasClaves = new ControladorPalabrasClaves(this.ventana);
     }
 
     public static void main(String[] args) {
 
         ControladorPrincipal cp = new ControladorPrincipal();
+
+    }
+
+    @Override
+    public void btnLugaresClic(ActionEvent evt) {
+
+    }
+
+    @Override
+    public void btnIdiomasClic(ActionEvent evt) {
+
+    }
+
+    @Override
+    public void btnTiposClic(ActionEvent evt) {
+
+    }
+
+    @Override
+    public void btnGruposClic(ActionEvent evt) {
+
+    }
+
+    @Override
+    public void btnPublicacionesClic(ActionEvent evt) {
 
     }
 }
