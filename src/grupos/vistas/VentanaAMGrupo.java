@@ -6,13 +6,15 @@
 package grupos.vistas;
 
 import grupos.modelos.Grupo;
+import interfaces.IControladorAMGrupo;
+
 import java.awt.Dialog;
 import java.util.ArrayList;
-import javax.swing.JDialog;
+import javax.swing.*;
 
 public class VentanaAMGrupo extends JDialog {
-    ArrayList<Grupo> grupos = new ArrayList<>();
-    
+    //ArrayList<Grupo> grupos = new ArrayList<>();
+
     /**
      * Constructor 
      * @param ventanaPadre ventana padre
@@ -37,6 +39,11 @@ public class VentanaAMGrupo extends JDialog {
         btnGuardar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         txtDescripcion = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TablaMiembros = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
+        btnCancelar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Grupos");
@@ -57,6 +64,25 @@ public class VentanaAMGrupo extends JDialog {
 
         jLabel2.setText("Descripción:");
 
+        TablaMiembros.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(TablaMiembros);
+
+        jLabel3.setText("Miembros:");
+
+        btnCancelar.setText("Cancelar");
+
+        btnModificar.setText("Modificar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -70,11 +96,19 @@ public class VentanaAMGrupo extends JDialog {
                             .addComponent(jLabel2))
                         .addGap(43, 43, 43)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
+                            .addComponent(txtDescripcion)
                             .addComponent(txtNombre)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnGuardar)))
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(9, 9, 9)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addComponent(btnModificar))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -88,29 +122,120 @@ public class VentanaAMGrupo extends JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addGap(39, 39, 39)
-                .addComponent(btnGuardar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnModificar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGuardar)
+                    .addComponent(btnCancelar))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarClic(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarClic
-        String nombre = this.txtNombre.getText().trim();
-        String descripcion = this.txtDescripcion.getText().trim();
-        Grupo grupo = new Grupo(nombre, descripcion);        
-        grupos.add(grupo);
-        for(Grupo g : grupos)
-            g.mostrar();
+
     }//GEN-LAST:event_btnGuardarClic
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable TablaMiembros;
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnModificar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtDescripcion;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
+
+
+    //<editor-fold desc="Getter/Setter">
+    public JTable verTablaMiembros() {
+        return TablaMiembros;
+    }
+
+    public void asignarTablaMiembros(JTable tablaMiembros) {
+        TablaMiembros = tablaMiembros;
+    }
+
+    public JButton verBtnCancelar() {
+        return btnCancelar;
+    }
+
+    public void asignarBtnCancelar(JButton btnCancelar) {
+        this.btnCancelar = btnCancelar;
+    }
+
+    public JButton verBtnGuardar() {
+        return btnGuardar;
+    }
+
+    public void asignarBtnGuardar(JButton btnGuardar) {
+        this.btnGuardar = btnGuardar;
+    }
+
+    public JButton verBtnModificar() {
+        return btnModificar;
+    }
+
+    public void asignarBtnModificar(JButton btnModificar) {
+        this.btnModificar = btnModificar;
+    }
+
+    public JLabel verjLabel1() {
+        return jLabel1;
+    }
+
+    public void asignarjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public JLabel verjLabel2() {
+        return jLabel2;
+    }
+
+    public void asignarjLabel2(JLabel jLabel2) {
+        this.jLabel2 = jLabel2;
+    }
+
+    public JLabel verjLabel3() {
+        return jLabel3;
+    }
+
+    public void asignarjLabel3(JLabel jLabel3) {
+        this.jLabel3 = jLabel3;
+    }
+
+    public JScrollPane verjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public void asignarjScrollPane1(JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    public JTextField verTxtDescripcion() {
+        return txtDescripcion;
+    }
+
+    public void asignarTxtDescripcion(JTextField txtDescripcion) {
+        this.txtDescripcion = txtDescripcion;
+    }
+
+    public JTextField verTxtNombre() {
+        return txtNombre;
+    }
+
+    public void asignarTxtNombre(JTextField txtNombre) {
+        this.txtNombre = txtNombre;
+    }
+    //</editor-fold>
 }

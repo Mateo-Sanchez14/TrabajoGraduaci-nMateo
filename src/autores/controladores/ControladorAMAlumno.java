@@ -106,7 +106,7 @@ public class ControladorAMAlumno implements IControladorAMAlumno {
 
     @Override
     public void ventanaObtenerFoco(WindowEvent evt) {
-        
+
     }
 
     private void asignarTxtFields(int dni) {

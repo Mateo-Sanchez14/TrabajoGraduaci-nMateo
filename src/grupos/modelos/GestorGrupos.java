@@ -31,9 +31,7 @@ public class GestorGrupos implements IGestorGrupos {
         if ((nombre == null) || nombre.trim().isEmpty())
             return ERROR_NOMBRE;
         if (this.grupos.contains(unGrupo))
-            return GRUPO_DUPLICADO;
-        if ((descripcion == null) || descripcion.trim().isEmpty())
-            return ERROR_DESCRIPCION;
+            return GRUPOS_DUPLICADOS;
         this.grupos.add(unGrupo);
         return EXITO;
     }
@@ -56,8 +54,6 @@ public class GestorGrupos implements IGestorGrupos {
 
         if ((grupo == null))
             return GRUPO_INEXISTENTE;
-        if ((descripcion == null) || descripcion.trim().isEmpty())
-            return ERROR_DESCRIPCION;
 
         grupo.asignarDescripcion(descripcion);
 
@@ -76,7 +72,7 @@ public class GestorGrupos implements IGestorGrupos {
             return GRUPO_INEXISTENTE;
 
         if (!grupo.verMiembros().isEmpty())
-            return GRUPO_CON_AUTORES;
+            return GRUPO_CON_MIEMBROS;
 
         this.grupos.remove(grupo);
         return EXITO;
@@ -93,5 +89,18 @@ public class GestorGrupos implements IGestorGrupos {
         return gruposEncontrados;
     }
 
+    @Override
+    public String agregarMiembros(Grupo grupo, List<MiembroEnGrupo> miembros) {
+        return null;
+    }
 
+    @Override
+    public String quitarMiembros(Grupo grupo, List<MiembroEnGrupo> miembros) {
+        return null;
+    }
+
+    @Override
+    public String actualizarGrupos() {
+        return null;
+    }
 }

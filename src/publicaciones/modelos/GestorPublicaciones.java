@@ -35,7 +35,7 @@ public class GestorPublicaciones implements IGestorPublicaciones {
         if ((titulo == null) || titulo.trim().isEmpty())
             return ERROR_TITULO;
         if (miembroEnGrupo == null)
-            return ERROR_MIEMBRO;
+            return ERROR_MIEMBRO_EN_GRUPO;
         if (fechaPublicacion == null)
             return ERROR_FECHA;
         if (tipo == null)
@@ -44,8 +44,8 @@ public class GestorPublicaciones implements IGestorPublicaciones {
             return ERROR_IDIOMA;
         if (lugar == null)
             return ERROR_LUGAR;
-        if (palabrasClaves == null) //Consultar si puede ser una arraylist sin elementos
-            return ERROR_PALABRAS;
+        if (palabrasClaves == null)
+            return ERROR_PALABRAS_CLAVES;
         if ((enlace == null) || enlace.trim().isEmpty())
             return ERROR_ENLACE;
         if ((resumen == null) || resumen.trim().isEmpty())
@@ -53,7 +53,7 @@ public class GestorPublicaciones implements IGestorPublicaciones {
         Publicacion unaPublicacion = new Publicacion(titulo, miembroEnGrupo, fechaPublicacion, tipo,
                 idioma, lugar, palabrasClaves, enlace, resumen);
         if (publicaciones.contains(unaPublicacion))
-            return PUBLICACION_DUPLICADA;
+            return PUBLICACIONES_DUPLICADAS;
         publicaciones.add(unaPublicacion);
         return EXITO;
     }
@@ -62,7 +62,7 @@ public class GestorPublicaciones implements IGestorPublicaciones {
                                        LocalDate fechaPublicacion, Tipo tipo, Idioma idioma, Lugar lugar,
                                        List<PalabraClave> palabrasClaves, String enlace, String resumen) {
         if (miembroEnGrupo == null)
-            return ERROR_MIEMBRO;
+            return ERROR_MIEMBRO_EN_GRUPO;
         if (fechaPublicacion == null)
             return ERROR_FECHA;
         if (tipo == null)
@@ -72,7 +72,7 @@ public class GestorPublicaciones implements IGestorPublicaciones {
         if (lugar == null)
             return ERROR_LUGAR;
         if (palabrasClaves == null) //Consultar si puede ser una arraylist sin elementos
-            return ERROR_PALABRAS;
+            return ERROR_PALABRAS_CLAVES;
         if ((enlace == null) || enlace.trim().isEmpty())
             return ERROR_ENLACE;
         if ((resumen == null) || resumen.trim().isEmpty())
