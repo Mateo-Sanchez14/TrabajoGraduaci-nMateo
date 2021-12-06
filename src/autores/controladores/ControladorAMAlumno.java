@@ -57,7 +57,7 @@ public class ControladorAMAlumno implements IControladorAMAlumno {
         } else {
             mensaje = gestorAutores.modificarAutor(gestorAutores.verAutor(dni), apellidos, nombres, cx, clave, claveRepetida);
         }
-        if (mensaje.equals("Autor creado/borrado con éxito")) {
+        if (mensaje.equals(IGestorAutores.EXITO)) {
             JOptionPane.showConfirmDialog(ventana, mensaje, "Información", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
             this.ventana.dispose();
         } else {

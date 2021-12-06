@@ -15,6 +15,7 @@ public interface IControladorGrupos {
     public static final String CONFIRMACION = "¿Desea borrar el grupo?";
     public static final String TOOL_TIP_TEXT_SUPER_ADMINISTRADOR = "Todos los grupos definidos";
     public static final String TOOL_TIP_TEXT_AUTOR = "Sólo los grupos del autor";
+    public static final String GRUPO_NO_SELECCIONADO = "Por favor, seleccione un grupo";
     
     /**
      * Acción a ejecutar cuando se selecciona el botón Nuevo

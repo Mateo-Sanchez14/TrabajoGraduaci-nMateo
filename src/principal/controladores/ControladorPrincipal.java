@@ -2,9 +2,9 @@ package principal.controladores;
 
 //import autores.controladores.ControladorAutores;
 //import interfaces.IControladorAutores;
-import interfaces.IControladorAPalabraClave;
-import interfaces.IControladorPalabrasClaves;
-import interfaces.IControladorPrincipal;
+import autores.controladores.ControladorAutores;
+import grupos.controladores.ControladorGrupos;
+import interfaces.*;
 import palabrasclaves.controladores.ControladorPalabrasClaves;
 import principal.vistas.VentanaPrincipal;
 
@@ -29,9 +29,15 @@ public class ControladorPrincipal implements IControladorPrincipal {
         return controlador;
     }
 
+    public static void main(String[] args) {
+
+        ControladorPrincipal cp = new ControladorPrincipal();
+
+    }
+
     @Override
     public void btnAutoresClic(ActionEvent evt) {
-        //IControladorAutores controladorAutores = new ControladorAutores(this.ventana);
+        IControladorAutores controladorAutores = new ControladorAutores(this.ventana);
     }
 
     @Override
@@ -47,11 +53,6 @@ public class ControladorPrincipal implements IControladorPrincipal {
         IControladorPalabrasClaves controladorPalabrasClaves = new ControladorPalabrasClaves(this.ventana);
     }
 
-    public static void main(String[] args) {
-
-        ControladorPrincipal cp = new ControladorPrincipal();
-
-    }
 
     @Override
     public void btnLugaresClic(ActionEvent evt) {
@@ -70,7 +71,7 @@ public class ControladorPrincipal implements IControladorPrincipal {
 
     @Override
     public void btnGruposClic(ActionEvent evt) {
-
+        IControladorGrupos controladorGrupos = new ControladorGrupos(this.ventana);
     }
 
     @Override
