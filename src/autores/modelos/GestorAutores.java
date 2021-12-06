@@ -2,6 +2,7 @@ package autores.modelos;
 
 import grupos.modelos.GestorGrupos;
 import grupos.modelos.Grupo;
+import grupos.modelos.MiembroEnGrupo;
 import interfaces.IGestorAutores;
 import interfaces.IGestorPublicaciones;
 import publicaciones.modelos.GestorPublicaciones;
@@ -13,6 +14,7 @@ import java.util.List;
 
 public class GestorAutores implements IGestorAutores {
     ArrayList<Autor> autores = new ArrayList<>();
+
 
     private static GestorAutores gestor;
 
@@ -30,17 +32,17 @@ public class GestorAutores implements IGestorAutores {
         if ((dni <= 0))
             return ERROR_DNI;
         if ((apellidos == null) || apellidos.trim().isEmpty())
-            return ERROR_APELLIDO;
+            return ERROR_APELLIDOS;
         if ((nombres == null) || nombres.trim().isEmpty())
-            return ERROR_NOMBRE;
+            return ERROR_NOMBRES;
         if ((cargo == null))
             return ERROR_CARGO;
         if (!clave.equals(claveRepetida) || clave == null || clave.trim().isEmpty())
-            return ERROR_CLAVE;
+            return ERROR_CLAVES;
 
         Autor unProfesor = new Profesor(dni, apellidos, nombres, clave, cargo);
         if (autores.contains(unProfesor)){
-            return AUTOR_DUPLICADO;
+            return PROFESORES_DUPLICADOS;
         }
 
         this.autores.add(unProfesor);
@@ -50,30 +52,30 @@ public class GestorAutores implements IGestorAutores {
         if ((dni <= 0))
             return ERROR_DNI;
         if ((apellidos == null) || apellidos.trim().isEmpty())
-            return ERROR_APELLIDO;
+            return ERROR_APELLIDOS;
         if ((nombres == null) || nombres.trim().isEmpty())
-            return ERROR_NOMBRE;
+            return ERROR_NOMBRES;
         if ((cx == null))
             return ERROR_CX;
         if (!clave.equals(claveRepetida) || clave == null || clave.trim().isEmpty())
-            return ERROR_CLAVE;
+            return ERROR_CLAVES;
 
         Autor unAlumno = new Alumno(dni, apellidos, nombres, clave, cx);
         if (autores.contains(unAlumno)){
-            return AUTOR_DUPLICADO;
+            return ALUMNOS_DUPLICADOS;
         }
         this.autores.add(unAlumno);
         return EXITO;
     }
     public String modificarAutor(Autor autor, String apellidos, String nombres, Cargo cargo, String clave, String claveRepetida){
         if ((apellidos == null) || apellidos.trim().isEmpty())
-            return ERROR_APELLIDO;
+            return ERROR_APELLIDOS;
         if ((nombres == null) || nombres.trim().isEmpty())
-            return ERROR_NOMBRE;
+            return ERROR_NOMBRES;
         if ((cargo == null))
             return ERROR_CARGO;
         if (!clave.equals(claveRepetida) || clave == null || clave.trim().isEmpty())
-            return ERROR_CLAVE;
+            return ERROR_CLAVES;
         if (autor == null)
             return AUTOR_INEXISTENTE;
         Profesor profesor = (Profesor) autor;
@@ -89,13 +91,13 @@ public class GestorAutores implements IGestorAutores {
     }
     public String modificarAutor(Autor autor, String apellidos, String nombres, String cx, String clave, String claveRepetida){
         if ((apellidos == null) || apellidos.trim().isEmpty())
-            return ERROR_APELLIDO;
+            return ERROR_APELLIDOS;
         if ((nombres == null) || nombres.trim().isEmpty())
-            return ERROR_NOMBRE;
+            return ERROR_NOMBRES;
         if ((cx == null) || tieneMismoCx(cx, autor.verDni()))
             return ERROR_CX;
         if (!clave.equals(claveRepetida) || clave == null || clave.trim().isEmpty())
-            return ERROR_CLAVE;
+            return ERROR_CLAVES;
         if (autor == null)
             return AUTOR_INEXISTENTE;
 
@@ -148,7 +150,7 @@ public class GestorAutores implements IGestorAutores {
         }
         IGestorPublicaciones gestorPublicaciones = GestorPublicaciones.instanciar();
         if (gestorPublicaciones.hayPublicacionesConEsteAutor(autor))
-            return AUTOR_CON_PUBLICACION;
+            return PUBLICACION_CON_AUTOR;
 
         autores.remove(autor);
 
@@ -192,5 +194,15 @@ public class GestorAutores implements IGestorAutores {
                 return true;
         }
         return false;
+    }
+
+    @Override
+    public String agregarGrupos(Autor autor, List<MiembroEnGrupo> grupos) {
+        return null;
+    }
+
+    @Override
+    public String quitarGrupos(Autor autor, List<MiembroEnGrupo> grupos) {
+        return null;
     }
 }
