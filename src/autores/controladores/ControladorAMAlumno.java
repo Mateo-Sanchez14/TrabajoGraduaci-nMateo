@@ -4,6 +4,7 @@ import autores.modelos.Alumno;
 import autores.modelos.Autor;
 import autores.modelos.GestorAutores;
 import autores.vistas.VentanaAMAlumno;
+import grupos.modelos.ModeloTablaMiembros;
 import interfaces.IControladorAMAlumno;
 import interfaces.IGestorAutores;
 
@@ -34,6 +35,10 @@ public class ControladorAMAlumno implements IControladorAMAlumno {
 
         this.asignarTxtFields(dni);
         this.dni = dni;
+
+        this.ventana.verTablaMiembro().setModel(new ModeloTablaMiembros());
+        this.ventana.verTablaMiembro().getTableHeader().setReorderingAllowed(false);
+        this.ventana.verTablaMiembro().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         this.ventana.setLocationRelativeTo(null);
         this.ventana.setVisible(true);

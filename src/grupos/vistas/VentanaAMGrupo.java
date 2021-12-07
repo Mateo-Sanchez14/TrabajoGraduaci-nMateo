@@ -5,23 +5,27 @@
  */
 package grupos.vistas;
 
+import grupos.controladores.ControladorAMGrupo;
+import grupos.controladores.ControladorGrupos;
 import grupos.modelos.Grupo;
 import interfaces.IControladorAMGrupo;
+import interfaces.IControladorGrupos;
 
 import java.awt.Dialog;
 import java.util.ArrayList;
 import javax.swing.*;
 
 public class VentanaAMGrupo extends JDialog {
-    //ArrayList<Grupo> grupos = new ArrayList<>();
+    private VentanaAMGrupo ventana;
+    private static IControladorAMGrupo controlador;
 
     /**
-     * Constructor 
-     * @param ventanaPadre ventana padre
-     */        
-    public VentanaAMGrupo(Dialog ventanaPadre) {
-        super(ventanaPadre, true);
+     * Constructor
+     */
+    public VentanaAMGrupo(IControladorAMGrupo controlador, java.awt.Dialog parent, boolean modal) {
+        super(parent, modal);
         initComponents();
+        this.controlador = controlador;
     }
         
            
@@ -52,6 +56,11 @@ public class VentanaAMGrupo extends JDialog {
         jLabel1.setText("Nombre:");
 
         txtNombre.setToolTipText("Nombre del nivel");
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
+        });
 
         btnGuardar.setMnemonic('G');
         btnGuardar.setText("Guardar");
@@ -63,6 +72,12 @@ public class VentanaAMGrupo extends JDialog {
         });
 
         jLabel2.setText("Descripción:");
+
+        txtDescripcion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDescripcionKeyTyped(evt);
+            }
+        });
 
         TablaMiembros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -80,8 +95,18 @@ public class VentanaAMGrupo extends JDialog {
         jLabel3.setText("Miembros:");
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -139,8 +164,24 @@ public class VentanaAMGrupo extends JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarClic(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarClic
-
+        controlador.btnGuardarClic(evt);
     }//GEN-LAST:event_btnGuardarClic
+
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        controlador.txtNombrePresionarTecla(evt);
+    }//GEN-LAST:event_txtNombreKeyTyped
+
+    private void txtDescripcionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescripcionKeyTyped
+        controlador.txtDescripcionPresionarTecla(evt);
+    }//GEN-LAST:event_txtDescripcionKeyTyped
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        controlador.btnModificarMiembrosClic(evt);
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        controlador.btnCancelarClic(evt);
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

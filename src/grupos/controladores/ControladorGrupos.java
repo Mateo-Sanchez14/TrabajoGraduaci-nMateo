@@ -1,15 +1,12 @@
 package grupos.controladores;
 
-import autores.controladores.ControladorAutores;
-import autores.modelos.*;
-import autores.vistas.VentanaAutores;
+
 import grupos.modelos.GestorGrupos;
 import grupos.modelos.Grupo;
 import grupos.modelos.ModeloTablaGrupos;
 import grupos.vistas.VentanaGrupos;
-import interfaces.IControladorAutores;
+import interfaces.IControladorAMGrupo;
 import interfaces.IControladorGrupos;
-import interfaces.IGestorAutores;
 import interfaces.IGestorGrupos;
 
 import javax.swing.*;
@@ -38,7 +35,11 @@ public class ControladorGrupos implements IControladorGrupos {
 
     @Override
     public void btnNuevoClic(ActionEvent evt) {
-        //ControladorAMGrupos instanciar
+        IControladorAMGrupo controladorAMGrupo = new ControladorAMGrupo(this.ventana);
+
+        IGestorGrupos gestor = GestorGrupos.instanciar();
+        ModeloTablaGrupos modeloTablaGrupos = (ModeloTablaGrupos) this.ventana.verTablaGrupos().getModel();
+        modeloTablaGrupos.refrescarTabla(gestor.verGrupos());
     }
 
     @Override
