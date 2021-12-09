@@ -6,6 +6,7 @@ import grupos.modelos.ModeloTablaMiembros;
 import grupos.vistas.VentanaAMGrupo;
 import grupos.vistas.VentanaGrupos;
 import interfaces.IControladorAMGrupo;
+import interfaces.IControladorModificarMiembros;
 import interfaces.IGestorAutores;
 import interfaces.IGestorGrupos;
 
@@ -63,7 +64,7 @@ public class ControladorAMGrupo implements IControladorAMGrupo {
 
     @Override
     public void btnModificarMiembrosClic(ActionEvent evt) {
-
+        IControladorModificarMiembros controladorModificarMiembros = new ControladorModificarMiembros(this.ventana);
     }
 
     @Override

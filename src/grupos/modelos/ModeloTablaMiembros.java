@@ -1,5 +1,7 @@
 package grupos.modelos;
 
+import autores.modelos.Autor;
+
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,5 +50,10 @@ public class ModeloTablaMiembros extends AbstractTableModel {
     public void refrescarTabla(List<MiembroEnGrupo> miembros) {
         this.miembros = miembros;
         this.fireTableDataChanged();
+    }
+
+    public Autor verAutor(int fila) {
+        return this.miembros.get(fila).verAutor();
+
     }
 }

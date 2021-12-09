@@ -24,6 +24,10 @@ public class ControladorAMAlumno implements IControladorAMAlumno {
         this.modo = false;
         this.ventana.setTitle(TITULO_NUEVO);
 
+        this.ventana.verTablaMiembro().setModel(new ModeloTablaMiembros());
+        this.ventana.verTablaMiembro().getTableHeader().setReorderingAllowed(false);
+        this.ventana.verTablaMiembro().setEnabled(false);
+
         this.ventana.setLocationRelativeTo(null);
         this.ventana.setVisible(true);
     }

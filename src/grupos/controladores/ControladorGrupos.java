@@ -6,6 +6,7 @@ import grupos.modelos.Grupo;
 import grupos.modelos.ModeloTablaGrupos;
 import grupos.vistas.VentanaGrupos;
 import interfaces.IControladorAMGrupo;
+import interfaces.IControladorAutores;
 import interfaces.IControladorGrupos;
 import interfaces.IGestorGrupos;
 
@@ -44,7 +45,12 @@ public class ControladorGrupos implements IControladorGrupos {
 
     @Override
     public void btnModificarClic(ActionEvent evt) {
-        //ControladorAMGrupos instanciar
+        if (this.ventana.verTablaGrupos().getSelectedRow() == -1) {
+            JOptionPane.showConfirmDialog(ventana, IControladorGrupos.GRUPO_NO_SELECCIONADO, "Advertencia", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE);
+        } else {
+            String nombreAux = (String) this.ventana.verTablaGrupos().getValueAt(this.ventana.verTablaGrupos().getSelectedRow(), 0);
+            IControladorAMGrupo controladorAMGrupo = new ControladorAMGrupo(this.ventana);
+        }
     }
 
     @Override
