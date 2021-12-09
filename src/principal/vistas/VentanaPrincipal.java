@@ -86,6 +86,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
 
         btnPublicaciones.setText("Publicaciones");
+        btnPublicaciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPublicacionesActionPerformed(evt);
+            }
+        });
 
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -166,6 +171,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void btnGruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGruposActionPerformed
         this.controlador.btnGruposClic(evt);
     }//GEN-LAST:event_btnGruposActionPerformed
+
+    private void btnPublicacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPublicacionesActionPerformed
+        this.controlador.btnPublicacionesClic(evt);
+    }//GEN-LAST:event_btnPublicacionesActionPerformed
 
     /**
      * @param args the command line arguments

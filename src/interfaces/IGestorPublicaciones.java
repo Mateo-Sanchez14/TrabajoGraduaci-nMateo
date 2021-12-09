@@ -164,4 +164,6 @@ public interface IGestorPublicaciones {
      * @return List<Publicacion>  - lista de publicaciones ordenadas por título
     */                                                                           
     public List<Publicacion> verPublicaciones(); 
+
+    public Publicacion verPublicacion(String titulo);
 }

@@ -10,6 +10,7 @@ import principal.vistas.VentanaPrincipal;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import publicaciones.controladores.ControladorPublicaciones;
 
 public class ControladorPrincipal implements IControladorPrincipal {
     private VentanaPrincipal ventana;
@@ -76,6 +77,9 @@ public class ControladorPrincipal implements IControladorPrincipal {
 
     @Override
     public void btnPublicacionesClic(ActionEvent evt) {
-
+        IControladorPublicaciones controladorPublicaciones = new ControladorPublicaciones(this.ventana);
     }
+    
+    
+    
 }

@@ -5,6 +5,7 @@ import grupos.modelos.MiembroEnGrupo;
 import grupos.modelos.Rol;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public abstract class Autor implements Comparable<Autor> {
@@ -12,7 +13,7 @@ public abstract class Autor implements Comparable<Autor> {
     private String apellidos;
     private String nombres;
     private String clave;
-    private ArrayList<MiembroEnGrupo> gruposAutor = new ArrayList<>();
+    private List<MiembroEnGrupo> gruposAutor = new ArrayList<>();
 
     public Autor(int dni, String apellidos, String nombres, String clave) {
         this.dni = dni;
@@ -55,7 +56,7 @@ public abstract class Autor implements Comparable<Autor> {
         this.clave = clave;
     }
 
-    public ArrayList<MiembroEnGrupo> verGrupo() {
+    public List<MiembroEnGrupo> verGrupo() {
         return gruposAutor;
     }
 
