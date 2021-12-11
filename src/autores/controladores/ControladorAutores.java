@@ -84,7 +84,6 @@ public class ControladorAutores implements IControladorAutores {
             IGestorAutores gestor = GestorAutores.instanciar();
 
             //Refresco la tabla luego de añadir un nuevo Profesor
-
             ModeloTablaAlumnos modeloTablaAlumnos = (ModeloTablaAlumnos) this.ventana.verTablaAlumnos().getModel();
             modeloTablaAlumnos.refrescarTabla(gestor.verAlumnos());
         }
@@ -214,7 +213,7 @@ public class ControladorAutores implements IControladorAutores {
         }
     }
 
-    public void refrescarBotones() {
+    private void refrescarBotones() {
         IGestorAutores gestor = GestorAutores.instanciar();
         if (gestor.verAlumnos().isEmpty()) {
             this.ventana.verBtnModificarAlumno().setEnabled(false);

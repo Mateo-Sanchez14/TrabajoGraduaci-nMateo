@@ -55,4 +55,9 @@ public class MiembroEnGrupo {
     public int hashCode() {
         return Objects.hash(autor);
     }
+
+    @Override
+    public String toString() {
+        return verGrupo().toString();
+    }
 }

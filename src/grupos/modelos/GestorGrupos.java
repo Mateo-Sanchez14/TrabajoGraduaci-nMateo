@@ -91,12 +91,25 @@ public class GestorGrupos implements IGestorGrupos {
 
     @Override
     public String agregarMiembros(Grupo grupo, List<MiembroEnGrupo> miembros) {
-        return null;
+        for (MiembroEnGrupo miembroAux : miembros) {
+            if (miembroAux.verRol() == null || miembroAux.verAutor() == null) {
+                return IGestorGrupos.AUTOR_INVALIDO;
+            }
+            grupo.agregarMiembro(miembroAux.verAutor(), miembroAux.verRol());
+        }
+        return IGestorGrupos.EXITO_MIEMBROS;
     }
 
     @Override
     public String quitarMiembros(Grupo grupo, List<MiembroEnGrupo> miembros) {
-        return null;
+        IGestorPublicaciones gestorP = GestorPublicaciones.instanciar();
+        for (MiembroEnGrupo miembroAux : miembros) {
+            if (gestorP.hayPublicacionesConEsteAutor(miembroAux.verAutor())) {
+                return GRUPO_CON_PUBLICACIÓN;
+            }
+            grupo.quitarMiembro(miembroAux.verAutor());
+        }
+        return IGestorGrupos.EXITO_MIEMBROS;
     }
 
     @Override

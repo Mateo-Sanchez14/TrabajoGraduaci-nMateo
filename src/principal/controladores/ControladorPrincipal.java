@@ -3,14 +3,19 @@ package principal.controladores;
 //import autores.controladores.ControladorAutores;
 //import interfaces.IControladorAutores;
 import autores.controladores.ControladorAutores;
+import autores.modelos.GestorAutores;
 import grupos.controladores.ControladorGrupos;
+import grupos.modelos.GestorGrupos;
+import idiomas.modelos.GestorIdiomas;
 import interfaces.*;
+import lugares.modelos.GestorLugares;
 import palabrasclaves.controladores.ControladorPalabrasClaves;
 import principal.vistas.VentanaPrincipal;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import publicaciones.controladores.ControladorPublicaciones;
+import tipos.modelos.GestorTipos;
 
 public class ControladorPrincipal implements IControladorPrincipal {
     private VentanaPrincipal ventana;
@@ -31,7 +36,17 @@ public class ControladorPrincipal implements IControladorPrincipal {
     }
 
     public static void main(String[] args) {
+        IGestorAutores ga = GestorAutores.instanciar();
+        IGestorGrupos gg  = GestorGrupos.instanciar();
+        IGestorTipos gt = GestorTipos.instanciar();
+        IGestorLugares gl = GestorLugares.instanciar();
+        IGestorIdiomas gi = GestorIdiomas.instanciar();
 
+        ga.nuevoAutor(1,"Sanchez","Mateo","1","asd","asd");
+        gg.nuevoGrupo("Grupo 1","Descripción 1");
+        gt.nuevoTipo("Tipo 1");
+        gl.nuevoLugar("Lugar 1");
+        gi.nuevoIdioma("Español");
         ControladorPrincipal cp = new ControladorPrincipal();
 
     }

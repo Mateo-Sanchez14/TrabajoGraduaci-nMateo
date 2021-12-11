@@ -1,5 +1,6 @@
 package grupos.controladores;
 
+import autores.modelos.ModeloTablaAlumnos;
 import grupos.modelos.GestorGrupos;
 import grupos.modelos.ModeloTablaGrupos;
 import grupos.modelos.ModeloTablaMiembros;
@@ -18,6 +19,7 @@ import java.awt.event.WindowEvent;
 public class ControladorAMGrupo implements IControladorAMGrupo {
     private VentanaAMGrupo ventana;
     private static IControladorAMGrupo controlador;
+    private String nombreGrupo = null;
 
     public ControladorAMGrupo (java.awt.Dialog ventanaPadre) {
         this.ventana = new VentanaAMGrupo(this, ventanaPadre, true);
@@ -35,6 +37,27 @@ public class ControladorAMGrupo implements IControladorAMGrupo {
 
 
     }
+    public ControladorAMGrupo (java.awt.Dialog ventanaPadre, String nombreGrupo) {
+        this.ventana = new VentanaAMGrupo(this, ventanaPadre, true);
+        this.ventana.setLocationRelativeTo(null);
+
+        //Iniciar tabla
+        this.ventana.verTablaMiembros().setModel(new ModeloTablaMiembros(nombreGrupo));
+        this.ventana.verTablaMiembros().getTableHeader().setReorderingAllowed(false);
+        this.ventana.verTablaMiembros().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+        IGestorGrupos gestorGrupos = GestorGrupos.instanciar();
+        this.nombreGrupo = nombreGrupo;
+        this.ventana.verTxtNombre().setText(nombreGrupo);
+        this.ventana.verTxtNombre().setEnabled(false);
+        this.ventana.verTxtDescripcion().setText(gestorGrupos.verGrupo(nombreGrupo).verDescripcion());
+
+        this.ventana.setTitle(TITULO_NUEVO);
+        //this.refrescarBotones();
+        this.ventana.setVisible(true);
+
+
+    }
 
     @Override
     public void btnGuardarClic(ActionEvent evt) {
@@ -44,7 +67,11 @@ public class ControladorAMGrupo implements IControladorAMGrupo {
         IGestorGrupos gestorGrupos = GestorGrupos.instanciar();
         String mensaje;
 
-        mensaje = gestorGrupos.nuevoGrupo(nombre,descripcion);
+        if (nombreGrupo == null) {
+            mensaje = gestorGrupos.nuevoGrupo(nombre, descripcion);
+        } else {
+            mensaje = gestorGrupos.modificarGrupo(gestorGrupos.verGrupo(nombreGrupo),descripcion);
+        }
 
         if (mensaje.equals(IGestorGrupos.EXITO)) {
             JOptionPane.showConfirmDialog(ventana, mensaje, "Información", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
@@ -64,7 +91,12 @@ public class ControladorAMGrupo implements IControladorAMGrupo {
 
     @Override
     public void btnModificarMiembrosClic(ActionEvent evt) {
-        IControladorModificarMiembros controladorModificarMiembros = new ControladorModificarMiembros(this.ventana);
+        IControladorModificarMiembros controladorModificarMiembros = new ControladorModificarMiembros(this.ventana,nombreGrupo);
+
+        //Refresco la tabla
+        IGestorGrupos gg = GestorGrupos.instanciar();
+        ModeloTablaMiembros modeloTablaMiembros = (ModeloTablaMiembros) this.ventana.verTablaMiembros().getModel();
+        modeloTablaMiembros.refrescarTabla(gg.verGrupo(nombreGrupo).verMiembros());
     }
 
     @Override

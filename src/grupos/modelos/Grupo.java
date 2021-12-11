@@ -112,4 +112,8 @@ public class Grupo implements Comparable<Grupo>{
         return this.nombre.compareToIgnoreCase(o.verNombre());
     }
 
+    @Override
+    public String toString() {
+        return nombre;
+    }
 }

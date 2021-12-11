@@ -16,10 +16,7 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-/**
- *
- * @author Pichi
- */
+
 public class VentanaAMPublicaciones extends javax.swing.JDialog {
 
   private IControladorAMPublicacion controlador;

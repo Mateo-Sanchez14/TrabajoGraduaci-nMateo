@@ -2,9 +2,7 @@ package grupos.controladores;
 
 import autores.modelos.Autor;
 import autores.modelos.GestorAutores;
-import autores.modelos.ModeloTablaProfesores;
 import grupos.modelos.*;
-import grupos.vistas.VentanaGrupos;
 import grupos.vistas.VentanaModificarMiembros;
 import interfaces.IControladorModificarMiembros;
 import interfaces.IGestorAutores;
@@ -20,18 +18,16 @@ public class ControladorModificarMiembros implements IControladorModificarMiembr
     private VentanaModificarMiembros ventana;
     private ControladorModificarMiembros controlador;
 
-    public ControladorModificarMiembros (javax.swing.JDialog ventanaPadre) {
+    public ControladorModificarMiembros (javax.swing.JDialog ventanaPadre, String nombreGrupo) {
         this.ventana = new VentanaModificarMiembros(this, ventanaPadre, true);
         this.ventana.setLocationRelativeTo(null);
 
         //Iniciar tabla
-        this.ventana.verTablaMiembros().setModel(new ModeloTablaMiembrosYAutores());
-        this.ventana.verTablaMiembros().getTableHeader().setReorderingAllowed(false);
-        this.ventana.verTablaMiembros().setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        this.IniciarTabla();
 
         //this.seleccionarMiembros();
 
-        this.ventana.setTitle(TITULO);
+        this.ventana.setTitle(nombreGrupo);
         //this.refrescarBotones();
         this.ventana.setVisible(true);
     }
@@ -56,14 +52,14 @@ public class ControladorModificarMiembros implements IControladorModificarMiembr
             String mensajeAgregar = this.agregarMiembrosSeleccionados();
             String mensajeQuitar = this.quitarMiembrosNoSeleccionados();
             if (mensajeAgregar.equals(IGestorGrupos.EXITO_MIEMBROS) && mensajeQuitar.equals(IGestorGrupos.EXITO_MIEMBROS)) {
-                JOptionPane.showMessageDialog(this.ventana, mensajeQuitar, "Notificacion", 1);
+                JOptionPane.showMessageDialog(this.ventana, mensajeAgregar, "Notificación", 1);
                 this.ventana.dispose();
             } else if (mensajeAgregar.equals(IGestorGrupos.EXITO_MIEMBROS) && !mensajeQuitar.equals(IGestorGrupos.EXITO_MIEMBROS)) {
-                JOptionPane.showMessageDialog(this.ventana, mensajeQuitar, "Notificacion", 1);
+                JOptionPane.showMessageDialog(this.ventana, mensajeQuitar, "Notificación", 1);
             } else if (!mensajeAgregar.equals(IGestorGrupos.EXITO_MIEMBROS) && mensajeQuitar.equals(IGestorGrupos.EXITO_MIEMBROS)) {
-                JOptionPane.showMessageDialog(this.ventana, mensajeAgregar, "Notificacion", 1);
+                JOptionPane.showMessageDialog(this.ventana, mensajeAgregar, "Notificación", 1);
             } else if (!mensajeAgregar.equals(IGestorGrupos.EXITO_MIEMBROS) && !mensajeQuitar.equals(IGestorGrupos.EXITO_MIEMBROS)) {
-                JOptionPane.showMessageDialog(this.ventana, mensajeAgregar + " y " + mensajeQuitar, "Notificacion", 1);
+                JOptionPane.showMessageDialog(this.ventana, mensajeAgregar + " y " + mensajeQuitar, "Notificación", 1);
             }
         }
 
@@ -81,11 +77,11 @@ public class ControladorModificarMiembros implements IControladorModificarMiembr
         IGestorGrupos gestorG = GestorGrupos.instanciar();
         List<MiembroEnGrupo> listaParaQuitar = new ArrayList<>();
         List<Integer> NoSeleccionados = new ArrayList<>();
-        ModeloTablaMiembros mt = (ModeloTablaMiembros) this.ventana.verTablaMiembros().getModel();
+        ModeloTablaMiembrosYAutores modeloTablaMiembrosYAutores = (ModeloTablaMiembrosYAutores) this.ventana.verTablaMiembros().getModel();
 
         List<MiembroEnGrupo> listaMiembrosAux=gestorG.verGrupo(this.ventana.getTitle()).verMiembros();
 
-        for (int fila = 0; fila < mt.getRowCount(); fila++) {
+        for (int fila = 0; fila < modeloTablaMiembrosYAutores.getRowCount(); fila++) {
             if (!this.ventana.verTablaMiembros().isRowSelected(fila) && listaMiembrosAux.contains(new MiembroEnGrupo((Autor) this.ventana.verTablaMiembros().getValueAt(fila, 0), gestorG.verGrupo(this.ventana.getTitle()), (Rol) this.ventana.verTablaMiembros().getValueAt(fila, 1)))) {
                 NoSeleccionados.add(fila);
             }
@@ -101,25 +97,25 @@ public class ControladorModificarMiembros implements IControladorModificarMiembr
     }
 
     private String agregarMiembrosSeleccionados() {
-        IGestorGrupos gestorG = GestorGrupos.instanciar();
+        IGestorGrupos gestorGrupos = GestorGrupos.instanciar();
         List<MiembroEnGrupo> listaParaAgregar = new ArrayList<>();
 
         int[] seleccionados = this.ventana.verTablaMiembros().getSelectedRows();
 
         for (int fila : seleccionados) {
-            MiembroEnGrupo miembroAux = new MiembroEnGrupo((Autor) this.ventana.verTablaMiembros().getValueAt(fila, 0), gestorG.verGrupo(this.ventana.getTitle()), (Rol) this.ventana.verTablaMiembros().getValueAt(fila, 1));
-            if(gestorG.verGrupo(this.ventana.getTitle()).verMiembros().contains(miembroAux)){
-                int posicionMiembros=gestorG.verGrupo(this.ventana.getTitle()).verMiembros().indexOf(miembroAux);
-                gestorG.verGrupo(this.ventana.getTitle()).verMiembros().get(posicionMiembros).asignarRol(miembroAux.verRol());
-                int posicionGrupo=gestorG.verGrupo(this.ventana.getTitle()).verMiembros().get(posicionMiembros).verAutor().verGrupo().indexOf(miembroAux);
-                gestorG.verGrupo(this.ventana.getTitle()).verMiembros().get(posicionMiembros).verAutor().verGrupo().get(posicionGrupo).asignarRol(miembroAux.verRol());
+            MiembroEnGrupo miembroAux = new MiembroEnGrupo((Autor) this.ventana.verTablaMiembros().getValueAt(fila, 0), gestorGrupos.verGrupo(this.ventana.getTitle()), (Rol) this.ventana.verTablaMiembros().getValueAt(fila, 1));
+            if(gestorGrupos.verGrupo(this.ventana.getTitle()).verMiembros().contains(miembroAux)){
+                int posicionMiembros=gestorGrupos.verGrupo(this.ventana.getTitle()).verMiembros().indexOf(miembroAux);
+                gestorGrupos.verGrupo(this.ventana.getTitle()).verMiembros().get(posicionMiembros).asignarRol(miembroAux.verRol());
+                int posicionGrupo=gestorGrupos.verGrupo(this.ventana.getTitle()).verMiembros().get(posicionMiembros).verAutor().verGrupo().indexOf(miembroAux);
+                gestorGrupos.verGrupo(this.ventana.getTitle()).verMiembros().get(posicionMiembros).verAutor().verGrupo().get(posicionGrupo).asignarRol(miembroAux.verRol());
             }
 
             listaParaAgregar.add(miembroAux);
         }
         if (seleccionados.length != 0) {
-            Grupo grupoAux = gestorG.verGrupo(this.ventana.getTitle());
-            return gestorG.agregarMiembros(grupoAux, listaParaAgregar);
+            Grupo grupoAux = gestorGrupos.verGrupo(this.ventana.getTitle());
+            return gestorGrupos.agregarMiembros(grupoAux, listaParaAgregar);
         }
         return IGestorGrupos.EXITO_MIEMBROS;
     }
@@ -139,12 +135,12 @@ public class ControladorModificarMiembros implements IControladorModificarMiembr
             }
         }
     }
-    private void ConfigurarTabla() {
+    private void IniciarTabla() {
         this.ventana.verTablaMiembros().setModel(new ModeloTablaMiembrosYAutores());
         this.ventana.verTablaMiembros().getTableHeader().setReorderingAllowed(false);
         this.ventana.verTablaMiembros().setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-        //JComboBox comboRol = new JComboBox();
-        //comboRol.setModel(new ModeloComboBoxRol());
-        //this.ventana.getTablaMMiembrosGrupo().getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(comboRol));
+        JComboBox comboRol = new JComboBox();
+        comboRol.setModel(new ModeloComboRol());
+        this.ventana.verTablaMiembros().getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(comboRol));
     }
 }

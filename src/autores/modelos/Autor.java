@@ -143,4 +143,9 @@ public abstract class Autor implements Comparable<Autor> {
             return this.apellidos.compareToIgnoreCase(o.apellidos);
         }
     }
+
+    @Override
+    public String toString() {
+        return apellidos + ", " + nombres;
+    }
 }

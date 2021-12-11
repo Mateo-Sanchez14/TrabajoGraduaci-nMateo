@@ -1,14 +1,12 @@
 package grupos.controladores;
 
 
+import autores.modelos.GestorAutores;
 import grupos.modelos.GestorGrupos;
 import grupos.modelos.Grupo;
 import grupos.modelos.ModeloTablaGrupos;
 import grupos.vistas.VentanaGrupos;
-import interfaces.IControladorAMGrupo;
-import interfaces.IControladorAutores;
-import interfaces.IControladorGrupos;
-import interfaces.IGestorGrupos;
+import interfaces.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -30,7 +28,7 @@ public class ControladorGrupos implements IControladorGrupos {
         this.ventana.verTablaGrupos().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         this.ventana.setTitle(TITULO);
-        //this.refrescarBotones();
+        this.refrescarBotones();
         this.ventana.setVisible(true);
     }
 
@@ -41,6 +39,7 @@ public class ControladorGrupos implements IControladorGrupos {
         IGestorGrupos gestor = GestorGrupos.instanciar();
         ModeloTablaGrupos modeloTablaGrupos = (ModeloTablaGrupos) this.ventana.verTablaGrupos().getModel();
         modeloTablaGrupos.refrescarTabla(gestor.verGrupos());
+        this.refrescarBotones();
     }
 
     @Override
@@ -49,7 +48,7 @@ public class ControladorGrupos implements IControladorGrupos {
             JOptionPane.showConfirmDialog(ventana, IControladorGrupos.GRUPO_NO_SELECCIONADO, "Advertencia", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE);
         } else {
             String nombreAux = (String) this.ventana.verTablaGrupos().getValueAt(this.ventana.verTablaGrupos().getSelectedRow(), 0);
-            IControladorAMGrupo controladorAMGrupo = new ControladorAMGrupo(this.ventana);
+            IControladorAMGrupo controladorAMGrupo = new ControladorAMGrupo(this.ventana,nombreAux);
         }
     }
 
@@ -117,5 +116,14 @@ public class ControladorGrupos implements IControladorGrupos {
             }
         }
     }
-
+    private void refrescarBotones() {
+        IGestorGrupos gestor = GestorGrupos.instanciar();
+        if (gestor.verGrupos().isEmpty()) {
+            this.ventana.verBtnModificar().setEnabled(false);
+            this.ventana.verBtnBorrar().setEnabled(false);
+        } else {
+            this.ventana.verBtnModificar().setEnabled(true);
+            this.ventana.verBtnBorrar().setEnabled(true);
+        }
+    }
 }

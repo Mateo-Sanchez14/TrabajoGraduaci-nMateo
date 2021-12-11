@@ -76,6 +76,5 @@ public class ModeloTablaMiembrosYAutores extends AbstractTableModel {
 
     public Autor verAutor(int fila) {
         return this.miembrosDisponibles.get(fila).verAutor();
-
     }
 }

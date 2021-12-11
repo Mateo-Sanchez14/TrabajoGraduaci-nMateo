@@ -29,6 +29,7 @@ public interface IGestorGrupos {
     public static final String AUTOR_INVALIDO = "Uno de los autores a agregar/quitar es incorrecto o no existe";    
     public static final String MIEMBROS_INEXISTENTES = "No se especificaron miembros a agregar/quitar";    
     public static final String EXITO_MIEMBROS = "Miembros agregados/quitados con éxito";
+    public static final String GRUPO_CON_PUBLICACIÓN = "Uno de los autores de este grupo tiene una publicación";
     
     public static final String NOMBRE_SUPER_ADMINISTRADORES = "Super Administradores"; 
     public static final String DESCRIP_SUPER_ADMINISTRADORES = "Grupo para los super administradores"; 
