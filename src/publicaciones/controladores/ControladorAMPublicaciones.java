@@ -51,7 +51,7 @@ import tipos.modelos.Tipo;
 public class ControladorAMPublicaciones implements IControladorAMPublicacion {
 
     private VentanaAMPublicaciones ventanaAMPublicaciones;
-    private boolean modoModifciar; //false para crear, false para modificar
+    private boolean modoModifciar; //false para crear, true para modificar
 
     //Para crear
     public ControladorAMPublicaciones(javax.swing.JDialog ventanaPadre) {
@@ -72,6 +72,7 @@ public class ControladorAMPublicaciones implements IControladorAMPublicacion {
         this.configuracionTablas();
         this.configuraciondeComboBox(titulo);
         this.asignarTxtFields(titulo);
+        this.seleccionarPalabrasClave();
         this.modoModifciar = true;
 
         this.ventanaAMPublicaciones.setTitle(TITULO_MODIFICAR);
@@ -234,6 +235,21 @@ public class ControladorAMPublicaciones implements IControladorAMPublicacion {
             return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         }catch(NullPointerException e){
             return null;
+        }
+    }
+
+    private void seleccionarPalabrasClave() {
+        ListSelectionModel modeloSeleccion = this.ventanaAMPublicaciones.getTablaAMPublicacionesPalabrasClaves().getSelectionModel();
+        ModeloTablaPalabrasClaves mt = (ModeloTablaPalabrasClaves) this.ventanaAMPublicaciones.getTablaAMPublicacionesPalabrasClaves().getModel();
+        IGestorPublicaciones gestor = GestorPublicaciones.instanciar();
+        for (PalabraClave palabraClaveAux : gestor.verPublicacion(this.ventanaAMPublicaciones.getTxtAMPublicacionesTitulo().getText()).verPalabrasClaves()) {
+            for (int fila = 0; fila < mt.getRowCount(); fila++) {
+                PalabraClave pc = mt.verPalabraClave(fila);
+                if (palabraClaveAux.equals(pc)) {
+                    modeloSeleccion.addSelectionInterval(fila, fila);
+                    break;
+                }
+            }
         }
     }
 }

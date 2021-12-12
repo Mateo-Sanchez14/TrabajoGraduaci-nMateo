@@ -118,13 +118,13 @@ public class ControladorModificarMiembros implements IControladorModificarMiembr
 
     private void seleccionarMiembros() {
         ListSelectionModel modeloSeleccion = this.ventana.verTablaMiembros().getSelectionModel();
-        ModeloTablaMiembrosYAutores mt = (ModeloTablaMiembrosYAutores) this.ventana.verTablaMiembros().getModel();
+        ModeloTablaMiembrosYAutores modeloTablaMiembrosYAutores = (ModeloTablaMiembrosYAutores) this.ventana.verTablaMiembros().getModel();
         IGestorGrupos gestor = GestorGrupos.instanciar();
         for (MiembroEnGrupo miembroEnGrupo : gestor.verGrupo(this.ventana.getTitle()).verMiembros()) {
-            for (int fila = 0; fila < mt.getRowCount(); fila++) {
-                Autor mb = mt.verAutor(fila);
+            for (int fila = 0; fila < modeloTablaMiembrosYAutores.getRowCount(); fila++) {
+                Autor mb = modeloTablaMiembrosYAutores.verAutor(fila);
                 if (miembroEnGrupo.verAutor().equals(mb)) {
-                    mt.setValueAt(miembroEnGrupo.verRol(), fila, 1);
+                    modeloTablaMiembrosYAutores.setValueAt(miembroEnGrupo.verRol(), fila, 1);
                     modeloSeleccion.addSelectionInterval(fila, fila);
                     break;
                 }

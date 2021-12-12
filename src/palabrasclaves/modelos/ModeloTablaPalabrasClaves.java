@@ -43,4 +43,8 @@ public class ModeloTablaPalabrasClaves extends AbstractTableModel {
         this.palabrasClaves = palabrasClaves;
         this.fireTableDataChanged();
     }
+
+    public PalabraClave verPalabraClave(int fila) {
+        return palabrasClaves.get(fila);
+    }
 }
