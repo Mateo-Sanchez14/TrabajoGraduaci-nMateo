@@ -34,14 +34,18 @@ public class VentanaPublicaciones extends javax.swing.JDialog{
         return TxtPublicacionesTitulo;
     }
 
-    public JButton getBtnPublicacionesBorrar() {
+    public JButton verBtnPublicacionesBorrar() {
         return btnPublicacionesBorrar;
     }
 
-    public JButton getBtnPublicacionesModificar() {
+    public JButton verBtnPublicacionesModificar() {
         return btnPublicacionesModificar;
     }
-    
+
+    public JButton verBtnPublicacionesBuscar() {
+        return btnPublicacionesBuscar;
+    }
+
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 

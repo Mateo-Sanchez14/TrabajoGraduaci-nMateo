@@ -1,25 +1,26 @@
 package grupos.controladores;
 
-import autores.modelos.ModeloTablaAlumnos;
 import grupos.modelos.GestorGrupos;
-import grupos.modelos.ModeloTablaGrupos;
+import grupos.modelos.MiembroEnGrupo;
 import grupos.modelos.ModeloTablaMiembros;
 import grupos.vistas.VentanaAMGrupo;
-import grupos.vistas.VentanaGrupos;
 import interfaces.IControladorAMGrupo;
 import interfaces.IControladorModificarMiembros;
-import interfaces.IGestorAutores;
 import interfaces.IGestorGrupos;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class ControladorAMGrupo implements IControladorAMGrupo {
     private VentanaAMGrupo ventana;
     private static IControladorAMGrupo controlador;
     private String nombreGrupo = null;
+    private List<MiembroEnGrupo> miembrosAux = new ArrayList<>();
 
     public ControladorAMGrupo (java.awt.Dialog ventanaPadre) {
         this.ventana = new VentanaAMGrupo(this, ventanaPadre, true);
@@ -52,7 +53,9 @@ public class ControladorAMGrupo implements IControladorAMGrupo {
         this.ventana.verTxtNombre().setEnabled(false);
         this.ventana.verTxtDescripcion().setText(gestorGrupos.verGrupo(nombreGrupo).verDescripcion());
 
-        this.ventana.setTitle(TITULO_NUEVO);
+        this.guardarMiembros();
+
+        this.ventana.setTitle(TITULO_MODIFICAR);
         //this.refrescarBotones();
         this.ventana.setVisible(true);
 
@@ -85,6 +88,7 @@ public class ControladorAMGrupo implements IControladorAMGrupo {
     public void btnCancelarClic(ActionEvent evt) {
         int opcionEscogida = JOptionPane.showOptionDialog(this.ventana, "¿Desea cancelar la operación? Los cambios no guardados se perderán", "Advertencia", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, new Object[]{"Si", "No"}, "Si");
         if (opcionEscogida == JOptionPane.YES_OPTION) {
+            this.cargarMiembros();
             this.ventana.dispose();
         }
     }
@@ -112,5 +116,16 @@ public class ControladorAMGrupo implements IControladorAMGrupo {
     @Override
     public void ventanaObtenerFoco(WindowEvent evt) {
 
+    }
+    private void guardarMiembros() {
+        IGestorGrupos gg = GestorGrupos.instanciar();
+        for (MiembroEnGrupo x : gg.verGrupo(this.nombreGrupo).verMiembros()) {
+            this.miembrosAux.add(x);
+        }
+    }
+    private void cargarMiembros(){
+        IGestorGrupos gg = GestorGrupos.instanciar();
+        gg.verGrupo(nombreGrupo).verMiembros().clear(); //Elimino todos los miembros
+        gg.agregarMiembros(gg.verGrupo(nombreGrupo), miembrosAux); //Cargo los miembros previos a la modificación
     }
 }

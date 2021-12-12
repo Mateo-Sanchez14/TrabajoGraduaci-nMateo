@@ -92,8 +92,11 @@ public class GestorGrupos implements IGestorGrupos {
     @Override
     public String agregarMiembros(Grupo grupo, List<MiembroEnGrupo> miembros) {
         for (MiembroEnGrupo miembroAux : miembros) {
-            if (miembroAux.verRol() == null || miembroAux.verAutor() == null) {
+            if (miembroAux.verAutor() == null) {
                 return IGestorGrupos.AUTOR_INVALIDO;
+            }
+            if( miembroAux.verRol() == null) {
+                return IGestorGrupos.ROL_INVALIDO;
             }
             grupo.agregarMiembro(miembroAux.verAutor(), miembroAux.verRol());
         }

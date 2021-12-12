@@ -101,19 +101,8 @@ public class ControladorGrupos implements IControladorGrupos {
     @Override
     public void txtNombrePresionarTecla(KeyEvent evt) {
         char c = evt.getKeyChar();
-        if (!Character.isAlphabetic(c)) {
-            switch (c) {
-                case KeyEvent.VK_ENTER:
-                    this.btnBuscarClic(null);
-                    break;
-                case KeyEvent.VK_BACK_SPACE:
-                    break;
-                case KeyEvent.VK_DELETE:
-                    break;
-                default:
-                    evt.consume();
-                    break;
-            }
+        if (c == KeyEvent.VK_ENTER) {
+            this.btnBuscarClic(null);
         }
     }
     private void refrescarBotones() {

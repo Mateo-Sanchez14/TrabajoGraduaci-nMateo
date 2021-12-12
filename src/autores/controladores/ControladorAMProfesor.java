@@ -26,7 +26,7 @@ public class ControladorAMProfesor implements IControladorAMProfesor {
         this.ventana.verComboCargos().setModel(new ModeloComboCargos());
         this.ventana.verComboCargos().setSelectedIndex(-1);
 
-        this.ventana.verTablaMiembro().setModel(new ModeloTablaMiembros());
+        this.ventana.verTablaMiembro().setModel(new ModeloTablaGruposAutor());
         this.ventana.verTablaMiembro().getTableHeader().setReorderingAllowed(false);
         this.ventana.verTablaMiembro().setEnabled(false);
 
@@ -40,13 +40,11 @@ public class ControladorAMProfesor implements IControladorAMProfesor {
 
         this.ventana.verComboCargos().setModel(new ModeloComboCargos());
 
-        this.ventana.verTablaMiembro().setModel(new ModeloTablaMiembros());
-        this.ventana.verTablaMiembro().getTableHeader().setReorderingAllowed(false);
-        this.ventana.verTablaMiembro().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
         this.asignarTxtFields(dni);
         this.dni = dni;
         this.modo = true;
+
+        this.iniciarTabla();
 
         this.ventana.setLocationRelativeTo(null);
         this.ventana.setVisible(true);
@@ -202,9 +200,11 @@ public class ControladorAMProfesor implements IControladorAMProfesor {
                 break;
         }
         this.ventana.verComboCargos().setSelectedIndex(cargoEntero);
-
-//        TITULAR, ASOCIADO,
-//                ADJUNTO, JTP, ADG;
+    }
+    private void iniciarTabla() {
+        this.ventana.verTablaMiembro().setModel(new ModeloTablaGruposAutor(dni));
+        this.ventana.verTablaMiembro().getTableHeader().setReorderingAllowed(false);
+        this.ventana.verTablaMiembro().setEnabled(false);
     }
     //</editor-fold>
 }

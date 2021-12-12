@@ -3,7 +3,9 @@ package autores.controladores;
 import autores.modelos.Alumno;
 import autores.modelos.Autor;
 import autores.modelos.GestorAutores;
+import autores.modelos.ModeloTablaGruposAutor;
 import autores.vistas.VentanaAMAlumno;
+import grupos.modelos.ModeloTablaGrupos;
 import grupos.modelos.ModeloTablaMiembros;
 import interfaces.IControladorAMAlumno;
 import interfaces.IGestorAutores;
@@ -24,7 +26,7 @@ public class ControladorAMAlumno implements IControladorAMAlumno {
         this.modo = false;
         this.ventana.setTitle(TITULO_NUEVO);
 
-        this.ventana.verTablaMiembro().setModel(new ModeloTablaMiembros());
+        this.ventana.verTablaMiembro().setModel(new ModeloTablaGruposAutor());
         this.ventana.verTablaMiembro().getTableHeader().setReorderingAllowed(false);
         this.ventana.verTablaMiembro().setEnabled(false);
 
@@ -40,9 +42,7 @@ public class ControladorAMAlumno implements IControladorAMAlumno {
         this.asignarTxtFields(dni);
         this.dni = dni;
 
-        this.ventana.verTablaMiembro().setModel(new ModeloTablaMiembros());
-        this.ventana.verTablaMiembro().getTableHeader().setReorderingAllowed(false);
-        this.ventana.verTablaMiembro().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        this.iniciarTabla();
 
         this.ventana.setLocationRelativeTo(null);
         this.ventana.setVisible(true);
@@ -183,6 +183,12 @@ public class ControladorAMAlumno implements IControladorAMAlumno {
                     break;
             }
         }
+    }
+
+    private void iniciarTabla() {
+        this.ventana.verTablaMiembro().setModel(new ModeloTablaGruposAutor(dni));
+        this.ventana.verTablaMiembro().getTableHeader().setReorderingAllowed(false);
+        this.ventana.verTablaMiembro().setEnabled(false);
     }
     //</editor-fold>
 }

@@ -26,7 +26,8 @@ public interface IGestorGrupos {
     public static final String GRUPO_INEXISTENTE = "No existe el grupo especificado";   
     public static final String GRUPO_CON_MIEMBROS = "No se puede borrar el grupo porque tiene miembros";    
     public static final String AUTOR_DUPLICADO = "El autor ya es miembro de este grupo";    
-    public static final String AUTOR_INVALIDO = "Uno de los autores a agregar/quitar es incorrecto o no existe";    
+    public static final String AUTOR_INVALIDO = "Al menos uno de los autores a agregar/quitar es incorrecto o no existe";
+    public static final String ROL_INVALIDO = "Al menos uno de los autores a agregar no tiene seleccionado el Rol que cumplirá en el grupo";
     public static final String MIEMBROS_INEXISTENTES = "No se especificaron miembros a agregar/quitar";    
     public static final String EXITO_MIEMBROS = "Miembros agregados/quitados con éxito";
     public static final String GRUPO_CON_PUBLICACIÓN = "Uno de los autores de este grupo tiene una publicación";

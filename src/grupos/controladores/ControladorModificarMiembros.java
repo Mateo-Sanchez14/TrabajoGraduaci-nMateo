@@ -18,17 +18,14 @@ public class ControladorModificarMiembros implements IControladorModificarMiembr
     private VentanaModificarMiembros ventana;
     private ControladorModificarMiembros controlador;
 
-    public ControladorModificarMiembros (javax.swing.JDialog ventanaPadre, String nombreGrupo) {
+    public ControladorModificarMiembros(javax.swing.JDialog ventanaPadre, String nombreGrupo) {
         this.ventana = new VentanaModificarMiembros(this, ventanaPadre, true);
         this.ventana.setLocationRelativeTo(null);
-
-        //Iniciar tabla
-        this.IniciarTabla();
-
-        //this.seleccionarMiembros();
-
         this.ventana.setTitle(nombreGrupo);
-        //this.refrescarBotones();
+
+        this.IniciarTabla();
+        this.seleccionarMiembros();
+
         this.ventana.setVisible(true);
     }
 
@@ -47,7 +44,7 @@ public class ControladorModificarMiembros implements IControladorModificarMiembr
 
     @Override
     public void btnAceptarClic(ActionEvent evt) {
-        int opcionEscogida = JOptionPane.showOptionDialog(this.ventana, IControladorModificarMiembros.CONFIRMACION, "Advertencia",0, JOptionPane.WARNING_MESSAGE,null,new Object[] {"si","no"},"si");
+        int opcionEscogida = JOptionPane.showOptionDialog(this.ventana, IControladorModificarMiembros.CONFIRMACION, "Advertencia", 0, JOptionPane.WARNING_MESSAGE, null, new Object[]{"Si", "No"}, "Si");
         if (opcionEscogida == JOptionPane.YES_OPTION) {
             String mensajeAgregar = this.agregarMiembrosSeleccionados();
             String mensajeQuitar = this.quitarMiembrosNoSeleccionados();
@@ -79,7 +76,7 @@ public class ControladorModificarMiembros implements IControladorModificarMiembr
         List<Integer> NoSeleccionados = new ArrayList<>();
         ModeloTablaMiembrosYAutores modeloTablaMiembrosYAutores = (ModeloTablaMiembrosYAutores) this.ventana.verTablaMiembros().getModel();
 
-        List<MiembroEnGrupo> listaMiembrosAux=gestorG.verGrupo(this.ventana.getTitle()).verMiembros();
+        List<MiembroEnGrupo> listaMiembrosAux = gestorG.verGrupo(this.ventana.getTitle()).verMiembros();
 
         for (int fila = 0; fila < modeloTablaMiembrosYAutores.getRowCount(); fila++) {
             if (!this.ventana.verTablaMiembros().isRowSelected(fila) && listaMiembrosAux.contains(new MiembroEnGrupo((Autor) this.ventana.verTablaMiembros().getValueAt(fila, 0), gestorG.verGrupo(this.ventana.getTitle()), (Rol) this.ventana.verTablaMiembros().getValueAt(fila, 1)))) {
@@ -99,15 +96,14 @@ public class ControladorModificarMiembros implements IControladorModificarMiembr
     private String agregarMiembrosSeleccionados() {
         IGestorGrupos gestorGrupos = GestorGrupos.instanciar();
         List<MiembroEnGrupo> listaParaAgregar = new ArrayList<>();
-
         int[] seleccionados = this.ventana.verTablaMiembros().getSelectedRows();
 
         for (int fila : seleccionados) {
             MiembroEnGrupo miembroAux = new MiembroEnGrupo((Autor) this.ventana.verTablaMiembros().getValueAt(fila, 0), gestorGrupos.verGrupo(this.ventana.getTitle()), (Rol) this.ventana.verTablaMiembros().getValueAt(fila, 1));
-            if(gestorGrupos.verGrupo(this.ventana.getTitle()).verMiembros().contains(miembroAux)){
-                int posicionMiembros=gestorGrupos.verGrupo(this.ventana.getTitle()).verMiembros().indexOf(miembroAux);
+            if (gestorGrupos.verGrupo(this.ventana.getTitle()).verMiembros().contains(miembroAux)) {
+                int posicionMiembros = gestorGrupos.verGrupo(this.ventana.getTitle()).verMiembros().indexOf(miembroAux);
                 gestorGrupos.verGrupo(this.ventana.getTitle()).verMiembros().get(posicionMiembros).asignarRol(miembroAux.verRol());
-                int posicionGrupo=gestorGrupos.verGrupo(this.ventana.getTitle()).verMiembros().get(posicionMiembros).verAutor().verGrupo().indexOf(miembroAux);
+                int posicionGrupo = gestorGrupos.verGrupo(this.ventana.getTitle()).verMiembros().get(posicionMiembros).verAutor().verGrupo().indexOf(miembroAux);
                 gestorGrupos.verGrupo(this.ventana.getTitle()).verMiembros().get(posicionMiembros).verAutor().verGrupo().get(posicionGrupo).asignarRol(miembroAux.verRol());
             }
 
@@ -122,7 +118,7 @@ public class ControladorModificarMiembros implements IControladorModificarMiembr
 
     private void seleccionarMiembros() {
         ListSelectionModel modeloSeleccion = this.ventana.verTablaMiembros().getSelectionModel();
-        ModeloTablaMiembros mt = (ModeloTablaMiembros) this.ventana.verTablaMiembros().getModel();
+        ModeloTablaMiembrosYAutores mt = (ModeloTablaMiembrosYAutores) this.ventana.verTablaMiembros().getModel();
         IGestorGrupos gestor = GestorGrupos.instanciar();
         for (MiembroEnGrupo miembroEnGrupo : gestor.verGrupo(this.ventana.getTitle()).verMiembros()) {
             for (int fila = 0; fila < mt.getRowCount(); fila++) {
@@ -135,6 +131,7 @@ public class ControladorModificarMiembros implements IControladorModificarMiembr
             }
         }
     }
+
     private void IniciarTabla() {
         this.ventana.verTablaMiembros().setModel(new ModeloTablaMiembrosYAutores());
         this.ventana.verTablaMiembros().getTableHeader().setReorderingAllowed(false);

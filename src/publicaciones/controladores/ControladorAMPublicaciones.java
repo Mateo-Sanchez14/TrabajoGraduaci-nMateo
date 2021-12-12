@@ -11,13 +11,16 @@ import idiomas.modelos.GestorIdiomas;
 import idiomas.modelos.Idioma;
 import interfaces.IControladorAMPublicacion;
 import interfaces.IControladorPrincipal;
+
 import static interfaces.IControladorPublicaciones.TITULO;
+
 import interfaces.IGestorAutores;
 import interfaces.IGestorIdiomas;
 import interfaces.IGestorLugares;
 import interfaces.IGestorPalabrasClaves;
 import interfaces.IGestorPublicaciones;
 import interfaces.IGestorTipos;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -29,6 +32,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.UIManager;
+
 import lugares.modelos.GestorLugares;
 import lugares.modelos.Lugar;
 import palabrasclaves.modelos.GestorPalabrasClaves;
@@ -42,38 +46,33 @@ import tipos.modelos.GestorTipos;
 import tipos.modelos.Tipo;
 
 
-public class ControladorAMPublicaciones implements IControladorAMPublicacion{
-    
+public class ControladorAMPublicaciones implements IControladorAMPublicacion {
+
     VentanaAMPublicaciones ventanaAMPublicaciones;
-//Para crear
+
+    //Para crear
     public ControladorAMPublicaciones(javax.swing.JDialog ventanaPadre) {
-        this.ventanaAMPublicaciones = new VentanaAMPublicaciones(this,ventanaPadre,true);
+        this.ventanaAMPublicaciones = new VentanaAMPublicaciones(this, ventanaPadre, true);
         this.ventanaAMPublicaciones.setLocationRelativeTo(null);
         this.configuracionTablas();
         this.configuraciondeComboBox();
 
-        
-        this.ventanaAMPublicaciones.setTitle(TITULO);
+        this.ventanaAMPublicaciones.setTitle(TITULO_NUEVA);
         this.ventanaAMPublicaciones.setVisible(true);
     }
-    
+
     //Para modificar
-        public ControladorAMPublicaciones(javax.swing.JDialog ventanaPadre,String titulo ) {
-        this.ventanaAMPublicaciones = new VentanaAMPublicaciones(this,ventanaPadre,true);
+    public ControladorAMPublicaciones(javax.swing.JDialog ventanaPadre, String titulo) {
+        this.ventanaAMPublicaciones = new VentanaAMPublicaciones(this, ventanaPadre, true);
         this.ventanaAMPublicaciones.setLocationRelativeTo(null);
         this.configuracionTablas();
         this.configuraciondeComboBox(titulo);
         this.asignarTxtFields(titulo);
-        
-        
-        
-        this.ventanaAMPublicaciones.setTitle(TITULO);
+
+        this.ventanaAMPublicaciones.setTitle(TITULO_MODIFICAR);
         this.ventanaAMPublicaciones.setVisible(true);
     }
-    
-    
-    
-    
+
 
     @Override
     public void btnGuardarClic(ActionEvent evt) {
@@ -113,6 +112,7 @@ public class ControladorAMPublicaciones implements IControladorAMPublicacion{
         ListSelectionModel modeloSeleccion = this.ventanaAMPublicaciones.getTablaAMPublicacionesPalabrasClaves().getSelectionModel();
         modeloSeleccion.clearSelection();
     }
+
     //REVISAR
     @Override
     public void btnAbrirClic(ActionEvent evt) {
@@ -137,9 +137,9 @@ public class ControladorAMPublicaciones implements IControladorAMPublicacion{
             File selectedFile = selector.getSelectedFile();
             this.ventanaAMPublicaciones.getTxtAMPublicacionesEnlace().setText(selectedFile.getAbsolutePath());
         }
-    }  
-    
-    private void asignarTxtFields(String titulo){
+    }
+
+    private void asignarTxtFields(String titulo) {
         IGestorPublicaciones gestor = GestorPublicaciones.instanciar();
         Publicacion publicacion = gestor.verPublicacion(titulo);
         this.ventanaAMPublicaciones.getTxtAMPublicacionesTitulo().setText(titulo);
@@ -153,8 +153,8 @@ public class ControladorAMPublicaciones implements IControladorAMPublicacion{
         this.ventanaAMPublicaciones.getTxtAMPublicacionesResumen().setText(publicacion.verResumen());
 
     }
-    
-       private void configuraciondeComboBox(String titulo) {
+
+    private void configuraciondeComboBox(String titulo) {
         IGestorIdiomas gestorIdioma = GestorIdiomas.instanciar();
         IGestorLugares gestorLugar = GestorLugares.instanciar();
         IGestorTipos gestortipo = GestorTipos.instanciar();
@@ -163,7 +163,7 @@ public class ControladorAMPublicaciones implements IControladorAMPublicacion{
         this.ventanaAMPublicaciones.getComboAMPublicacionesTipo().setModel(new ModeloComboBoxPublicaciones(gestortipo.verTipos()));
         this.ventanaAMPublicaciones.getComboAMPublicacionesGrupo().setModel(new ModeloComboBoxPublicaciones(obtenerGruposDelAutor(titulo)));
     }
-       
+
     private void configuraciondeComboBox() {
         IGestorIdiomas gestorIdioma = GestorIdiomas.instanciar();
         IGestorLugares gestorLugar = GestorLugares.instanciar();
@@ -177,7 +177,7 @@ public class ControladorAMPublicaciones implements IControladorAMPublicacion{
         this.ventanaAMPublicaciones.getComboAMPublicacionesTipo().setSelectedIndex(-1);
         this.ventanaAMPublicaciones.getComboAMPublicacionesGrupo().setSelectedIndex(-1);
     }
-    
+
     private String guardarPublicacion() {
         IGestorPublicaciones gestor = GestorPublicaciones.instanciar();
         String Titulo = this.ventanaAMPublicaciones.getTxtAMPublicacionesTitulo().getText();
@@ -192,8 +192,8 @@ public class ControladorAMPublicaciones implements IControladorAMPublicacion{
         List<PalabraClave> palabrasClaves = obtenerpalabrasclaves();
         return gestor.nuevaPublicacion(Titulo, creador, fechaPublicacion, tipo, idioma, lugar, palabrasClaves, enlace, resumen);
     }
-    
-    
+
+
     private List<PalabraClave> obtenerpalabrasclaves() {
         IGestorPalabrasClaves gestorpalabrasclaves = GestorPalabrasClaves.instanciar();
         int[] seleccionados = this.ventanaAMPublicaciones.getTablaAMPublicacionesPalabrasClaves().getSelectedRows();
@@ -204,21 +204,21 @@ public class ControladorAMPublicaciones implements IControladorAMPublicacion{
         return palabrasclavesmarcadas;
     }
 
-   private List<MiembroEnGrupo> obtenerGruposDelAutor(String titulo) {
+    private List<MiembroEnGrupo> obtenerGruposDelAutor(String titulo) {
         IGestorPublicaciones gestorP = GestorPublicaciones.instanciar();
         return gestorP.verPublicacion(titulo).verMiembroEnGrupo().verAutor().verGrupo();
     }
-   
-   private List<MiembroEnGrupo> obtenergruposdelautor() {
+
+    private List<MiembroEnGrupo> obtenergruposdelautor() {
         IGestorAutores gestorautor = GestorAutores.instanciar();
         return gestorautor.verAutores().get(0).verGrupo();
     }
-    
-   
-   private void configuracionTablas() {
+
+
+    private void configuracionTablas() {
         this.ventanaAMPublicaciones.getTablaAMPublicacionesPalabrasClaves().setModel(new ModeloTablaPalabrasClaves());
         this.ventanaAMPublicaciones.getTablaAMPublicacionesPalabrasClaves().getTableHeader().setReorderingAllowed(false);
         this.ventanaAMPublicaciones.getTablaAMPublicacionesPalabrasClaves().setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
     }
-    
+
 }
