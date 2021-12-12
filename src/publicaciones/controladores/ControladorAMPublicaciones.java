@@ -26,7 +26,9 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -48,7 +50,8 @@ import tipos.modelos.Tipo;
 
 public class ControladorAMPublicaciones implements IControladorAMPublicacion {
 
-    VentanaAMPublicaciones ventanaAMPublicaciones;
+    private VentanaAMPublicaciones ventanaAMPublicaciones;
+    private boolean modoModifciar; //false para crear, false para modificar
 
     //Para crear
     public ControladorAMPublicaciones(javax.swing.JDialog ventanaPadre) {
@@ -56,6 +59,7 @@ public class ControladorAMPublicaciones implements IControladorAMPublicacion {
         this.ventanaAMPublicaciones.setLocationRelativeTo(null);
         this.configuracionTablas();
         this.configuraciondeComboBox();
+        this.modoModifciar = false;
 
         this.ventanaAMPublicaciones.setTitle(TITULO_NUEVA);
         this.ventanaAMPublicaciones.setVisible(true);
@@ -68,6 +72,7 @@ public class ControladorAMPublicaciones implements IControladorAMPublicacion {
         this.configuracionTablas();
         this.configuraciondeComboBox(titulo);
         this.asignarTxtFields(titulo);
+        this.modoModifciar = true;
 
         this.ventanaAMPublicaciones.setTitle(TITULO_MODIFICAR);
         this.ventanaAMPublicaciones.setVisible(true);
@@ -76,10 +81,9 @@ public class ControladorAMPublicaciones implements IControladorAMPublicacion {
 
     @Override
     public void btnGuardarClic(ActionEvent evt) {
-        String mensaje;
-        mensaje = guardarPublicacion();
+        String mensaje = guardarPublicacion();
         JOptionPane.showMessageDialog(this.ventanaAMPublicaciones, mensaje, "Notificacion", 1);
-        if (mensaje.equals(IGestorPublicaciones.CREACION_OK)) {
+        if (mensaje.equals(IGestorPublicaciones.EXITO)) {
             this.ventanaAMPublicaciones.dispose();
         }
     }
@@ -149,7 +153,7 @@ public class ControladorAMPublicaciones implements IControladorAMPublicacion {
         this.ventanaAMPublicaciones.getComboAMPublicacionesLugar().setSelectedItem(publicacion.verLugar());
         this.ventanaAMPublicaciones.getComboAMPublicacionesTipo().setSelectedItem(publicacion.verTipo());
         this.ventanaAMPublicaciones.getTxtAMPublicacionesEnlace().setText(publicacion.verEnlace());
-        //this.ventanaAMPublicaciones.getDateChooserAMPublicaciones().setDate(Date.from(publicacion.verFechaPublicacion().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+        this.ventanaAMPublicaciones.getDateChooserAMPublicaciones().setDate(Date.from(publicacion.verFechaPublicacion().atStartOfDay(ZoneId.systemDefault()).toInstant()));
         this.ventanaAMPublicaciones.getTxtAMPublicacionesResumen().setText(publicacion.verResumen());
 
     }
@@ -186,11 +190,14 @@ public class ControladorAMPublicaciones implements IControladorAMPublicacion {
         Idioma idioma = (Idioma) this.ventanaAMPublicaciones.getComboAMPublicacionesIdioma().getModel().getSelectedItem();
         String enlace = this.ventanaAMPublicaciones.getTxtAMPublicacionesEnlace().getText();
         String resumen = this.ventanaAMPublicaciones.getTxtAMPublicacionesResumen().getText();
-        //LocalDate fechaPublicacion = this.definirFecha();
-        LocalDate fechaPublicacion = LocalDate.of(2000, Month.MARCH, 1);
+        LocalDate fechaPublicacion = this.definirFecha();
+        //LocalDate fechaPublicacion = LocalDate.of(2000, Month.MARCH, 1);
         MiembroEnGrupo creador = (MiembroEnGrupo) this.ventanaAMPublicaciones.getComboAMPublicacionesGrupo().getSelectedItem();
         List<PalabraClave> palabrasClaves = obtenerpalabrasclaves();
-        return gestor.nuevaPublicacion(Titulo, creador, fechaPublicacion, tipo, idioma, lugar, palabrasClaves, enlace, resumen);
+        if (modoModifciar == false)
+            return gestor.nuevaPublicacion(Titulo, creador, fechaPublicacion, tipo, idioma, lugar, palabrasClaves, enlace, resumen);
+        else
+            return gestor.modificarPublicacion(gestor.verPublicacion(Titulo), creador, fechaPublicacion, tipo, idioma, lugar, palabrasClaves, enlace, resumen );
     }
 
 
@@ -221,4 +228,12 @@ public class ControladorAMPublicaciones implements IControladorAMPublicacion {
         this.ventanaAMPublicaciones.getTablaAMPublicacionesPalabrasClaves().setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
     }
 
+    private LocalDate definirFecha(){
+        try{
+            Date date = this.ventanaAMPublicaciones.getDateChooserAMPublicaciones().getCalendar().getTime();
+            return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        }catch(NullPointerException e){
+            return null;
+        }
+    }
 }

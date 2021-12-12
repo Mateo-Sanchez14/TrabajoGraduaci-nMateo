@@ -9,6 +9,7 @@ package publicaciones.vistas;
 
 
 
+import com.toedter.calendar.JDateChooser;
 import interfaces.IControladorAMPublicacion;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -55,9 +56,9 @@ public class VentanaAMPublicaciones extends javax.swing.JDialog {
         return TxtAMPublicacionesEnlace;
     }
 
-//    public JDateChooser getDateChooserAMPublicaciones() {
-//        return DateChooserAMPublicaciones;
-//    }
+    public JDateChooser getDateChooserAMPublicaciones() {
+        return DateChooserAMPublicaciones;
+    }
 
     public JTextArea getTxtAMPublicacionesResumen() {
         return TxtAMPublicacionesResumen;
@@ -103,6 +104,7 @@ public class VentanaAMPublicaciones extends javax.swing.JDialog {
         btnAMPublicacionesNinguna = new javax.swing.JButton();
         btnAMPublicacionesGuardar = new javax.swing.JButton();
         btnAMPublicacionesCancelar = new javax.swing.JButton();
+        DateChooserAMPublicaciones = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -228,11 +230,12 @@ public class VentanaAMPublicaciones extends javax.swing.JDialog {
                             .addComponent(TxtAMPublicacionesTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(ComboAMPublicacionesGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(ComboAMPublicacionesIdioma, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(ComboAMPublicacionesLugar, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addComponent(ComboAMPublicacionesTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(ComboAMPublicacionesTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(DateChooserAMPublicaciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(22, 22, 22)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -262,8 +265,10 @@ public class VentanaAMPublicaciones extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(11, 11, 11)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(DateChooserAMPublicaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(ComboAMPublicacionesGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -336,6 +341,7 @@ public class VentanaAMPublicaciones extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> ComboAMPublicacionesIdioma;
     private javax.swing.JComboBox<String> ComboAMPublicacionesLugar;
     private javax.swing.JComboBox<String> ComboAMPublicacionesTipo;
+    private com.toedter.calendar.JDateChooser DateChooserAMPublicaciones;
     private javax.swing.JTable TablaAMPublicacionesPalabrasClaves;
     private javax.swing.JTextField TxtAMPublicacionesEnlace;
     private javax.swing.JTextArea TxtAMPublicacionesResumen;
