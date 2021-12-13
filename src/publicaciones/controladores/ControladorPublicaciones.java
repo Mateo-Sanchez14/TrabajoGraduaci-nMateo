@@ -6,14 +6,12 @@
 package publicaciones.controladores;
 
 import autores.modelos.GestorAutores;
+import grupos.modelos.GestorGrupos;
+import grupos.modelos.Grupo;
 import grupos.modelos.ModeloTablaGrupos;
-import interfaces.IControladorAMPublicacion;
+import interfaces.*;
 
 import static interfaces.IControladorGrupos.TITULO;
-
-import interfaces.IControladorPublicaciones;
-import interfaces.IGestorAutores;
-import interfaces.IGestorPublicaciones;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -107,7 +105,6 @@ public class ControladorPublicaciones implements IControladorPublicaciones {
         List<Publicacion> PublicacionesEncontrados = gestor.buscarPublicaciones(busquedaRealizada);
         ModeloTablaPublicaciones aux = (ModeloTablaPublicaciones) this.ventanaPublicaciones.getTablaPublicaciones().getModel();
         aux.refrescarDatosDeTabla(PublicacionesEncontrados);
-        this.refrescarBotones();
     }
 
     @Override

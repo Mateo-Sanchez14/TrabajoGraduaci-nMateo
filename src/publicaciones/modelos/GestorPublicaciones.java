@@ -12,9 +12,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 public class GestorPublicaciones implements IGestorPublicaciones {
-    ArrayList<Publicacion> publicaciones = new ArrayList<>();
+    List<Publicacion> publicaciones = new ArrayList<>();
 
     private static GestorPublicaciones gestor;
 
@@ -165,7 +166,7 @@ public class GestorPublicaciones implements IGestorPublicaciones {
     public List<Publicacion> buscarPublicaciones(String titulo) {
         List<Publicacion> publicacionesEncontradas = new ArrayList<>();
         for (Publicacion x : this.publicaciones){
-            if(x.verTitulo().equalsIgnoreCase(titulo)) {
+            if(x.verTitulo().toLowerCase().contains(titulo.toLowerCase())) {
                 publicacionesEncontradas.add(x);
             }
         }

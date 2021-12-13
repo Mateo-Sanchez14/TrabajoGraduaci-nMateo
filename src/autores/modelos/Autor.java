@@ -146,6 +146,6 @@ public abstract class Autor implements Comparable<Autor> {
 
     @Override
     public String toString() {
-        return apellidos + ", " + nombres;
+        return apellidos + ", " + nombres + " (" + dni + ")";
     }
 }
