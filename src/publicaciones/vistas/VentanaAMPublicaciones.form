@@ -29,11 +29,6 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane2" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="btnAMPublicacionesGuardar" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnAMPublicacionesCancelar" min="-2" pref="216" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jLabel6" max="32767" attributes="0"/>
                           <Component id="jLabel5" alignment="0" max="32767" attributes="0"/>
@@ -48,10 +43,8 @@
                           <Component id="ComboAMPublicacionesGrupo" min="-2" pref="120" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="ComboAMPublicacionesIdioma" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="ComboAMPublicacionesLugar" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="ComboAMPublicacionesIdioma" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="ComboAMPublicacionesLugar" alignment="0" max="32767" attributes="0"/>
                                   <Component id="ComboAMPublicacionesTipo" max="32767" attributes="0"/>
                                   <Component id="DateChooserAMPublicaciones" max="32767" attributes="0"/>
                               </Group>
@@ -78,7 +71,20 @@
                           </Group>
                       </Group>
                   </Group>
-                  <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="btnAMPublicacionesGuardar" min="-2" pref="100" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="btnAMPublicacionesCancelar" min="-2" pref="100" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -142,11 +148,11 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnAMPublicacionesGuardar" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnAMPublicacionesCancelar" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="btnAMPublicacionesCancelar" pref="36" max="32767" attributes="0"/>
+                  <Component id="btnAMPublicacionesGuardar" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -181,7 +187,7 @@
     </Container>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Titulo:"/>
+        <Property name="text" type="java.lang.String" value="T&#xed;tulo:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package publicaciones.controladores;
 
 import autores.modelos.GestorAutores;
@@ -11,8 +6,6 @@ import idiomas.modelos.GestorIdiomas;
 import idiomas.modelos.Idioma;
 import interfaces.IControladorAMPublicacion;
 import interfaces.IControladorPrincipal;
-
-import static interfaces.IControladorPublicaciones.TITULO;
 
 import interfaces.IGestorAutores;
 import interfaces.IGestorIdiomas;
@@ -25,7 +18,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.time.LocalDate;
-import java.time.Month;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
@@ -51,7 +43,7 @@ import tipos.modelos.Tipo;
 public class ControladorAMPublicaciones implements IControladorAMPublicacion {
 
     private VentanaAMPublicaciones ventanaAMPublicaciones;
-    private boolean modoModifciar; //false para crear, true para modificar
+    private boolean modoModificar; //false para crear, true para modificar
 
     //Para crear
     public ControladorAMPublicaciones(javax.swing.JDialog ventanaPadre) {
@@ -59,7 +51,7 @@ public class ControladorAMPublicaciones implements IControladorAMPublicacion {
         this.ventanaAMPublicaciones.setLocationRelativeTo(null);
         this.configuracionTablas();
         this.configuraciondeComboBox();
-        this.modoModifciar = false;
+        this.modoModificar = false;
 
         this.ventanaAMPublicaciones.setTitle(TITULO_NUEVA);
         this.ventanaAMPublicaciones.setVisible(true);
@@ -73,7 +65,7 @@ public class ControladorAMPublicaciones implements IControladorAMPublicacion {
         this.configuraciondeComboBox(titulo);
         this.asignarTxtFields(titulo);
         this.seleccionarPalabrasClave();
-        this.modoModifciar = true;
+        this.modoModificar = true;
 
         this.ventanaAMPublicaciones.setTitle(TITULO_MODIFICAR);
         this.ventanaAMPublicaciones.setVisible(true);
@@ -148,7 +140,7 @@ public class ControladorAMPublicaciones implements IControladorAMPublicacion {
         IGestorPublicaciones gestor = GestorPublicaciones.instanciar();
         Publicacion publicacion = gestor.verPublicacion(titulo);
         this.ventanaAMPublicaciones.getTxtAMPublicacionesTitulo().setText(titulo);
-        this.ventanaAMPublicaciones.getTxtAMPublicacionesTitulo().setEditable(false); //Desactivo edicion
+        this.ventanaAMPublicaciones.getTxtAMPublicacionesTitulo().setEditable(false);
         this.ventanaAMPublicaciones.getComboAMPublicacionesGrupo().setSelectedItem(publicacion.verMiembroEnGrupo());
         this.ventanaAMPublicaciones.getComboAMPublicacionesIdioma().setSelectedItem(publicacion.verIdioma());
         this.ventanaAMPublicaciones.getComboAMPublicacionesLugar().setSelectedItem(publicacion.verLugar());
@@ -195,7 +187,7 @@ public class ControladorAMPublicaciones implements IControladorAMPublicacion {
         //LocalDate fechaPublicacion = LocalDate.of(2000, Month.MARCH, 1);
         MiembroEnGrupo creador = (MiembroEnGrupo) this.ventanaAMPublicaciones.getComboAMPublicacionesGrupo().getSelectedItem();
         List<PalabraClave> palabrasClaves = obtenerpalabrasclaves();
-        if (modoModifciar == false)
+        if (modoModificar == false)
             return gestor.nuevaPublicacion(Titulo, creador, fechaPublicacion, tipo, idioma, lugar, palabrasClaves, enlace, resumen);
         else
             return gestor.modificarPublicacion(gestor.verPublicacion(Titulo), creador, fechaPublicacion, tipo, idioma, lugar, palabrasClaves, enlace, resumen );
