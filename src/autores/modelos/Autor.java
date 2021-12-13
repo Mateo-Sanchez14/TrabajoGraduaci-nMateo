@@ -84,9 +84,10 @@ public abstract class Autor implements Comparable<Autor> {
     }
 
     public void quitarGrupo(Grupo grupo) {
-        for (MiembroEnGrupo a : gruposAutor) {
-            if (a.verGrupo().equals(grupo)) {
-                gruposAutor.remove(a);
+        if (grupo != null) {
+            MiembroEnGrupo aux = new MiembroEnGrupo(this, grupo, null);
+            if (this.gruposAutor.contains(aux)) {
+                this.gruposAutor.remove(aux);
                 grupo.quitarMiembro(this);
             }
         }
@@ -111,12 +112,12 @@ public abstract class Autor implements Comparable<Autor> {
 
     public void mostrar() {
         System.out.println("[" + dni + "] " + apellidos + ", " + nombres);
-        if(!gruposAutor.isEmpty()) {
+        if (!gruposAutor.isEmpty()) {
             System.out.println("Grupos a los que pertenece: ");
             for (MiembroEnGrupo a : gruposAutor) {
                 System.out.println("\t" + a.verGrupo().verNombre() + ", " + a.verRol());
             }
-        }else
+        } else
             System.out.println("No pertenece a ningún grupo");
     }
 
@@ -138,8 +139,7 @@ public abstract class Autor implements Comparable<Autor> {
     public int compareTo(Autor o) {
         if (o.apellidos.equals(apellidos)) {
             return this.nombres.compareToIgnoreCase(o.nombres);
-        }
-        else {
+        } else {
             return this.apellidos.compareToIgnoreCase(o.apellidos);
         }
     }

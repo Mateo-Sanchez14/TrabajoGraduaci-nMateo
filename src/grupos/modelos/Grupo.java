@@ -1,6 +1,7 @@
 package grupos.modelos;
 
 import autores.modelos.Autor;
+import interfaces.IGestorGrupos;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,9 +53,10 @@ public class Grupo implements Comparable<Grupo>{
     }
 
     public void quitarMiembro(Autor miembro) {
-        for (MiembroEnGrupo a : miembros) {
-            if (a.verAutor().equals(miembro)) {
-                miembros.remove(a);
+        if (miembro != null) {
+            MiembroEnGrupo unMiembro = new MiembroEnGrupo(miembro, this, null);
+            if (this.miembros.contains(unMiembro)) {
+                miembros.remove(miembros.indexOf(unMiembro));
                 miembro.quitarGrupo(this);
             }
         }
